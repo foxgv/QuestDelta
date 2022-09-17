@@ -1,8 +1,8 @@
 package ua.com.javarush.quest.ryabov.questdelta.service;
 
-import ru.javarush.lesson13.entity.User;
-import ru.javarush.lesson13.repository.Repository;
-import ru.javarush.lesson13.repository.UserRepository;
+import ua.com.javarush.quest.ryabov.questdelta.entity.User;
+import ua.com.javarush.quest.ryabov.questdelta.repository.Repository;
+import ua.com.javarush.quest.ryabov.questdelta.repository.UserRepository;
 
 import java.util.Collection;
 import java.util.Optional;
