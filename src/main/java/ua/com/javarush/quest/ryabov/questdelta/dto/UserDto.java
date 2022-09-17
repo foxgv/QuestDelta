@@ -1,17 +1,16 @@
-package ua.com.javarush.quest.ryabov.questdelta.entity;
+package ua.com.javarush.quest.ryabov.questdelta.dto;
 
 import lombok.Builder;
 import lombok.Data;
+import ua.com.javarush.quest.ryabov.questdelta.entity.Role;
 
 @Data
 @Builder(builderMethodName = "with", buildMethodName = "get")
-public class User {
+public class UserDto {
 
     Long id;
 
     String login;
-
-    String password;
 
     String image;
 

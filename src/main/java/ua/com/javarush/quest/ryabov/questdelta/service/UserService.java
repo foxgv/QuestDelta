@@ -1,17 +1,17 @@
 package ua.com.javarush.quest.ryabov.questdelta.service;
 
-import ru.javarush.lesson13.entity.User;
-import ru.javarush.lesson13.repository.Repository;
-import ru.javarush.lesson13.repository.UserRepository;
+import ua.com.javarush.quest.ryabov.questdelta.entity.User;
+import ua.com.javarush.quest.ryabov.questdelta.repository.Repository;
+import ua.com.javarush.quest.ryabov.questdelta.repository.UserRepository;
 
 import java.util.Collection;
 import java.util.Optional;
 
 public enum UserService {
 
-    USER_SERVICE;
+    INSTANCE;
 
-    private final Repository<User> userRepository = new UserRepository();
+    private final Repository<User> userRepository = UserRepository.get();
 
     public void create(User user) {
         userRepository.create(user);
@@ -31,5 +31,17 @@ public enum UserService {
 
     public Optional<User> get(long id) {
         return userRepository.get(id);
+    }
+    public Collection<User> find(User patternUser) {
+        return userRepository.find(patternUser);
+    }
+
+    public Optional<User> find(String login, String password){
+        User user = User.with()
+                .login(login)
+                .password(password)
+                .get();
+        Collection<User> users = find(user);
+        return users.stream().findFirst();
     }
 }

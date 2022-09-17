@@ -1,13 +1,13 @@
 package ua.com.javarush.quest.ryabov.questdelta.repository;
 
-import ru.javarush.lesson13.entity.User;
-
 import java.util.Collection;
 import java.util.Optional;
 
 public interface Repository<T> {
 
-    Collection<User> getAll();
+    Collection<T> getAll();
+
+    Collection<T> find(T entity);
 
     Optional<T> get(long id);
 
