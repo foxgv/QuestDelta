@@ -10,7 +10,6 @@
             </li>
             <br>
         </c:forEach>
-        <li><a href="user?id=0">Create new user</a></li>
     </ul>
 </div>
 <%@include file="parts/footer.jsp" %>

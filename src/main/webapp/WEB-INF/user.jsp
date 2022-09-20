@@ -4,6 +4,7 @@
 <div class="container">
     <form class="form-horizontal" action="user?id=${user.id}" method="post" enctype="multipart/form-data">
         <fieldset>
+
             <!-- Form Name -->
             <legend>User Form</legend>
 
@@ -33,6 +34,7 @@
                     <input id="userPassword" name="password" type="password" placeholder="pass req"
                            class="form-control input-md" required=""
                            value="${user.password}">
+
                 </div>
             </div>
 
@@ -46,7 +48,6 @@
                                     ${role}
                             </option>
                         </c:forEach>
-
                     </select>
                 </div>
             </div>
@@ -60,7 +61,7 @@
                 </div>
             </div>
 
-            <c:if test="${requestScope.user.id>0}">
+            <c:if test="${user.id>0}">
                 <!-- Button -->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="delete"></label>
@@ -74,4 +75,3 @@
     </form>
 </div>
 <%@include file="parts/footer.jsp" %>
-

@@ -18,7 +18,7 @@ import java.io.Serial;
 import java.util.Optional;
 
 @MultipartConfig(fileSizeThreshold = 1 << 20)
-@WebServlet({"/user","/profile","/signup"})
+@WebServlet({"/user","/profile", "/signup"})
 public class UserServlet extends HttpServlet {
 
     @Serial
