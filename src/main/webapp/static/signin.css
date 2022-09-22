@@ -4,11 +4,7 @@ body {
 }
 
 body {
-    display: flex;
     align-items: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #f5f5f5;
 }
 
 .h3 {
@@ -16,8 +12,10 @@ body {
 }
 
 .form-signin {
+    padding-top: 8vh;
+    padding-right: 15px;
+    padding-left: 15px;
     max-width: 330px;
-    padding: 15px;
 }
 
 .form-signin .form-floating:focus-within {
@@ -38,8 +36,11 @@ body {
 
 .form-register {
     max-width: 330px;
-    padding: 15px;
+    padding-top: 8vh;
+    padding-right: 15px;
+    padding-left: 15px;
 }
+
 
 .form-register .form-floating:focus-within {
     z-index: 2;

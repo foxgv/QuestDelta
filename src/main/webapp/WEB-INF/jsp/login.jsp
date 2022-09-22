@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="static/signin.css" />
 </head>
 <body>
+<c:import url="/WEB-INF/jsp/parts/header.jsp"/>
+
 <main class="form-signin w-100 m-auto">
     <form action="${pageContext.request.contextPath}/login" method="post">
         <img class="mb-3 mx-auto d-block" src="images/eagle-black.svg" alt="" width="100" height="100">
@@ -35,7 +37,7 @@
 
 </main>
 
-<a href="${pageContext.request.contextPath}/menu">Menu</a>
+<c:import url="/WEB-INF/jsp/parts/footer.jsp"/>
 <c:import url="/WEB-INF/jsp/parts/scripts.jsp"/>
 </body>
 
