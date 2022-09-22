@@ -16,6 +16,7 @@ public class Jsp {
     public final String LOGIN = "login.jsp";
     public final String SIGNUP = "signup.jsp";
     public final String ACCOUNTS = "accounts.jsp";
+    public final String PROFILE = "profile.jsp";
 
     public void forward(HttpServletRequest request, HttpServletResponse response, String filename) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(PATH_TO_JSP + filename);
