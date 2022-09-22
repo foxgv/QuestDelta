@@ -6,14 +6,14 @@
 <head>
     <title>Menu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <c:import url="parts/links.jsp"/>
+    <c:import url="/WEB-INF/jsp/parts/links.jsp"/>
 </head>
 <body>
-<c:import url="parts/header.jsp"/>
+<c:import url="/WEB-INF/jsp/parts/header.jsp"/>
 
 <h1><%= "MENU" %></h1>
 
-<c:import url="parts/footer.jsp"/>
-<c:import url="parts/scripts.jsp"/>
+<c:import url="/WEB-INF/jsp/parts/footer.jsp"/>
+<c:import url="/WEB-INF/jsp/parts/scripts.jsp"/>
 </body>
 </html>
