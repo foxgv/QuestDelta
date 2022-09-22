@@ -1,19 +1,17 @@
 package ru.javarush.quest.bogdanov.questdelta.repositories;
 
-import ru.javarush.quest.bogdanov.questdelta.entities.User;
-
 import java.util.List;
 
 public interface Repository<T> {
 
     List<T> getAll();
 
-    User getByID(long id);
+    T getByID(long id);
 
-    boolean create(T entity);
+    void create(T entity);
 
-    boolean update(T entity);
+    void update(T entity);
 
-    boolean delete(T entity);
+    void delete(T entity);
 
 }

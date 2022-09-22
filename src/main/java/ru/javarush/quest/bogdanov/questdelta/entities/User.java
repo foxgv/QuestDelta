@@ -4,14 +4,14 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class User {
 
-    private static final AtomicLong idCounter = new AtomicLong(1);
+    private static final AtomicLong ID_USER_COUNTER = new AtomicLong(1);
     public long id;
     public Role role;
     public final String login;
-    public final String password;
+    private final String password;
 
     public User(Role role, String login, String password) {
-        this.id = idCounter.getAndIncrement();
+        this.id = ID_USER_COUNTER.getAndIncrement();
         this.role = role;
         this.login = login;
         this.password = password;

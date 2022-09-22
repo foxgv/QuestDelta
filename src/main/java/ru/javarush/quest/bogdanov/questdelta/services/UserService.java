@@ -18,4 +18,8 @@ public enum UserService {
     public User getUser(long id) {
         return userRepository.getByID(id);
     }
+
+    public void create(User user) {
+        userRepository.create(user);
+    }
 }

@@ -3,6 +3,7 @@ package ru.javarush.quest.bogdanov.questdelta.controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import ru.javarush.quest.bogdanov.questdelta.entities.Role;
 import ru.javarush.quest.bogdanov.questdelta.entities.User;
 import ru.javarush.quest.bogdanov.questdelta.services.UserService;
 
@@ -22,7 +23,18 @@ public class UserServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (request.getParameter("submit") != null) {
+            String login = request.getParameter("login");
+            String password = request.getParameter("password");
+            String role = request.getParameter("select");
+            User user = new User(Role.valueOf(role), login, password);
+            postUser(user);
+        }
+        response.sendRedirect(" /users");
+    }
 
+    private void postUser(User user) {
+        userService.create(user);
     }
 }

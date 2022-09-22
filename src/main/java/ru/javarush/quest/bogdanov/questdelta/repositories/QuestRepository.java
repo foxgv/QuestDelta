@@ -1,34 +1,37 @@
 package ru.javarush.quest.bogdanov.questdelta.repositories;
 
 import ru.javarush.quest.bogdanov.questdelta.entities.Quest;
-import ru.javarush.quest.bogdanov.questdelta.entities.User;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class QuestRepository implements Repository<Quest> {
 
+    private final Map<Long, Quest> map = new HashMap<>();
+
     @Override
     public List<Quest> getAll() {
-        return null;
+        return new ArrayList<>(map.values());
     }
 
     @Override
-    public User getByID(long id) {
-        return null;
+    public Quest getByID(long id) {
+        return map.get(id);
     }
 
     @Override
-    public boolean create(Quest entity) {
-        return false;
+    public void create(Quest entity) {
     }
 
     @Override
-    public boolean update(Quest entity) {
-        return false;
+    public void update(Quest entity) {
+        map.replace(entity.id, entity);
     }
 
     @Override
-    public boolean delete(Quest entity) {
-        return false;
+    public void delete(Quest entity) {
+        map.remove(entity.id, entity);
     }
 }

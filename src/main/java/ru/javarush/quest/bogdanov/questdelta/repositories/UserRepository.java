@@ -29,17 +29,17 @@ public class UserRepository implements Repository<User> {
     }
 
     @Override
-    public boolean create(User entity) {
-        return false;
+    public void create(User entity) {
+        map.put(entity.id, entity);
     }
 
     @Override
-    public boolean update(User entity) {
-        return false;
+    public void update(User entity) {
+        map.replace(entity.id, entity);
     }
 
     @Override
-    public boolean delete(User entity) {
-        return false;
+    public void delete(User entity) {
+        map.remove(entity.id, entity);
     }
 }
