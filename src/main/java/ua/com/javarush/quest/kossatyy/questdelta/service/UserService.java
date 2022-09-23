@@ -18,17 +18,23 @@ public enum UserService {
     private final Repository<User> userRepository = UserRepository.getInstance();
     private final Mapper<UserDto, User> userMapper = new UserMapper();
 
-    public Optional<User> findByCredentials(String login, String password) {
-        return userRepository.find(User.builder()
-                .login(login)
-                .password(password)
-                .build());
+    public Optional<UserDto> findByCredentials(String login, String password) {
+        Optional<User> userOptional = userRepository.find(User.builder()
+                        .login(login)
+                        .password(password)
+                        .build())
+                .findFirst();
+
+        return userOptional.map(userMapper::toDto);
     }
 
-    public Optional<User> findByLogin(String login) {
-        return userRepository.find(User.builder()
-                .login(login)
-                .build());
+    public Optional<UserDto> findByLogin(String login) {
+        Optional<User> userOptional = userRepository.find(User.builder()
+                        .login(login)
+                        .build())
+                .findFirst();
+
+        return userOptional.map(userMapper::toDto);
     }
 
     public boolean validateLogin(String login) {

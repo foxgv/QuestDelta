@@ -1,12 +1,17 @@
 package ua.com.javarush.quest.kossatyy.questdelta.repository;
 
-import java.util.Optional;
+import ua.com.javarush.quest.kossatyy.questdelta.entity.User;
+
+import java.util.Collection;
+import java.util.stream.Stream;
 
 public interface Repository<T> {
 
-    Optional<T> getById(long id);
+    Collection<T> getAll();
 
-    Optional<T> find(T entity);
+    T getById(long id);
+
+    Stream<User> find(T entity);
 
     void create(T entity);
 

@@ -43,18 +43,17 @@ public class SignupServlet extends HttpServlet {
             Jsp.forward(req, resp, Jsp.SIGNUP);
         }
 
-        Optional<User> user = userService.findByLogin(login);
+        Optional<UserDto> user = userService.findByLogin(login);
         if (user.isPresent()) {
             req.setAttribute(Attribute.ERROR.getName(), LOGIN_ALREADY_USED);
             Jsp.forward(req, resp, Jsp.SIGNUP);
         }
 
         userService.createUser(login, password);
-        Optional<User> userFromDB = userService.findByCredentials(login, password);
-        if(userFromDB.isPresent()){
-            UserDto userDto = userMapper.toDto(userFromDB.get());
+        Optional<UserDto> userDtoFromDB = userService.findByCredentials(login, password);
+        if(userDtoFromDB.isPresent()){
             HttpSession session = req.getSession();
-            session.setAttribute(Attribute.USER.getName(), userDto);
+            session.setAttribute(Attribute.USER.getName(), userDtoFromDB);
             Jsp.forward(req, resp, Jsp.MENU);
         } else {
             req.setAttribute(Attribute.ERROR.getName(), USER_NOT_CREATED);

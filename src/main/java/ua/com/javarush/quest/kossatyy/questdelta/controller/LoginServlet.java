@@ -7,10 +7,8 @@ import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.User;
 import ua.com.javarush.quest.kossatyy.questdelta.mapper.Mapper;
 import ua.com.javarush.quest.kossatyy.questdelta.mapper.UserMapper;
-import ua.com.javarush.quest.kossatyy.questdelta.service.AuthService;
 import ua.com.javarush.quest.kossatyy.questdelta.service.UserService;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Attribute;
-import ua.com.javarush.quest.kossatyy.questdelta.utils.ErrorMessage;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Jsp;
 
 import java.io.IOException;
@@ -45,13 +43,13 @@ public class LoginServlet extends HttpServlet {
             Jsp.forward(req, resp, Jsp.LOGIN);
         }
 
-        Optional<User> user = userService.findByLogin(login);
+        Optional<UserDto> user = userService.findByLogin(login);
 
         if (user.isPresent()) {
-            User userFromDB = user.get();
+            Optional<UserDto> userFromDB = userService.findByCredentials(login,password);
 
-            if (userFromDB.getPassword().equals(password)) {
-                UserDto userDto = userMapper.toDto(user.get());
+            if (userFromDB.isPresent()) {
+                UserDto userDto = userFromDB.get();
                 HttpSession session = req.getSession();
                 session.setAttribute(Attribute.USER.getName(), userDto);
                 Jsp.forward(req, resp, Jsp.MENU);
@@ -63,6 +61,5 @@ public class LoginServlet extends HttpServlet {
             req.setAttribute(Attribute.ERROR.getName(), USER_NOT_FOUND);
             Jsp.forward(req, resp, Jsp.LOGIN);
         }
-
     }
 }

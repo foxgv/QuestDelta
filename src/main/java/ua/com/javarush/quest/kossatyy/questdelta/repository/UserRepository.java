@@ -3,18 +3,18 @@ package ua.com.javarush.quest.kossatyy.questdelta.repository;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.Role;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.User;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Stream;
 
 public class UserRepository implements Repository<User>{
 
+    private static final AtomicLong id = new AtomicLong(System.currentTimeMillis());
     private static UserRepository userRepository;
 
     private final Map<Long, User> users = new HashMap<>();
-
-    private static final AtomicLong id = new AtomicLong(System.currentTimeMillis());
 
     private UserRepository() {
         users.put(1L, User.builder()
@@ -43,16 +43,29 @@ public class UserRepository implements Repository<User>{
                 .build());
     }
 
-    @Override
-    public Optional<User> getById(long id) {
-        return Optional.ofNullable(users.get(id));
+    public static UserRepository getInstance() {
+        if (userRepository == null) {
+            userRepository = new UserRepository();
+        }
+        return userRepository;
     }
 
     @Override
-    public Optional<User> find(User user) {
+    public Collection<User> getAll() {
+        return users.values()
+                .stream()
+                .toList();
+    }
+
+    @Override
+    public User getById(long id) {
+        return users.get(id);
+    }
+
+    @Override
+    public Stream<User> find(User user) {
         return users.values().stream()
-                        .filter(userInDB -> userInDB.getLogin().equals(user.getLogin()))
-                        .findFirst();
+                .filter(userInDB -> userInDB.getLogin().equals(user.getLogin()));
     }
 
     @Override
@@ -70,12 +83,4 @@ public class UserRepository implements Repository<User>{
     public void deleteById(long id) {
         users.remove(id);
     }
-
-    public static UserRepository getInstance() {
-        if (userRepository == null) {
-            userRepository = new UserRepository();
-        }
-        return userRepository;
-    }
-
 }
