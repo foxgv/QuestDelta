@@ -21,7 +21,7 @@
             <li><a href=" /" class="nav-link px-2 link-secondary">Домой</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">Квесты</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">Создать</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Играть</a></li>
+            <li><a href="/question" class="nav-link px-2 link-dark">Играть</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">Статистика</a></li>
         </ul>
 

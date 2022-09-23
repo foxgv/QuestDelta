@@ -2,7 +2,7 @@ package ua.com.javarush.quest.ryabov.questdelta.service;
 
 import ua.com.javarush.quest.ryabov.questdelta.entity.User;
 import ua.com.javarush.quest.ryabov.questdelta.repository.Repository;
-import ua.com.javarush.quest.ryabov.questdelta.repository.UserRepository;
+import ua.com.javarush.quest.ryabov.questdelta.repository.RepositoryLoader;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -11,7 +11,7 @@ public enum UserService {
 
     INSTANCE;
 
-    private final Repository<User> userRepository = UserRepository.get();
+    private final Repository<User> userRepository = RepositoryLoader.userRepository;
 
     public void create(User user) {
         userRepository.create(user);

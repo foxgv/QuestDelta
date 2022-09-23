@@ -6,7 +6,7 @@
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Домой</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Квесты</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Создать</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Играть</a></li>
+            <li class="nav-item"><a href="/question" class="nav-link px-2 text-muted">Играть</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Статистика</a></li>
         </ul>
         <p class="text-center text-muted">© 2022 Ryabov project, Inc</p>
