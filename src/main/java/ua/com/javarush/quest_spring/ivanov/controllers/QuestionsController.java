@@ -25,7 +25,7 @@ public class QuestionsController {
 
     @GetMapping("start")
     public String showQuestStart() {
-        return "tasks-start";
+        return "tasks-start-page";
     }
 
     @GetMapping("start-quiz")

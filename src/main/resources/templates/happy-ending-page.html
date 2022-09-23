@@ -10,8 +10,9 @@
 </head>
 <body>
 <h3>Happy End!</h3>
-<a th:href="@{start}">Go again</a>
+<a th:href="@{start}" class="btn btn-primary">Go again</a>
 <div th:if="${action}=='quiz'">
+    <h3>Correct answers:</h3>
     <h3 th:text="${counter}"></h3>
 </div>
 </body>

@@ -14,7 +14,9 @@ public class UserRepoImpl implements UserRepo {
 
     @Override
     public void addUser(User user) {
-        users.put(users.size() + 1, user);
+        int id = users.size() + 1;
+        user.setId(id);
+        users.put(id, user);
     }
 
     @Override

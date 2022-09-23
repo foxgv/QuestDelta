@@ -19,5 +19,4 @@ public class User {
     @NotBlank(message = "Password cannot be blank")
     private String password;
     private String email;
-    private String role;
 }
