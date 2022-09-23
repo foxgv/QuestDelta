@@ -1,7 +1,10 @@
 package ua.com.javarush.quest.kossatyy.questdelta.service;
 
+import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.Role;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.User;
+import ua.com.javarush.quest.kossatyy.questdelta.mapper.Mapper;
+import ua.com.javarush.quest.kossatyy.questdelta.mapper.UserMapper;
 import ua.com.javarush.quest.kossatyy.questdelta.repository.Repository;
 import ua.com.javarush.quest.kossatyy.questdelta.repository.UserRepository;
 
@@ -12,9 +15,8 @@ import java.util.regex.Pattern;
 public enum UserService {
     INSTANCE;
 
-    public static final String REGEX_LOGIN = "^[A-Za-z\\d]{1,20}$";
-    public static final String REGEX_PASS = "^[A-Za-z\\d]{1,8}$";
     private final Repository<User> userRepository = UserRepository.getInstance();
+    private final Mapper<UserDto, User> userMapper = new UserMapper();
 
     public Optional<User> findByCredentials(String login, String password) {
         return userRepository.find(User.builder()
@@ -30,11 +32,13 @@ public enum UserService {
     }
 
     public boolean validateLogin(String login) {
-        return check(REGEX_LOGIN, login);
+        String regex = "^[A-Za-z\\d]{1,20}$";
+        return check(regex, login);
     }
 
     public boolean validatePassword(String password) {
-        return check(REGEX_PASS, password);
+        String regex = "^[A-Za-z\\d]{1,8}$";
+        return check(regex, password);
     }
 
     public void createUser(String login, String password, Role role) {
