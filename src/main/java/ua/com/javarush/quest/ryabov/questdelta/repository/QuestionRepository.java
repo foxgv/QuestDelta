@@ -37,10 +37,7 @@ public class QuestionRepository implements Repository<Question> {
         map.put(4L, Question.with()
                 .questionID(4L).question("Интервьюер удивлен Вашему ответу и задает решающий вопрос: Что такое ООП?")
                 .answers(List.of(
-                        Answer.with().id(1L).answer("Объектно-ориентированное программирование — " +
-                                        "методология программирования, основанная на представлении программы в виде" +
-                                        " совокупности объектов, каждый из которых является экземпляром" +
-                                        " определенного класса, а классы образуют иерархию наследования.")
+                        Answer.with().id(1L).answer("Объектно-ориентированное программирование")
                                 .nextQuestionID(6L).get(),
                         Answer.with().id(2L).answer("Очень одинокий программист.")
                                 .nextQuestionID(5L).get(),
