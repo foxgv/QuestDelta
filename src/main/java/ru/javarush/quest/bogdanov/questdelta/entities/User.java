@@ -7,12 +7,20 @@ public class User {
     private static final AtomicLong ID_USER_COUNTER = new AtomicLong(1);
     public long id;
     public Role role;
-    public final String login;
-    private final String password;
+    private String login;
+    private String password;
 
-    public User(Role role, String login, String password) {
+    public User(String login, String password, Role role) {
         this.id = ID_USER_COUNTER.getAndIncrement();
         this.role = role;
+        this.login = login;
+        this.password = password;
+    }
+
+    public User() {
+    }
+
+    public User(String login, String password) {
         this.login = login;
         this.password = password;
     }
@@ -25,10 +33,6 @@ public class User {
         this.id = id;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
     public void setRole(Role role) {
         this.role = role;
     }
@@ -37,8 +41,16 @@ public class User {
         return login;
     }
 
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -46,6 +58,8 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", role=" + role +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

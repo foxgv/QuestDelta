@@ -2,10 +2,7 @@ package ru.javarush.quest.bogdanov.questdelta.repositories;
 
 import ru.javarush.quest.bogdanov.questdelta.entities.Game;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GameRepository implements Repository<Game> {
 
@@ -31,7 +28,12 @@ public class GameRepository implements Repository<Game> {
     }
 
     @Override
-    public void delete(Game entity) {
+    public void delete(Long id) {
 
+    }
+
+    @Override
+    public Optional<Game> find(Game pattern) {
+        return Optional.empty();
     }
 }

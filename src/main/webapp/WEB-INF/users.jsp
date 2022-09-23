@@ -13,9 +13,9 @@
 <div class="container">
 
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <a href="${pageContext.request.contextPath}/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                <use xlink:href="#bootstrap"></use>
+
             </svg>
         </a>
 
@@ -25,7 +25,7 @@
             <li><a href="#" class="nav-link px-2 link-dark">Создать</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">Играть</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">Статистика</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Пользователи</a></li>
+            <li><a href="users" class="nav-link px-2 link-dark">Пользователи</a></li>
         </ul>
 
         <div class="col-md-3 text-end">
@@ -45,6 +45,34 @@
         </li>
     </ul>
 
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <a href="${pageContext.request.contextPath}/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                <svg class="bi" width="30" height="24">
+
+                </svg>
+            </a>
+            <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-muted" href="#">
+                <svg class="bi" width="24" height="24">
+
+                </svg>
+            </a></li>
+            <li class="ms-3"><a class="text-muted" href="#">
+                <svg class="bi" width="24" height="24">
+
+                </svg>
+            </a></li>
+            <li class="ms-3"><a class="text-muted" href="#">
+                <svg class="bi" width="24" height="24">
+
+                </svg>
+            </a></li>
+        </ul>
+    </footer>
 </div>
 </body>
 </html>

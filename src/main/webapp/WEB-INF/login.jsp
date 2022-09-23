@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>User</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
@@ -59,38 +59,15 @@
                 </div>
             </div>
 
-            <!-- Select Basic -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="roleSelect">Role</label>
-                <div class="col-md-4">
-                    <select id="roleSelect" name="select" class="form-control">
-                        <option value="ADMIN">ADMIN</option>
-                        <option value="USER">USER</option>
-                        <option value="GUEST">GUEST</option>
-                    </select>
-                </div>
-            </div>
-
             <!-- Button -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="submit"></label>
                 <div class="col-md-4">
-                    <button id="submit" name="${requestScope.user.id>0?"update":"create"}" class="btn btn-success">
-                        ${requestScope.user.id>0?"Update":"Create"}
+                    <button id="submit" name="SignIn" class="btn btn-success">
+                        Sign-in
                     </button>
                 </div>
             </div>
-
-
-            <!-- Button -->
-            <c:if test="${requestScope.user.id>0}">
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="delete"></label>
-                    <div class="col-md-4">
-                        <button id="delete" name="delete" class="btn btn-danger">Delete</button>
-                    </div>
-                </div>
-            </c:if>
 
         </fieldset>
     </form>
@@ -98,9 +75,7 @@
         <div class="col-md-4 d-flex align-items-center">
             <a href="${pageContext.request.contextPath}/"
                class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-                <svg class="bi" width="30" height="24">
-
-                </svg>
+                <svg class="bi" width="30" height="24"></svg>
             </a>
             <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
         </div>

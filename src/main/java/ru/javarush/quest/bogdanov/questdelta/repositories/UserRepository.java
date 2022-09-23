@@ -3,19 +3,16 @@ package ru.javarush.quest.bogdanov.questdelta.repositories;
 import ru.javarush.quest.bogdanov.questdelta.entities.Role;
 import ru.javarush.quest.bogdanov.questdelta.entities.User;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class UserRepository implements Repository<User> {
 
     private final Map<Long, User> map = new HashMap<>();
 
     public UserRepository() {
-        map.put(1L, new User(Role.ADMIN, "Misha", "1111"));
-        map.put(2L, new User(Role.USER, "Sanya", "222"));
-        map.put(3L, new User(Role.GUEST, "Nastya", "3333"));
+        map.put(1L, new User("Misha", "1111", Role.ADMIN));
+        map.put(2L, new User("Sanya", "2222", Role.USER));
+        map.put(3L, new User("Nastya", "3333", Role.GUEST));
     }
 
     @Override
@@ -39,7 +36,18 @@ public class UserRepository implements Repository<User> {
     }
 
     @Override
-    public void delete(User entity) {
-        map.remove(entity.id, entity);
+    public void delete(Long id) {
+        map.remove(id);
+    }
+
+    @Override
+    public Optional<User> find(User pattern) {
+        return map.values()
+                .stream()
+                .filter(x -> x.getLogin().equals(pattern.getLogin())
+                        && x.getPassword().equals(pattern.getPassword()))
+                .toList()
+                .stream()
+                .findFirst();
     }
 }

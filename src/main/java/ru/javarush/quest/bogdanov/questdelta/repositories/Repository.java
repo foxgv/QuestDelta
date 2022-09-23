@@ -1,6 +1,7 @@
 package ru.javarush.quest.bogdanov.questdelta.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface Repository<T> {
 
@@ -12,6 +13,8 @@ public interface Repository<T> {
 
     void update(T entity);
 
-    void delete(T entity);
+    void delete(Long id);
+
+    Optional<T> find(T pattern);
 
 }

@@ -2,10 +2,7 @@ package ru.javarush.quest.bogdanov.questdelta.repositories;
 
 import ru.javarush.quest.bogdanov.questdelta.entities.Question;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class QuestionRepository implements Repository<Question> {
 
@@ -31,7 +28,12 @@ public class QuestionRepository implements Repository<Question> {
     }
 
     @Override
-    public void delete(Question entity) {
-        map.remove(entity.id, entity);
+    public void delete(Long id) {
+        map.remove(id);
+    }
+
+    @Override
+    public Optional<Question> find(Question pattern) {
+        return Optional.empty();
     }
 }
