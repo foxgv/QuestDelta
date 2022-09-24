@@ -18,10 +18,9 @@ import static ua.com.javarush.quest.ryabov.questdelta.util.UriString.*;
 
 @WebFilter({ROOT, USERS, LOGIN, SIGNUP, PROFILE, LOGOUT, USER})
 public class RoleSelector implements Filter {
-    //TODO переделать костыль
     private final Map<Role, List<String>> uriMap = Map.of(
-            Role.GUEST, List.of(ROOT, USERS, LOGIN, SIGNUP, USER),
-            Role.USER, List.of(ROOT, USERS, LOGIN, SIGNUP, USER, PROFILE, LOGOUT),
+            Role.GUEST, List.of(ROOT, USERS, LOGIN, SIGNUP),
+            Role.USER, List.of(ROOT, USERS, LOGIN, SIGNUP, PROFILE, LOGOUT),
             Role.ADMIN, List.of(ROOT, USERS, LOGIN, SIGNUP, PROFILE, LOGOUT, USER)
     );
 

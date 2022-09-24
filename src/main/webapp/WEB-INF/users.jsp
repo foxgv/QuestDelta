@@ -13,4 +13,3 @@
     </ul>
 </div>
 <%@include file="parts/footer.jsp" %>
-

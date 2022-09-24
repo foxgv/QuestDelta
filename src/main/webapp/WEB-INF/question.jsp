@@ -22,7 +22,8 @@
                 <label class="col-md-4 control-label" for="submit"></label>
                 <div class="col-md-4">
                     <button id="submit" name="Далее"
-                            class="btn btn-success">Далее</button>
+                            class="btn btn-success">Далее
+                    </button>
                 </div>
             </div>
         </div>

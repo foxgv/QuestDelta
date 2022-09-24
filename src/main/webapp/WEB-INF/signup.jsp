@@ -2,11 +2,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@include file="parts/header.jsp" %>
 <div class="container">
-    <form class="form-horizontal" action="user?id=${user.id}" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" method="post" enctype="multipart/form-data">
         <fieldset>
 
             <!-- Form Name -->
-            <legend>User Form</legend>
+            <legend>SignUp Form</legend>
 
             <!-- Avatar input-->
             <div class="form-group">
@@ -56,20 +56,10 @@
             <div class=" form-group">
                 <label class="col-md-4 control-label" for="submit"></label>
                 <div class="col-md-4">
-                    <button id="submit" name="${user.id>0?"update":"create"}" value="users"
-                            class="btn btn-success">${user.id>0?"Update":"Create"}</button>
+                    <button id="submit" name="create" value="users"
+                            class="btn btn-success">Create</button>
                 </div>
             </div>
-
-            <c:if test="${user.id>0}">
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="delete"></label>
-                    <div class="col-md-4">
-                        <button id="delete" name="delete" class="btn btn-danger">Delete</button>
-                    </div>
-                </div>
-            </c:if>
 
         </fieldset>
     </form>
