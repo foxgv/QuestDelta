@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 public abstract class AbstractRepository<T extends AbstractEntity> implements Repository<T>{
 
@@ -15,12 +16,12 @@ public abstract class AbstractRepository<T extends AbstractEntity> implements Re
     protected final Map<Long, T> map = new HashMap<>();
 
     @Override
-    public Collection<T> getAll(){
-        return map.values();
+    public Stream<T> getAll(){
+        return map.values().stream();
     }
 
     @Override
-    public abstract Collection<T> find(T pattern);
+    public abstract Stream<T> find(T pattern);
 
     protected <V> boolean isOk(T pattern, T current, Function<T, V> fieldGetter) {
         V currentFieldValue = fieldGetter.apply(current);

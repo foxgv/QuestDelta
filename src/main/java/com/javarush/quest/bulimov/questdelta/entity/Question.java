@@ -13,6 +13,7 @@ public class Question extends AbstractEntity{
     Long id;
     Long questId;
     Collection<Answer> answers;
+    String text;
     Long incorrectQuestionId;
     Long correctQuestionId;
 }

@@ -3,12 +3,13 @@ package com.javarush.quest.bulimov.questdelta.repository;
 import com.javarush.quest.bulimov.questdelta.entity.AbstractEntity;
 
 import java.util.Collection;
+import java.util.stream.Stream;
 
 public interface Repository<T extends AbstractEntity> {
 
-    Collection<T> getAll();
+    Stream<T> getAll();
 
-    Collection<T> find(T entity);
+    Stream<T> find(T entity);
 
     T get(long id);
 

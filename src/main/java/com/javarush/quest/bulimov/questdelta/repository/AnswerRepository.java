@@ -6,6 +6,7 @@ import com.javarush.quest.bulimov.questdelta.entity.User;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.stream.Stream;
 
 public class AnswerRepository extends AbstractRepository<Answer> implements Repository<Answer>{
 
@@ -19,13 +20,12 @@ public class AnswerRepository extends AbstractRepository<Answer> implements Repo
 
     }
     @Override
-    public Collection<Answer> find(Answer pattern) {
+    public Stream<Answer> find(Answer pattern) {
         return map.values().stream()
                 .filter(entity -> isOk(pattern, entity, Answer::getId)
                         && isOk(pattern, entity, Answer::getQuestionId)
                         && isOk(pattern, entity, Answer::getText)
                 )
-                .sorted(Comparator.comparingLong(Answer::getId))
-                .toList();
+                .sorted(Comparator.comparingLong(Answer::getId));
     }
 }
