@@ -20,9 +20,9 @@ public class LoginActionValidator {
         if (service.isUserPresent(user.getUsername())) {
             model.addAttribute("auth_error", "User already exist");
             result = "login-page";
-        }else {
+        } else {
             service.addUser(user);
-            request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("user", service.getUserByUserName(user.getUsername()));
         }
         return result;
     }
@@ -35,7 +35,7 @@ public class LoginActionValidator {
         } else {
             User checkedUser = service.getUserByUserName(userName);
             if (checkedUser.getPassword().equals(user.getPassword())) {
-                request.getSession().setAttribute("user", user);
+                request.getSession().setAttribute("user", checkedUser);
             } else {
                 model.addAttribute("auth_error", "Password is wrong");
                 result = "login-page";

@@ -25,7 +25,7 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public void updateUserById(User user) {
+    public void updateUser(User user) {
         users.replace(user.getId(), user);
 
     }

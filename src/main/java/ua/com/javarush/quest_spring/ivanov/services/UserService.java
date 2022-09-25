@@ -10,7 +10,7 @@ public interface UserService {
 
     Map<Integer,User> getUsers();
 
-    void updateUserById(User user);
+    void updateUser(User user);
 
     User getUserById(int id);
 
