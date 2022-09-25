@@ -10,15 +10,14 @@ import ru.javarush.quest.bogdanov.questdelta.services.UserService;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebServlet(name = "UserServlet", value = "/user")
+@WebServlet(name = "UserServlet", value = {"/user", "/profile", "/signup"})
 public class UserServlet extends HttpServlet {
 
-    UserService userService = UserService.USER_SERVICE;
+    private final UserService userService = UserService.USER_SERVICE;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("id");
-        Optional<User> user = userService.getUser(Long.parseLong(id));
+        Optional<User> user = userService.getUser(getUserId(request));
         user.ifPresent(value -> request.setAttribute("user", value));
         request.getRequestDispatcher("WEB-INF/user.jsp").forward(request, response);
     }
@@ -30,7 +29,7 @@ public class UserServlet extends HttpServlet {
         String password = request.getParameter("password");
         Role select = Role.valueOf(request.getParameter("select"));
         postUser(request, userId, login, password, select);
-        response.sendRedirect(" /users");
+        response.sendRedirect("/users");
     }
 
     private void postUser(HttpServletRequest request, long id, String login, String password, Role select) {
@@ -45,7 +44,6 @@ public class UserServlet extends HttpServlet {
     }
 
     private Long getUserId(HttpServletRequest request) {
-        System.out.println(request.getParameter("id"));
         return request.getParameter("id") != null
                 ? Long.parseLong("0" + request.getParameter("id"))
                 : 0L;

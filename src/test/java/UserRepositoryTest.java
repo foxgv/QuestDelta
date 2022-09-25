@@ -1,14 +1,21 @@
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.javarush.quest.bogdanov.questdelta.entities.User;
 import ru.javarush.quest.bogdanov.questdelta.repositories.UserRepository;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserRepositoryTest {
 
-    UserRepository userRepository = new UserRepository();
+    static UserRepository userRepository;
+    @BeforeAll
+    public static void init() {
+        userRepository = new UserRepository();
+    }
 
     @BeforeEach
     void setUp() {
@@ -19,11 +26,16 @@ class UserRepositoryTest {
     }
 
     @Test
-    void findUserFromMapWithLoginAndPassword() {
+    void findUserFromMapWithLoginAndPasswordAndFound() {
         User pattern = new User("Misha", "1111");
-        User result = userRepository.find(pattern).get();
-        long expectedId = 1L;
-        long actualId = result.getId();
-        assertEquals(expectedId, actualId);
+        Optional<User> actual = userRepository.find(pattern);
+        assertTrue(actual.isPresent());
+    }
+
+    @Test
+    void findUserFromMapWithLoginAndPasswordAndNotFound() {
+        User pattern = new User("Misha", "1112");
+        Optional<User> actual = userRepository.find(pattern);
+        assertTrue(actual.isEmpty());
     }
 }

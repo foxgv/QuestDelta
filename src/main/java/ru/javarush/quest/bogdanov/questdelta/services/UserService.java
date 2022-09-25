@@ -38,8 +38,8 @@ public enum UserService {
         userRepository.delete(id);
     }
 
-    public User find(String login, String password) {
+    public Optional<User> find(String login, String password) {
         User user = new User(login, password);
-        return userRepository.find(user).get();
+        return userRepository.find(user);
     }
 }
