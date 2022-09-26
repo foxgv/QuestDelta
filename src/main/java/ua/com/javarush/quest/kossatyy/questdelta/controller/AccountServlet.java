@@ -18,9 +18,30 @@ public class AccountServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Collection<UserDto> users = userService.getAll();
+        String pageNumber = request.getParameter("pageNumber");
+        int pageNumberValue;
+        try {
+            pageNumberValue = Integer.parseInt(pageNumber);
+        } catch (NumberFormatException e) {
+            pageNumberValue = 0;
+        }
+
+
+        String pageSize = request.getParameter("pageSize");
+        int pageSizeValue;
+        try {
+            pageSizeValue = Integer.parseInt(pageSize);
+        } catch (NumberFormatException e) {
+            pageSizeValue = 5;
+        }
+
+        Collection<UserDto> users = userService.getAll(pageNumberValue, pageSizeValue);
         request.setAttribute(Attribute.USERS.getName(), users);
-        Jsp.forward(request,response,Jsp.ACCOUNTS);
+
+        int countUsers = userService.getAllCount();
+        request.setAttribute(Attribute.COUNT_USERS.getName(), countUsers);
+
+        Jsp.forward(request, response, Jsp.ACCOUNTS);
     }
 
     @Override

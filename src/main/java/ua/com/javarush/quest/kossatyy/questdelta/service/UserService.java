@@ -9,6 +9,7 @@ import ua.com.javarush.quest.kossatyy.questdelta.repository.Repository;
 import ua.com.javarush.quest.kossatyy.questdelta.repository.UserRepository;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,10 +20,17 @@ public enum UserService {
     private final Repository<User> userRepository = UserRepository.getInstance();
     private final Mapper<UserDto, User> userMapper = new UserMapper();
 
-    public Collection<UserDto> getAll(){
+    public Collection<UserDto> getAll(int pageNumber, int pageSize) {
         return userRepository.getAll().stream()
+                .sorted(Comparator.comparing(User::getLogin))
+                .skip((long) pageNumber * pageSize)
+                .limit(pageSize)
                 .map(userMapper::toDto)
                 .toList();
+    }
+
+    public Integer getAllCount() {
+        return userRepository.getAll().size();
     }
 
     public Optional<UserDto> findByCredentials(String login, String password) {
@@ -68,6 +76,10 @@ public enum UserService {
                 .password(password)
                 .role(Role.USER)
                 .build());
+    }
+
+    public void deleteById(long id) {
+        userRepository.deleteById(id);
     }
 
     private boolean check(String regex, String input) {

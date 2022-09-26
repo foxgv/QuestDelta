@@ -8,7 +8,7 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <c:import url="/WEB-INF/jsp/parts/links.jsp"/>
-    <link rel="stylesheet" href="static/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style.css"/>
 </head>
 
 <body>
@@ -21,8 +21,7 @@
             <div class="form-group d-flex my-2">
                 <label class="bold me-2 text-muted" for="counts">Accounts per list</label>
                 <select id="counts" class="selector">
-                    <option value="3" selected>3</option>
-                    <option value="5">5</option>
+                    <option value="5" selected>5</option>
                     <option value="20">20</option>
                     <option value="100">100</option>
                 </select>
@@ -53,25 +52,29 @@
                                 <a href="#">Edit</a>
                             </td>
                             <td>
-                                <a href="#">Delete</a>
+                                <a href="${pageContext.request.contextPath}/accounts/delete?login=${user.getLogin()}">Delete</a>
                             </td>
                         </c:if>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example" style="">
-                <ul class="pagination">
-                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
+
+            <ul class="pagination">
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+            </ul>
         </div>
+
     </div>
+    <c:if test="${not empty requestScope.error}">
+        <div class="form-floating text-danger my-3 p-2">
+            <p class="text-center m-0">${requestScope.error}</p>
+        </div>
+    </c:if>
 </div>
+
 
 <c:import url="/WEB-INF/jsp/parts/footer.jsp"/>
 <c:import url="/WEB-INF/jsp/parts/scripts.jsp"/>
