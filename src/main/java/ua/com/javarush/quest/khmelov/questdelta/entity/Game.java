@@ -51,16 +51,6 @@ public class Game extends AbstractEntity {
     }
 
     @Override
-    public long getId() {
-        return 0;
-    }
-
-    @Override
-    public void setId() {
-
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

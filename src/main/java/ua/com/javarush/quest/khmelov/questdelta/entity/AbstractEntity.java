@@ -5,8 +5,12 @@ import java.util.Objects;
 public abstract class AbstractEntity {
     private long id;
 
-    public abstract long getId();
-    public abstract void setId();
+    public long getId(){
+        return id;
+    }
+    public void setId(long id){
+        this.id = id;
+    }
 
     @Override
     public boolean equals(Object o) {
