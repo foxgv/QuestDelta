@@ -14,6 +14,7 @@ import ua.com.javarush.quest.kossatyy.questdelta.utils.Jsp;
 import java.io.IOException;
 import java.util.Optional;
 
+import static java.util.Objects.isNull;
 import static ua.com.javarush.quest.kossatyy.questdelta.utils.ErrorMessage.*;
 
 @WebServlet(name = "SignupServlet", value = "/signup")
@@ -53,8 +54,11 @@ public class SignupServlet extends HttpServlet {
         if(userDtoFromDB.isPresent()){
             HttpSession session = req.getSession();
             UserDto userDto = userDtoFromDB.get();
-            session.setAttribute(Attribute.USER.getName(), userDto);
+            String username = Attribute.USER.getName();
+            if (isNull(session.getAttribute(username))){
+            session.setAttribute(username, userDto);
             session.setAttribute(Attribute.ROLE.getName(), userDto.getRole());
+            }
             Jsp.forward(req, resp, Jsp.MENU);
         } else {
             req.setAttribute(Attribute.ERROR.getName(), USER_NOT_CREATED);

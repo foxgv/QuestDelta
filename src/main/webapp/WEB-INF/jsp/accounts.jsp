@@ -26,6 +26,7 @@
                     <option value="100">100</option>
                 </select>
             </div>
+            <a href="${pageContext.request.contextPath}/signup">Create new user</a>
 
             <table class="table table-striped">
                 <thead>
