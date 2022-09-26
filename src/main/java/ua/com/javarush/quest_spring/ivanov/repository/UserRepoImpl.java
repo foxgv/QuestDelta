@@ -1,5 +1,6 @@
 package ua.com.javarush.quest_spring.ivanov.repository;
 
+import ua.com.javarush.quest_spring.ivanov.entities.Game;
 import ua.com.javarush.quest_spring.ivanov.entities.User;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +17,7 @@ public class UserRepoImpl implements UserRepo {
     public void addUser(User user) {
         int id = users.size() + 1;
         user.setId(id);
+        user.setGame(new Game());
         users.put(id, user);
     }
 

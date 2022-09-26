@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class User {
     private int id;
+    private Game game;
 
     @NotBlank(message = "User name cannot be blank")
     @NotNull(message = "User name cannot be null")

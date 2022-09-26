@@ -21,11 +21,11 @@
 
 <div class="card text-center">
     <div class="card-header">
-        <h5>Weather</h5>
+        <h5>Statistic</h5>
     </div>
     <div class="card-body">
-        <p class="card-text">Weather API for checking weather in your city</p>
-        <a th:href="@{weather}" class="btn btn-primary">Check it out</a>
+        <p class="card-text">Your game statistic</p>
+        <a th:href="@{stats}" class="btn btn-primary">Check</a>
     </div>
 </div>
 
@@ -34,10 +34,6 @@
         <h5>Profile</h5>
     </div>
     <div class="card-body">
-<!--        <form th:action="@{profile}" th:object="${user}" method="post">-->
-<!--            <p class="card-text">Checking your profile</p>-->
-<!--            <button type="submit" class="btn btn-primary">Change</button>-->
-<!--        </form>-->
         <p class="card-text">Checking your profile</p>
         <a th:href="@{profile}" class="btn btn-primary">Change</a>
     </div>
@@ -52,5 +48,6 @@
         <a th:href="@{/}" class="btn btn-primary">Out</a>
     </div>
 </div>
+
 </body>
 </html>

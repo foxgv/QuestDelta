@@ -27,7 +27,7 @@ public class LoginController {
         return "login-page";
     }
 
-    @PostMapping(value = "/main_page")
+    @PostMapping("/main_page")
     public String showMainPageLogIn(@Valid @ModelAttribute("user") User user,
                                     BindingResult bindingResult,
                                     @RequestParam(name = "action") String actionName,
@@ -49,8 +49,15 @@ public class LoginController {
     }
 
 
-    @GetMapping(value = "/main_page")
+    @GetMapping("/main_page")
     public String showMainPage() {
         return "main-page";
+    }
+
+    @GetMapping("stats")
+    public String showStatsPage(HttpServletRequest request, Model model) {
+        User user = (User) request.getSession().getAttribute("user");
+        model.addAttribute("user", user);
+        return "stats-page";
     }
 }
