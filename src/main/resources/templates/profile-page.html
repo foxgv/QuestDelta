@@ -33,7 +33,7 @@
                         <input type="hidden" th:field="*{id}" th:placeholder="*{id}" class="form-control"
                                style="border-radius: 5px"/>
                     </div>
-
+                    <i>Username:</i>
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         <input type="text" th:field="*{username}" th:placeholder="*{username}" class="form-control"
@@ -46,7 +46,7 @@
                             <li th:each="err : ${#fields.errors('username')}" th:text="${err}"/>
                         </ul>
                     </div>
-
+                    <i>Password:</i>
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <input type="text" th:field="*{password}"
@@ -59,6 +59,7 @@
                             <li th:each="err : ${#fields.errors('password')}" th:text="${err}"/>
                         </ul>
                     </div>
+                    <i>Email:</i>
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <input type="email" th:field="*{email}"
