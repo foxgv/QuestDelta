@@ -35,58 +35,29 @@
                     <th>Username</th>
                     <th>Role</th>
                     <th>Id</th>
-                    <c:if test="${Role.ADMIN eq sessionScope.user.role}">
+                    <c:if test="${Role.ADMIN == sessionScope.role}">
                         <th>Edit</th>
+                        <th>Delete</th>
                     </c:if>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Ivan</td>
-                    <td>User</td>
-                    <td>32</td>
-                    <c:if test="${Role.ADMIN eq sessionScope.user.role}">
-                        <td>
-                            <a href="#">Edit</a>
-                            <a href="#">Delete</a>
-                        </td>
-                    </c:if>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Admin</td>
-                    <td>33</td>
-                    <c:if test="${Role.ADMIN eq sessionScope.user.role}"><td>
-                        <a href="#">Edit</a>
-                        <a href="#">Delete</a>
-                    </td></c:if>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Michle</td>
-                    <td>Editor</td>
-                    <td>42</td>
-                    <c:if test="${Role.ADMIN eq sessionScope.user.role}">
-                        <td>
-                            <a href="#">Edit</a>
-                            <a href="#">Delete</a>
-                        </td>
-                    </c:if>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Guest#266</td>
-                    <td></td>
-                    <td>Guest</td>
-                    <c:if test="${Role.ADMIN eq sessionScope.user.role}">
-                        <td>
-                            <a href="#">Edit</a>
-                            <a href="#">Delete</a>
-                        </td>
-                    </c:if>
-                </tr>
+                <c:forEach var="user" items="${requestScope.users}" varStatus="index">
+                    <tr>
+                        <th scope="row"><c:out value="${index.count}"/></th>
+                        <td><c:out value="${user.getLogin()}"/></td>
+                        <td><c:out value="${user.getRole()}"/></td>
+                        <td><c:out value="${user.getId()}"/></td>
+                        <c:if test="${Role.ADMIN == sessionScope.role}">
+                            <td>
+                                <a href="#">Edit</a>
+                            </td>
+                            <td>
+                                <a href="#">Delete</a>
+                            </td>
+                        </c:if>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
             <nav aria-label="Page navigation example" style="">

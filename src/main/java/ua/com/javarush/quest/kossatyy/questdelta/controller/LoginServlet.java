@@ -1,12 +1,12 @@
 package ua.com.javarush.quest.kossatyy.questdelta.controller;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
-import ua.com.javarush.quest.kossatyy.questdelta.entity.User;
-import ua.com.javarush.quest.kossatyy.questdelta.mapper.Mapper;
-import ua.com.javarush.quest.kossatyy.questdelta.mapper.UserMapper;
 import ua.com.javarush.quest.kossatyy.questdelta.service.UserService;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Attribute;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Jsp;
@@ -20,7 +20,6 @@ import static ua.com.javarush.quest.kossatyy.questdelta.utils.ErrorMessage.*;
 public class LoginServlet extends HttpServlet {
 
     private final UserService userService = UserService.INSTANCE;
-    private final Mapper<UserDto, User> userMapper = new UserMapper();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,12 +45,13 @@ public class LoginServlet extends HttpServlet {
         Optional<UserDto> user = userService.findByLogin(login);
 
         if (user.isPresent()) {
-            Optional<UserDto> userFromDB = userService.findByCredentials(login,password);
+            Optional<UserDto> userDtoFromDB = userService.findByCredentials(login,password);
 
-            if (userFromDB.isPresent()) {
-                UserDto userDto = userFromDB.get();
+            if (userDtoFromDB.isPresent()) {
                 HttpSession session = req.getSession();
+                UserDto userDto = userDtoFromDB.get();
                 session.setAttribute(Attribute.USER.getName(), userDto);
+                session.setAttribute(Attribute.ROLE.getName(), userDto.getRole());
                 Jsp.forward(req, resp, Jsp.MENU);
             } else {
                 req.setAttribute(Attribute.ERROR.getName(), WRONG_PASSWORD);

@@ -11,11 +11,11 @@
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="${pageContext.request.contextPath}/menu" class="nav-link px-2 text-secondary">Home</a></li>
-                <c:if test="${not empty sessionScope.user.role and Role.GUEST ne sessionScope.user.role}">
+                <c:if test="${not empty sessionScope.user.role and Role.GUEST != sessionScope.user.role}">
                     <li><a href="${pageContext.request.contextPath}/accounts"
                            class="nav-link px-2 text-white">Accounts</a></li>
                 </c:if>
-                <c:if test="${Role.ADMIN eq sessionScope.user.role or Role.EDITOR eq sessionScope.user.role}">
+                <c:if test="${Role.ADMIN == sessionScope.user.role or Role.EDITOR == sessionScope.user.role}">
                     <li><a href="${pageContext.request.contextPath}/edit" class="nav-link px-2 text-white">Edit</a></li>
                 </c:if>
                 <li><a href="${pageContext.request.contextPath}/play" class="nav-link px-2 text-white">Game</a></li>
@@ -33,7 +33,6 @@
                         <a href="${pageContext.request.contextPath}/logout" class="btn btn-primary">Logout</a>
                     </c:otherwise>
                 </c:choose>
-
             </div>
         </div>
     </div>
