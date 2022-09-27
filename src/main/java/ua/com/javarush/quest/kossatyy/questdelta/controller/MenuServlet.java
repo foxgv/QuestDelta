@@ -24,7 +24,7 @@ public class MenuServlet extends HttpServlet {
         if (isNull(role)) {
             session.setAttribute(roleAttribute, Role.GUEST);
         } else {
-            session.setAttribute(roleAttribute, (Role) role);
+            session.setAttribute(roleAttribute, role);
         }
         Jsp.forward(req, resp, Jsp.MENU);
     }

@@ -4,6 +4,7 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class ErrorMessage {
+
    public final String LOGIN_NOT_VALID = "Login not valid";
    public final String PASSWORD_NOT_VALID = "Password not valid";
    public final String LOGIN_ALREADY_USED = "Login already used";
@@ -11,4 +12,5 @@ public class ErrorMessage {
    public final String USER_NOT_CREATED = "User not created";
    public final String WRONG_PASSWORD = "Wrong password";
    public final String DELETE_YOURSELF = "You can't delete your profile";
+
 }

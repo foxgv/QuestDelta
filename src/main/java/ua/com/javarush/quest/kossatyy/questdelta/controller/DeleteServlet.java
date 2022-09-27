@@ -42,9 +42,4 @@ public class DeleteServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/accounts");
         requestDispatcher.forward(req,resp);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }
