@@ -4,19 +4,28 @@ import java.time.ZonedDateTime;
 import java.util.Objects;
 
 public class Game extends AbstractEntity {
-    private final ZonedDateTime startingDate;
+    private final ZonedDateTime startingDate = ZonedDateTime.now();
     private long userID;
     private long currentQuestionID;
     private long questID;
     private GameState state;
 
-    public Game(ZonedDateTime startingDate) {
-        this.startingDate = startingDate;
+    public Game(long userID, long currentQuestionID, long questID, GameState state) {
+        this.userID = userID;
+        this.currentQuestionID = currentQuestionID;
+        this.questID = questID;
+        this.state = state;
+    }
+
+    public static GameBuilder builder(){
+        return new GameBuilder();
     }
 
     public ZonedDateTime getStartingDate() {
         return startingDate;
     }
+
+
 
     public long getUserID() {
         return userID;
@@ -62,5 +71,39 @@ public class Game extends AbstractEntity {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), startingDate, userID, currentQuestionID, questID, state);
+    }
+
+    public static class GameBuilder {
+        private long userID;
+        private long currentQuestionID;
+        private long questID;
+        private GameState state;
+
+        GameBuilder() {
+        }
+
+        public GameBuilder userID(long userID){
+            this.userID = userID;
+            return this;
+        }
+
+        public GameBuilder currentQuestionID(long currentQuestionID){
+            this.currentQuestionID = currentQuestionID;
+            return this;
+        }
+
+        public GameBuilder questID(long questID){
+            this.questID = questID;
+            return this;
+        }
+
+        public GameBuilder state(GameState state){
+            this.state = state;
+            return this;
+        }
+
+        public Game build(){
+            return new Game(userID, currentQuestionID, questID, state);
+        }
     }
 }

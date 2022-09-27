@@ -6,6 +6,15 @@ public class Answer extends AbstractEntity {
     private long questionID;
     private String answerText;
 
+    public static AnswerBuilder builder(){
+        return new AnswerBuilder();
+    }
+
+    public Answer(long questionID, String answerText) {
+        this.questionID = questionID;
+        this.answerText = answerText;
+    }
+
     public long getQuestionID() {
         return questionID;
     }
@@ -34,5 +43,27 @@ public class Answer extends AbstractEntity {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), questionID, answerText);
+    }
+
+    public static class AnswerBuilder {
+        private long questionID;
+        private String answerText;
+
+        AnswerBuilder() {
+        }
+
+        public AnswerBuilder questionID(long questionID){
+            this.questionID = questionID;
+            return  this;
+        }
+
+        public AnswerBuilder answerText(String answerText){
+            this.answerText = answerText;
+            return this;
+        }
+
+        public Answer build(){
+            return new Answer(questionID, answerText);
+        }
     }
 }

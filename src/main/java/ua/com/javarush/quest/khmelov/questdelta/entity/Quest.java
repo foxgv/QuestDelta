@@ -1,5 +1,6 @@
 package ua.com.javarush.quest.khmelov.questdelta.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -8,6 +9,17 @@ public class Quest extends AbstractEntity {
     private boolean isActive = true;
     private long authorID;
     private Collection<Question> questions;
+
+    public Quest(String name, boolean isActive, long authorID, Collection<Question> questions) {
+        this.name = name;
+        this.isActive = isActive;
+        this.authorID = authorID;
+        this.questions = questions;
+    }
+
+    public static QuestBuilder builder(){
+        return new QuestBuilder();
+    }
 
     public String getName() {
         return name;
@@ -58,5 +70,50 @@ public class Quest extends AbstractEntity {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), name, isActive, authorID, questions);
+    }
+
+    public static class QuestBuilder {
+        private String name;
+        private boolean isActive = true;
+        private long authorID;
+        private Collection<Question> questions;
+
+        QuestBuilder() {
+        }
+
+        public QuestBuilder name(String name){
+            this.name = name;
+            return this;
+        }
+
+        public QuestBuilder isActive(boolean isActive){
+            this.isActive = isActive;
+            return this;
+        }
+
+        public QuestBuilder authorID(long authorID){
+            this.authorID = authorID;
+            return this;
+        }
+
+        public QuestBuilder question(Question question){
+            if (questions == null) {
+                questions = new ArrayList<>();
+            }
+            questions.add(question);
+            return this;
+        }
+
+        public QuestBuilder questions(Collection<Question> questions){
+            if (this.questions == null) {
+                this.questions = new ArrayList<>();
+            }
+            this.questions.addAll(questions);
+            return this;
+        }
+
+        public Quest build(){
+            return new Quest(name, isActive, authorID, questions);
+        }
     }
 }

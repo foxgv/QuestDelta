@@ -4,7 +4,10 @@ import ua.com.javarush.quest.khmelov.questdelta.entity.User;
 
 public class UserRepository extends AbstractRepository<User> {
 
-    public static final UserRepository USER_REPOSITORY = new UserRepository();
+    private static final UserRepository userRepository = new UserRepository();
+     public static UserRepository get(){
+         return userRepository;
+     }
     private UserRepository(){
 
     }

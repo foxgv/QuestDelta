@@ -1,8 +1,12 @@
 package ua.com.javarush.quest.khmelov.questdelta.entity;
 
+import lombok.Builder;
+
 import java.util.Collection;
 import java.util.Objects;
 
+
+@Builder
 public class Question extends AbstractEntity {
     private long questID;
     private String questionText;
