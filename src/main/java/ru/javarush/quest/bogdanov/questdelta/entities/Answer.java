@@ -8,6 +8,16 @@ public class Answer {
 
     public long id;
 
-    public long nextQuestionId;
+    public long questionId;
 
+    public boolean correct;
+
+    public String text;
+
+    public Answer(long questionId, boolean correct, String text) {
+        this.id = ID_ANSWER_COUNTER.getAndIncrement();
+        this.questionId = questionId;
+        this.correct = correct;
+        this.text = text;
+    }
 }

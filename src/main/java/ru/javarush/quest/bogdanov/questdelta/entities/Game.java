@@ -8,6 +8,17 @@ public class Game {
 
     public long id;
 
-    User user;
+    public long userId;
 
+    public long questId;
+
+    public long currentQuestionId;
+
+    public GameState gameState;
+
+    public Game(long userId, long questId) {
+        this.id = ID_GAME_COUNTER.getAndIncrement();
+        this.userId = userId;
+        this.questId = questId;
+    }
 }

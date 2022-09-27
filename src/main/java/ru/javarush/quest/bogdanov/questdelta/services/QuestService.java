@@ -16,7 +16,7 @@ public enum QuestService {
         return questRepository.getAll();
     }
 
-    public Quest getQuestion(long id) {
+    public Quest getQuest(long id) {
         return questRepository.getByID(id);
     }
 

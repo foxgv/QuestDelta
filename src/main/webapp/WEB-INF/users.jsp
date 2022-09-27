@@ -8,11 +8,11 @@
             </li>
         </c:forEach>
         <c:if test="${not empty sessionScope.user}">
-            <%--<c:if test="${sessionScope.user.role == Role.ADMIN}">--%>
+            <c:if test="${sessionScope.user.role == Role.ADMIN}">
                 <li>
                     <a href="user?id=0">Create new user</a>
                 </li>
-            <%--</c:if>--%>
+            </c:if>
         </c:if>
     </ul>
 </div>

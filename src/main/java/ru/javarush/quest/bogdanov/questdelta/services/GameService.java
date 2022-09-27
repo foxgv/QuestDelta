@@ -7,6 +7,7 @@ import ru.javarush.quest.bogdanov.questdelta.repositories.Repository;
 import java.util.List;
 
 public enum GameService {
+
     GAME_SERVICE;
 
     private final Repository<Game> gameRepository = new GameRepository();

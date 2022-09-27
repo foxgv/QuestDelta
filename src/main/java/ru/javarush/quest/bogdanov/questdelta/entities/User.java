@@ -1,5 +1,6 @@
 package ru.javarush.quest.bogdanov.questdelta.entities;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class User {
@@ -9,6 +10,10 @@ public class User {
     public Role role;
     private String login;
     private String password;
+
+    public List<Quest> quests;
+
+    public List<Game> games;
 
     public User(String login, String password, Role role) {
         this.id = ID_USER_COUNTER.getAndIncrement();
@@ -35,6 +40,10 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Role getRole() {
+        return role;
     }
 
     public String getLogin() {

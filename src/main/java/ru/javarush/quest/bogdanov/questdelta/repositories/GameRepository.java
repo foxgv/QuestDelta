@@ -7,6 +7,11 @@ import java.util.*;
 public class GameRepository implements Repository<Game> {
 
     private final Map<Long, Game> map = new HashMap<>();
+
+    public GameRepository() {
+        map.put(1L, new Game(1L, 1L));
+    }
+
     @Override
     public List<Game> getAll() {
         return new ArrayList<>(map.values());
@@ -19,7 +24,7 @@ public class GameRepository implements Repository<Game> {
 
     @Override
     public void create(Game entity) {
-
+        map.put(entity.id, entity);
     }
 
     @Override
@@ -29,7 +34,7 @@ public class GameRepository implements Repository<Game> {
 
     @Override
     public void delete(Long id) {
-
+        map.remove(id);
     }
 
     @Override

@@ -3,6 +3,8 @@ package ru.javarush.quest.bogdanov.questdelta.controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.javarush.quest.bogdanov.questdelta.entities.Role;
 import ru.javarush.quest.bogdanov.questdelta.entities.User;
 import ru.javarush.quest.bogdanov.questdelta.services.UserService;
@@ -12,6 +14,8 @@ import java.util.Optional;
 
 @WebServlet(name = "UserServlet", value = {"/user", "/profile", "/signup"})
 public class UserServlet extends HttpServlet {
+
+    private static final Logger log = LogManager.getLogger();
 
     private final UserService userService = UserService.USER_SERVICE;
 

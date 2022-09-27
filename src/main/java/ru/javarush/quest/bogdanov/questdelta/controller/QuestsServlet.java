@@ -7,15 +7,18 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-
-@WebServlet(name = "LogoutServlet", value = "/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet(name = "QuestsServlet", value = "/quests")
+public class QuestsServlet extends HttpServlet {
 
     private static final Logger log = LogManager.getLogger();
+
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        req.getSession().invalidate();
-        resp.sendRedirect("/login");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+
     }
 }
