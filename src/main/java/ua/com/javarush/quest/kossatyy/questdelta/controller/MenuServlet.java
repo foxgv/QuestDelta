@@ -12,12 +12,20 @@ import ua.com.javarush.quest.kossatyy.questdelta.utils.Jsp;
 
 import java.io.IOException;
 
+import static java.util.Objects.isNull;
+
 @WebServlet(name = "MenuServlet", value = "/menu")
 public class MenuServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        session.setAttribute(Attribute.ROLE.getName(), Role.GUEST);
-        Jsp.forward(req,resp, Jsp.MENU);
+        String roleAttribute = Attribute.ROLE.getValue();
+        Object role = session.getAttribute(roleAttribute);
+        if (isNull(role)) {
+            session.setAttribute(roleAttribute, Role.GUEST);
+        } else {
+            session.setAttribute(roleAttribute, (Role) role);
+        }
+        Jsp.forward(req, resp, Jsp.MENU);
     }
 }

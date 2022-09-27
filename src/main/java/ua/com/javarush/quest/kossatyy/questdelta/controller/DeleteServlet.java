@@ -22,16 +22,16 @@ public class DeleteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
         if (isNull(login)) {
-            req.setAttribute(Attribute.ERROR.getName(), USER_NOT_FOUND);
+            req.setAttribute(Attribute.ERROR.getValue(), USER_NOT_FOUND);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/accounts");
             requestDispatcher.forward(req,resp);
             return;
         }
 
-        UserDto currentUser = (UserDto) req.getSession().getAttribute(Attribute.USER.getName());
+        UserDto currentUser = (UserDto) req.getSession().getAttribute(Attribute.USER.getValue());
         String userLogin = currentUser.getLogin();
         if (login.equals(userLogin)) {
-            req.setAttribute(Attribute.ERROR.getName(), DELETE_YOURSELF);
+            req.setAttribute(Attribute.ERROR.getValue(), DELETE_YOURSELF);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/accounts");
             requestDispatcher.forward(req,resp);
             return;

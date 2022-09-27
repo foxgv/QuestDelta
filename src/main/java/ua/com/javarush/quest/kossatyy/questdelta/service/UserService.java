@@ -34,22 +34,20 @@ public enum UserService {
     }
 
     public Optional<UserDto> findByCredentials(String login, String password) {
-        Optional<User> userOptional = userRepository.find(User.builder()
+        return userRepository.find(User.builder()
                         .login(login)
                         .password(password)
                         .build())
-                .findFirst();
-
-        return userOptional.map(userMapper::toDto);
+                .findFirst()
+                .map(userMapper::toDto);
     }
 
     public Optional<UserDto> findByLogin(String login) {
-        Optional<User> userOptional = userRepository.find(User.builder()
+        return userRepository.find(User.builder()
                         .login(login)
                         .build())
-                .findFirst();
-
-        return userOptional.map(userMapper::toDto);
+                .findFirst()
+                .map(userMapper::toDto);
     }
 
     public boolean validateLogin(String login) {
@@ -70,14 +68,6 @@ public enum UserService {
                 .build());
     }
 
-    public void createUser(String login, String password) {
-        userRepository.create(User.builder()
-                .login(login)
-                .password(password)
-                .role(Role.USER)
-                .build());
-    }
-
     public void deleteById(long id) {
         userRepository.deleteById(id);
     }
@@ -90,5 +80,15 @@ public enum UserService {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
         return matcher.find();
+    }
+
+    public Role getRole(String parameter) {
+        Role userRole;
+        try {
+            userRole = Role.valueOf(parameter);
+        } catch (IllegalArgumentException e) {
+            userRole = Role.GUEST;
+        }
+        return userRole;
     }
 }
