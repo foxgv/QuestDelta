@@ -1,0 +1,13 @@
+// LOGIC
+
+© start page is INDEX.JSP && START GAME is QUEST.JSP
+© create map
+    key - is request
+    value - is text for user
+каждый вопрос - это значение из мапы (ключ - это номер вопроса)
+    например, первый вопрос - номер один (ключ будет равен 1),
+        находим в мапе значение ключа 1 и передаем в форму на странице
+
+// design app
+    1. start page in UNIVERSE (spaceSHIP)
+    2. winner page and lose page in UNIVERSE (infinity TEXT)
