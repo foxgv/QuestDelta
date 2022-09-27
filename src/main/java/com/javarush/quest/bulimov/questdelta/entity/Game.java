@@ -11,10 +11,10 @@ import java.time.ZonedDateTime;
 @Builder(builderMethodName = "with")
 public class Game extends AbstractEntity{
     Long id;
+    Long userId;
     ZonedDateTime startTime;
     Long currentQuestionId;
     Long questId;
-    Long userId;
     GameStatus gameStatus;
 
 }

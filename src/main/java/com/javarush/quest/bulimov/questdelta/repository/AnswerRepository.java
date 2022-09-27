@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class AnswerRepository extends AbstractRepository<Answer> implements Repository<Answer>{
 
-    public static final AnswerRepository answerRepository = new AnswerRepository();
+    private static final AnswerRepository answerRepository = new AnswerRepository();
 
     public static AnswerRepository get(){
         return answerRepository;

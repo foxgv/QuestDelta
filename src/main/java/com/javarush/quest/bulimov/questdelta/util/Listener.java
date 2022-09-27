@@ -1,4 +1,4 @@
-package com.javarush.quest.bulimov.questdelta.controller;
+package com.javarush.quest.bulimov.questdelta.util;
 
 import com.javarush.quest.bulimov.questdelta.util.RepositoryLoader;
 import jakarta.servlet.*;
@@ -18,7 +18,7 @@ public class Listener implements ServletContextListener, HttpSessionListener, Ht
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        /* This method is called when the servlet Context is undeployed or Application Server shuts down. */
+        RepositoryLoader.save();/* This method is called when the servlet Context is undeployed or Application Server shuts down. */
     }
 
     @Override

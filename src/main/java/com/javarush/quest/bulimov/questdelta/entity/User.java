@@ -1,20 +1,29 @@
 package com.javarush.quest.bulimov.questdelta.entity;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
-import javax.management.relation.Role;
+import java.util.ArrayList;
 import java.util.Collection;
+
 
 @Data
 @EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder(builderMethodName = "with")
-public class User extends AbstractEntity{
+public final class User extends AbstractEntity {
+
     Long id;
+
     String login;
+
     String password;
-    Role role;
-    Collection<Game> games;
-    Collection<Quest> quests;
+
+    UserRole role;
+
+    final Collection<Game> games = new ArrayList<>(); //as user
+
+    final Collection<Quest> quests = new ArrayList<>(); //as author (admin)
+
 }
+

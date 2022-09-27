@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class QuestRepository extends AbstractRepository<Quest> implements Repository<Quest>{
 
-    public static final QuestRepository questRepository = new QuestRepository();
+    private static final QuestRepository questRepository = new QuestRepository();
     public static QuestRepository get(){
         return  questRepository;
     }
