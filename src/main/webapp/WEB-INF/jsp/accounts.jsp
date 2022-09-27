@@ -30,7 +30,6 @@
                     <th>#</th>
                     <th>Username</th>
                     <th>Role</th>
-                    <th>Id</th>
                     <c:if test="${Role.ADMIN == sessionScope.role}">
                         <th>Edit</th>
                         <th>Delete</th>
@@ -43,7 +42,6 @@
                         <th scope="row"><c:out value="${index.count + 10 * requestScope.page}"/></th>
                         <td><c:out value="${user.getLogin()}"/></td>
                         <td><c:out value="${user.getRole()}"/></td>
-                        <td><c:out value="${user.getId()}"/></td>
                         <c:if test="${Role.ADMIN == sessionScope.role}">
                             <td>
                                 <a href="#">Edit</a>
