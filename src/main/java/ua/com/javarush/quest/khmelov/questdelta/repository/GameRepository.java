@@ -2,11 +2,27 @@ package ua.com.javarush.quest.khmelov.questdelta.repository;
 
 import ua.com.javarush.quest.khmelov.questdelta.entity.Game;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
+
 public class GameRepository extends AbstractRepository<Game>{
+    private static final GameRepository gameRepository = new GameRepository();
+    public static GameRepository get(){
+        return gameRepository;
+    }
+    private GameRepository(){
 
+    }
     @Override
-    public Game find(Game template) {
+    public Collection<Game> find(Game template) {
 
-        return null;
+        return repository.values().stream()
+                .filter(entity->isCoincide(template, entity, Game::getId)
+                        &&isCoincide(template, entity, Game::getStartingDate)
+                        &&isCoincide(template, entity, Game::getUserID)
+                        &&isCoincide(template, entity, Game::getCurrentQuestionID)
+                        &&isCoincide(template, entity, Game::getQuestID)
+                        &&isCoincide(template, entity, Game::getState))
+                .collect(Collectors.toList());
     }
 }

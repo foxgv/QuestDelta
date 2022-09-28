@@ -2,10 +2,9 @@ package ua.com.javarush.quest.khmelov.questdelta.repository;
 
 import ua.com.javarush.quest.khmelov.questdelta.entity.AbstractEntity;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Function;
 
 public abstract class AbstractRepository<T extends AbstractEntity> implements Repository<T>{
     public final static AtomicLong id = new AtomicLong(System.currentTimeMillis());
@@ -16,8 +15,14 @@ public abstract class AbstractRepository<T extends AbstractEntity> implements Re
         return repository.values();
     }
 
+    protected <V> boolean isCoincide(T template, T current, Function<T, V> fieldGetter) {
+        V currentFieldValue = fieldGetter.apply(current);
+        V templateFieldValue = fieldGetter.apply(template);
+        return Objects.isNull(templateFieldValue) || templateFieldValue.equals(currentFieldValue);
+    }
+
     @Override
-    public abstract T find(T template);
+    public abstract Collection<T> find(T template);
 
     @Override
     public T get(long id) {
