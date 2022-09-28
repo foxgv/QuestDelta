@@ -13,6 +13,8 @@
 
     <!-- Custom styles for this template -->
     <link href="pricing.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 
 <body>
@@ -21,11 +23,10 @@
     <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
     <nav class="my-2 my-md-0 mr-md-3">
 
-
-
-        <a class="p-2 text-dark" href="#">Главная<br></a>
+        <a class="p-2 text-dark" href="/">Главная<br></a>
     </nav>
-    <a class="btn btn-outline-primary" href="#">Sign up</a>
+    <a class="p-2 text-dark" href="/users">List of users</a>
+    <a class="btn btn-outline-primary px-3 py-3 pt-md-5 pb-md-4 mx-auto text-lg-end" href="/user">Sign up</a>
 </div>
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
@@ -55,6 +56,8 @@
     });
 </script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
 </body>
 </html>
