@@ -20,7 +20,7 @@ public class DeleteServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String login = req.getParameter("login");
+        String login = req.getParameter(Attribute.LOGIN.getValue());
         if (isNull(login)) {
             req.setAttribute(Attribute.ERROR.getValue(), USER_NOT_FOUND);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/accounts");

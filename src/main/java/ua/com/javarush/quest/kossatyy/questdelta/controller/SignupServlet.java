@@ -30,7 +30,7 @@ public class SignupServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String login = req.getParameter("login"); //TODO Duplicate code with LoginServlet
+        String login = req.getParameter(Attribute.LOGIN.getValue()); //TODO Duplicate code with LoginServlet
         boolean validLogin = userService.validateLogin(login);
         if (!validLogin) {
             req.setAttribute(Attribute.ERROR.getValue(), LOGIN_NOT_VALID);
@@ -38,7 +38,7 @@ public class SignupServlet extends HttpServlet {
             return;
         }
 
-        String password = req.getParameter("password"); //TODO Validate in filter log/pass with AuthService?
+        String password = req.getParameter(Attribute.PASSWORD.getValue()); //TODO Validate in filter log/pass with AuthService?
         boolean validPass = userService.validatePassword(password);
         if (!validPass) {
             req.setAttribute(Attribute.ERROR.getValue(), PASSWORD_NOT_VALID);
@@ -53,7 +53,7 @@ public class SignupServlet extends HttpServlet {
             return;
         }
 
-        String roleParameter = req.getParameter("role");
+        String roleParameter = req.getParameter(Attribute.ROLE.getValue());
         Role userRole = isNull(roleParameter)
                 ? Role.GUEST
                 : userService.getRole(roleParameter);

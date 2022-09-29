@@ -14,6 +14,8 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.util.Objects.nonNull;
+
 public enum UserService {
     INSTANCE;
 
@@ -50,6 +52,11 @@ public enum UserService {
                 .map(userMapper::toDto);
     }
 
+    public Optional<UserDto> findById(long id) {
+        return Optional.of(userRepository.getById(id))
+                .map(userMapper::toDto);
+    }
+
     public boolean validateLogin(String login) {
         String regex = "^[A-Za-z\\d]{1,20}$";
         return check(regex, login);
@@ -66,6 +73,22 @@ public enum UserService {
                 .password(password)
                 .role(role)
                 .build());
+    }
+
+    public void update(Long id, String login, String password, Role role) {
+        User user = userRepository.getById(id);
+
+        if(nonNull(login) && !login.isBlank()) {
+            user.setLogin(login);
+        }
+
+        if(nonNull(password) && !password.isBlank()) {
+            user.setPassword(password);
+        }
+
+        user.setRole(role);
+
+        userRepository.update(user);
     }
 
     public void deleteById(long id) {

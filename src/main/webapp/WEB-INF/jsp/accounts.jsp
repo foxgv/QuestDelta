@@ -13,7 +13,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -42,14 +41,14 @@
                 <c:forEach var="user" items="${requestScope.users}" varStatus="index">
                     <tr>
                         <th scope="row"><c:out value="${index.count + 10 * requestScope.page}"/></th>
-                        <td><c:out value="${user.getLogin()}"/></td>
-                        <td><c:out value="${user.getRole()}"/></td>
+                        <td><c:out value="${user.login}"/></td>
+                        <td><c:out value="${user.role}"/></td>
                         <c:if test="${Role.ADMIN == sessionScope.role}">
                             <td>
-                                <a href="#">Edit</a>
+                                <a href="${pageContext.request.contextPath}/update?login=${user.login}">Edit</a>
                             </td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/accounts/delete?login=${user.getLogin()}">Delete</a>
+                                <a href="${pageContext.request.contextPath}/accounts/delete?login=${user.login}">Delete</a>
                             </td>
                         </c:if>
                     </tr>
