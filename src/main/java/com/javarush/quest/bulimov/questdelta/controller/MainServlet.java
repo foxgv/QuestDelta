@@ -1,9 +1,7 @@
 package com.javarush.quest.bulimov.questdelta.controller;
 
-import java.io.*;
-
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 
 @WebServlet(name = "mainServlet", value = "/main")
 public class MainServlet extends HttpServlet{

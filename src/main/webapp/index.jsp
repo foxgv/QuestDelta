@@ -9,16 +9,32 @@
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
-<form class="form-horizontal" action="signup" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="exampleInputLogin">login</label>
-        <input type="Login" class="form-control" id="exampleInputLogin" placeholder="Enter login">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="container">
+    <form class="form-horizontal" action="signup" method="post">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>User Form</legend>
+
+            <!-- Text input-->
+                    <input id="userLogin" name="login" type="text" placeholder="set login" class="form-control input-md"
+                           required=""
+                           value="">
+
+            <!-- Password input-->
+            <
+                    <input id="userPassword" name="password" type="password" placeholder="pass req"
+                           class="form-control input-md" required=""
+                           value="">
+
+
+            <!-- Button -->
+
+                    <button id="submit"
+                            class="btn btn-success">Create</button>
+
+        </fieldset>
+    </form>
+</div>
 </body>
 </html>

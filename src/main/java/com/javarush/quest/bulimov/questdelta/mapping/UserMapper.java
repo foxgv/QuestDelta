@@ -21,12 +21,7 @@ public class UserMapper implements Mapper<User, UserDto>{
 
     @Override
     public User parse(FormData formData) {
-        if(!formData.getParameter("login").isEmpty()){
-            return User.with()
-                    .login(formData.getParameter("login"))
-                    .password(formData.getParameter("password"))
-                    .role(UserRole.USER).build();
-        }
-        return null;
+        User user = User.with().build();
+        return fill(user, formData);
     }
 }

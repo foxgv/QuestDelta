@@ -3,6 +3,7 @@ package com.javarush.quest.bulimov.questdelta.services;
 import com.javarush.quest.bulimov.questdelta.dto.FormData;
 import com.javarush.quest.bulimov.questdelta.dto.UserDto;
 import com.javarush.quest.bulimov.questdelta.entity.User;
+import com.javarush.quest.bulimov.questdelta.entity.UserRole;
 import com.javarush.quest.bulimov.questdelta.mapping.Mapper;
 import com.javarush.quest.bulimov.questdelta.repository.Repository;
 import com.javarush.quest.bulimov.questdelta.repository.UserRepository;
@@ -44,6 +45,7 @@ public enum UserService {
 
     public void create(FormData formData) {
         User user = Mapper.user.parse(formData);
+        user.setRole(UserRole.USER);
         userRepository.create(user);
     }
 
