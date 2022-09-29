@@ -20,7 +20,7 @@ public interface Mapper<E extends AbstractEntity, R> {
     Optional<R> get(E entity);
 
     E parse(FormData formData);
-    Mapper<User, UserDto> user = new UserMapper();
+
 
     default E fill(E entity, FormData formData) {
         Class<? extends AbstractEntity> aClass = entity.getClass();

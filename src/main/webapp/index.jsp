@@ -10,7 +10,7 @@
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
 <div class="container">
-    <form class="form-horizontal" action="signup" method="post">
+    <form class="form-horizontal" method="post" action="signup">
         <fieldset>
 
             <!-- Form Name -->
@@ -21,12 +21,16 @@
                            required=""
                            value="">
 
+
+
             <!-- Password input-->
-            <
+            <br/>
+
                     <input id="userPassword" name="password" type="password" placeholder="pass req"
                            class="form-control input-md" required=""
                            value="">
 
+            <br/>
 
             <!-- Button -->
 
