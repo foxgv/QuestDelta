@@ -14,13 +14,13 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@WebFilter({"/", "/users", "/login", "/logout", "/profile", "/user", "/signup", "/notimplemented", "/game"})
+@WebFilter({"/", "/users", "/login", "/logout", "/profile", "/user", "/signup", "/notimplemented", "/game", "/quests"})
 public class RoleSelector implements Filter {
 
     private final Map<Role, List<String>> uriMap = Map.of(
-            Role.GUEST, List.of("/", "/users", "/login", "/signup", "/notimplemented", "/game"),
-            Role.USER, List.of("/", "/users", "/login", "/signup", "/notimplemented", "/logout", "/profile", "/game"),
-            Role.ADMIN, List.of("/", "/users", "/login", "/signup", "/logout", "/notimplemented", "/user", "/profile", "/game")
+            Role.GUEST, List.of("/", "/users", "/login", "/signup", "/notimplemented", "/game", "/quests"),
+            Role.USER, List.of("/", "/users", "/login", "/signup", "/notimplemented", "/logout", "/profile", "/game", "/quests"),
+            Role.ADMIN, List.of("/", "/users", "/login", "/signup", "/logout", "/notimplemented", "/user", "/profile", "/game", "/quests")
     );
 
     @Override

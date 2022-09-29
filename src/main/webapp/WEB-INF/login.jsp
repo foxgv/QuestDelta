@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="parts/header.jsp" %>
 <div class="container">
     <form class="form-horizontal" action="${pageContext.request.contextPath}/login" method="post">

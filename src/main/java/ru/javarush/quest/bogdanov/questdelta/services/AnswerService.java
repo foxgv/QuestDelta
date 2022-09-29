@@ -15,6 +15,10 @@ public enum AnswerService {
         return answerRepository.getAll();
     }
 
+    public Answer getAnswer(long id) {
+        return answerRepository.getByID(id);
+    }
+
     public List<Answer> getAnswersByQuestionId(long id) {
         return answerRepository.findAnswersByQuestionId(id);
     }

@@ -31,20 +31,38 @@ public class GameServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getSession().getAttribute("quest") == null) {
+            init(request, response);
+        } else {
+            request.getRequestDispatcher("WEB-INF/game.jsp").forward(request, response);
+        }
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String currentQuestionId = request.getParameter("currentquestionid");
+        String answerId = request.getParameter("answerid");
+        long question = Long.parseLong(currentQuestionId);
+        long answer = Long.parseLong(answerId);
+        Question questionByAnswer = questionService.getQuestionByAnswer(question, answer);
+        HttpSession session = request.getSession();
+        session.removeAttribute("question");
+        session.setAttribute("question", questionByAnswer);
+        System.out.println(session.getAttribute("question"));
+        request.getRequestDispatcher("/WEB-INF/game.jsp").forward(request, response);
+    }
+
+    public void init(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Game game = new Game(1L, 1L);
         Quest quest = questService.getQuest(1L);
         game.currentQuestionId = 1L;
         game.gameState = GameState.STARTED;
         Question question = questionService.getQuestion(1L);
-        System.out.println(question.text);
         HttpSession session = request.getSession();
         session.setAttribute("question", question);
         session.setAttribute("quest", quest);
+        System.out.println("get");
         request.getRequestDispatcher("WEB-INF/game.jsp").forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-
     }
 }

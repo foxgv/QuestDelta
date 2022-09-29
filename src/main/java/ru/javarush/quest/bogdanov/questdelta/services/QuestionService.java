@@ -26,5 +26,8 @@ public enum QuestionService {
         questionRepository.create(question);
     }
 
+    public Question getQuestionByAnswer(long questionId, long answerId) {
+        return questionRepository.findQuestionByAnswer(questionId, answerId);
+    }
 
 }

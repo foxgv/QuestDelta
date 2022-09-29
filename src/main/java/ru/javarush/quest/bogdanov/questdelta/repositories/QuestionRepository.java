@@ -1,5 +1,6 @@
 package ru.javarush.quest.bogdanov.questdelta.repositories;
 
+import ru.javarush.quest.bogdanov.questdelta.entities.Answer;
 import ru.javarush.quest.bogdanov.questdelta.entities.Question;
 import ru.javarush.quest.bogdanov.questdelta.services.AnswerService;
 
@@ -13,9 +14,9 @@ public class QuestionRepository implements Repository<Question> {
     private final Map<Long, Question> map = new HashMap<>();
 
     public QuestionRepository() {
-        map.put(1L, new Question(answerService.getAnswersByQuestionId(1L), 1L, 1L, 2L, "да или нет?"));
-        map.put(2L, new Question(1L, 2L, "ты победил!"));
-        map.put(3L, new Question(1L, 3L, "ты проиграл!"));
+        map.put(1L, new Question(answerService.getAnswersByQuestionId(1L), 1L, 2L, 3L, "да или нет?"));
+        map.put(2L, new Question(1L, 4L, "ты победил!"));
+        map.put(3L, new Question(1L, 5L, "ты проиграл!"));
     }
 
     @Override
@@ -52,5 +53,14 @@ public class QuestionRepository implements Repository<Question> {
                 .stream()
                 .filter(answer -> answer.questId == id)
                 .collect(Collectors.toList());
+    }
+
+    public Question findQuestionByAnswer(long questionId, long answerId) {
+        Answer answer = answerService.getAnswer(answerId);
+        if (answer.isCorrect()) {
+            return getByID(getByID(questionId).getCorrectQuestionId());
+        } else {
+            return getByID(getByID(questionId).getIncorrectQuestionId());
+        }
     }
 }
