@@ -5,16 +5,19 @@ import ua.com.javarush.quest.zazimko.questdelta.util.UserRole;
 import java.util.Objects;
 
 public class User {
+    private static long idCount=4;
     private final long id;
     private String login;
     private String password;
     private UserRole role;
 
-    public User(long id, String login, String password, UserRole role) {
-        this.id = id;
+    public User(String login, String password, UserRole role) {
+        User.idCount++;
+        this.id = idCount;
         this.login = login;
         this.password = password;
         this.role = role;
+
     }
 
     public long getId() {

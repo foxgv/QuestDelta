@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @WebServlet(name = "UserServlet", value = "/user")
 public class UserServlet extends HttpServlet {
-    UserRepository userRepository=new UserRepository();
+    UserRepository userRepository= UserRepository.getUserRepository();
     public void init(){
         getServletContext().setAttribute("roles", UserRole.values());
     }
@@ -33,6 +33,23 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+        UserRole role = UserRole.valueOf(request.getParameter("role"));
+        User user =new User(login,password,role);
+        postUser(request,user);
+        Jsp.redirect(response,"users");
+    }
 
+    private void postUser(HttpServletRequest request, User user) {
+        if(request.getParameter("update")!=null){
+            userRepository.update(user);
+        } else if (request.getParameter("delete")!=null) {
+            userRepository.delete(user);
+        } else if (request.getParameter("create")!=null) {
+            userRepository.create(user);
+        }else {
+            throw new UnsupportedOperationException("not found command");
+        }
     }
 }
