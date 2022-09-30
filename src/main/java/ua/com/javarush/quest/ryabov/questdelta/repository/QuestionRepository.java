@@ -16,14 +16,17 @@ public class QuestionRepository implements Repository<Question> {
     }
 
     QuestionRepository() {
-        map.put(1L, Question.with()
-                .questionID(1L).question("Пару дней назад ты выложил свое резюме на сайте и вот раздался звонок… " +
-                        "Ты поднимаешь трубку и слышишь приглашение на работу. \n" +
-                        "Вот и подошел день собеседования. Думаю, тебе стоит немного рассказать о себе.\n")
-                .get());
         map.put(2L, Question.with()
-                .questionID(2L).question("Ты познакомил потенциальных коллег со своей биографией и началось техническое интервью.")
-                .get());
+                .questionID(2L).question("Пару дней назад ты выложил свое резюме на сайте и вот раздался звонок… " +
+                        "Ты поднимаешь трубку и слышишь приглашение на работу. \n" +
+                        "Вот и подошел день собеседования.\n" +
+                        "Ты познакомил потенциальных коллег со своей биографией и началось техническое интервью.\n")
+                .answers(List.of(
+                        Answer.with().id(1L).answer("Приступим")
+                                .nextQuestionID(3L).get(),
+                        Answer.with().id(2L).answer("Памагите..." + "&#128557;")
+                                .nextQuestionID(3L).get()
+                )).get());
         map.put(3L, Question.with()
                 .questionID(3L).question("Вас просят назвать  основные принципы ООП")
                 .answers(List.of(
@@ -62,11 +65,11 @@ public class QuestionRepository implements Repository<Question> {
                                 .nextQuestionID(8L).get()
                 )).get());
         map.put(7L, Question.with()
-                .questionID(7L).question("А в чем отличие String от StringBuilder")
+                .questionID(7L).question("А в чем отличие String от StringBuilder?")
                 .answers(List.of(
                         Answer.with().id(1L).answer("В окончании Builder")
                                 .nextQuestionID(5L).get(),
-                        Answer.with().id(2L).answer("String - неизменяемый класс, а StringBulder - изменяемый")
+                        Answer.with().id(2L).answer("String - неизменяемый класс, а StringBuilder - изменяемый")
                                 .nextQuestionID(9L).get(),
                         Answer.with().id(3L).answer("Это два одинаковых класса и нет никакой разницы")
                                 .nextQuestionID(5L).get()
@@ -104,6 +107,7 @@ public class QuestionRepository implements Repository<Question> {
         //TODO ДОБАВИТЬ РЕАЛИЗАЦИЮ
         return null;
     }
+
     public Question find(long id) {
         return map.get(id);
     }

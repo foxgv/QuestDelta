@@ -8,19 +8,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import ua.com.javarush.quest.ryabov.questdelta.entity.Answer;
 import ua.com.javarush.quest.ryabov.questdelta.entity.Question;
-import ua.com.javarush.quest.ryabov.questdelta.repository.Repository;
-import ua.com.javarush.quest.ryabov.questdelta.repository.RepositoryLoader;
+import ua.com.javarush.quest.ryabov.questdelta.service.QuestionService;
 import ua.com.javarush.quest.ryabov.questdelta.util.Jsp;
 
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Optional;
 
 
 @WebServlet("/question")
 public class QuestionServlet extends HttpServlet {
-    Repository<Question> questionRepository = RepositoryLoader.questionRepository;
+    private final QuestionService questionService = QuestionService.INSTANCE;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,8 +28,8 @@ public class QuestionServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Optional<Question> lastQuestion = (Optional<Question>) session.getAttribute("lastQuestion");
         if (lastQuestion == null){
-            question = questionRepository.get(3).get().getQuestion();
-            answers = questionRepository.get(3).get().getAnswers();
+            question = questionService.get(2).get().getQuestion();
+            answers = questionService.get(2).get().getAnswers();
         }else {
                 question = lastQuestion.get().getQuestion();
                 answers =  lastQuestion.get().getAnswers();
@@ -47,7 +45,7 @@ public class QuestionServlet extends HttpServlet {
         HttpSession session = req.getSession();
         if (nextQuestionID != null){
             long id = Long.parseLong(nextQuestionID);
-            Optional<Question> question = questionRepository.get(id);
+            Optional<Question> question = questionService.get(id);
             String text = question.get().getQuestion();
             List<Answer> answers = question.get().getAnswers();
             req.setAttribute("question", text);
