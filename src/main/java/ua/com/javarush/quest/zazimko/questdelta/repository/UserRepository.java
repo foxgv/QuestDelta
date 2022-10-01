@@ -47,7 +47,7 @@ public class UserRepository {
         userList.put(user.getId(), user);
     }
     public Collection<User> find(User user){
-        List<User> users = userList.values().stream().filter(userList -> userList.getLogin() == user.getLogin()).toList();
+        List<User> users = userList.values().stream().filter(userList -> userList.getLogin().equalsIgnoreCase(user.getLogin())).toList();
         return users;
     }
 

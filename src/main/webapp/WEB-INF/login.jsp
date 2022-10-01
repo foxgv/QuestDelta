@@ -14,7 +14,7 @@
     </nav>
    </div>
 <div class="container">
-    <form class="form-horizontal" action="user?id=${requestScope.user.id}" method="post">
+    <form class="form-horizontal" action="/login" method="post">
         <fieldset>
 
             <!-- Form Name -->
