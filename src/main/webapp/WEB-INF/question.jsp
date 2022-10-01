@@ -18,13 +18,23 @@
             </ul>
 
 
-            <div class=" form-group">
+            <div class="form-group">
                 <label class="col-md-4 control-label" for="submit"></label>
                 <div class="col-md-4">
                     <button id="submit" name="Далее"
                             class="btn btn-success">Далее
                     </button>
                 </div>
+            </div>
+        </div>
+    </form>
+    <form method="get">
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="newGame"></label>
+            <div class="col-md-4">
+                <button id="newGame" name="newGame" value="newGame"
+                        class="btn btn-warning">Начать заново
+                </button>
             </div>
         </div>
     </form>

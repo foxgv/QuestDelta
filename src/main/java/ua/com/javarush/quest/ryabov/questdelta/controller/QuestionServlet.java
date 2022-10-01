@@ -26,24 +26,30 @@ public class QuestionServlet extends HttpServlet {
         String question = null;
         List<Answer> answers = null;
         HttpSession session = req.getSession();
-        Optional<Question> lastQuestion = (Optional<Question>) session.getAttribute("lastQuestion");
-        if (lastQuestion == null){
-            question = questionService.get(2).get().getQuestion();
-            answers = questionService.get(2).get().getAnswers();
+        String newGame = req.getParameter("newGame");
+        if (newGame != null && newGame.equals("newGame")){
+            session.invalidate();
+            Jsp.redirect(resp, "question");
         }else {
+            Optional<Question> lastQuestion = (Optional<Question>) session.getAttribute("lastQuestion");
+            if (lastQuestion == null) {
+                question = questionService.get(2).get().getQuestion();
+                answers = questionService.get(2).get().getAnswers();
+            } else {
                 question = lastQuestion.get().getQuestion();
-                answers =  lastQuestion.get().getAnswers();
+                answers = lastQuestion.get().getAnswers();
+            }
+            req.setAttribute("question", question);
+            req.setAttribute("answers", answers);
+            Jsp.forward(req, resp, "question");
         }
-        req.setAttribute("question", question);
-        req.setAttribute("answers", answers);
-        Jsp.forward(req, resp, "question");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String nextQuestionID = req.getParameter("nextQuestionID");
         HttpSession session = req.getSession();
-        if (nextQuestionID != null){
+        String nextQuestionID = req.getParameter("nextQuestionID");
+        if (nextQuestionID != null) {
             long id = Long.parseLong(nextQuestionID);
             Optional<Question> question = questionService.get(id);
             String text = question.get().getQuestion();
