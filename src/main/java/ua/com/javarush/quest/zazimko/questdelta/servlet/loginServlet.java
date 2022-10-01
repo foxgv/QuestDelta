@@ -30,7 +30,7 @@ public class loginServlet extends HttpServlet {
             User user = optionalUser.get();
             session.setAttribute("user", user);
             session.setAttribute("UserId",user.getId());
-            Jsp.redirect(response,"users");
+            Jsp.redirect(request,response,"profile");
 
         }else {
             request.setAttribute("error", "User not found");

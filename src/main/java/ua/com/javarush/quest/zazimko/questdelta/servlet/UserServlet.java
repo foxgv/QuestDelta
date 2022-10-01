@@ -38,7 +38,7 @@ public class UserServlet extends HttpServlet {
         UserRole role = UserRole.valueOf(request.getParameter("role"));
         User user =new User(login,password,role);
         postUser(request,user);
-        Jsp.redirect(response,"users");
+        Jsp.redirect(request,response,"users");
     }
 
     private void postUser(HttpServletRequest request, User user) {

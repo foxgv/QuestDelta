@@ -54,14 +54,14 @@
                 </div>
             </div>
 
-            <!-- Image Button -->
+            <!-- Image Button
             <div class="form-group">
                 <label class="col-md-4 control-label" for="userImage">Image</label>
                 <div class="col-md-4">
                     <input id="userImage" name="image" class="input-file" type="file">
                 </div>
             </div>
-
+-->
             <!-- Button -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="save">Registration</label>

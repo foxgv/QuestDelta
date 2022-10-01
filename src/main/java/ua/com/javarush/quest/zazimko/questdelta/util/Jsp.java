@@ -15,7 +15,7 @@ public void forward   (HttpServletRequest request, HttpServletResponse response,
     RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
     requestDispatcher.forward(request,response);
 }
-public void redirect(HttpServletResponse response, String uri) throws IOException {
-    response.sendRedirect(uri);
+public void redirect(HttpServletRequest request, HttpServletResponse response, String uri) throws IOException {
+    response.sendRedirect(request.getContextPath()+uri);
 }
 }
