@@ -14,19 +14,14 @@ public class GameMapper implements Mapper<Game, GameDto>{
         return game != null
                 ? Optional.of(GameDto.with()
                 .id(game.getId())
-                .questId(game.getUserId())
+                .questId(game.getQuestId())
                 .gameStatus(game.getGameStatus())
                 .currentQuestionId(game.getCurrentQuestionId())
                 .startTime(game.getStartTime())
+                .userName(game.getUserName())
                 .build()
         ) : Optional.empty();
     }
-
-    Long id;
-    ZonedDateTime startTime;
-    Long currentQuestionId;
-    Long questId;
-    GameStatus gameStatus;
 
     @Override
     public Game parse(FormData formData) {

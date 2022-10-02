@@ -3,6 +3,7 @@ package com.javarush.quest.bulimov.questdelta.services;
 import com.javarush.quest.bulimov.questdelta.dto.FormData;
 import com.javarush.quest.bulimov.questdelta.dto.GameDto;
 import com.javarush.quest.bulimov.questdelta.entity.Game;
+import com.javarush.quest.bulimov.questdelta.entity.GameStatus;
 import com.javarush.quest.bulimov.questdelta.mapping.Mapper;
 import com.javarush.quest.bulimov.questdelta.repository.GameRepository;
 import com.javarush.quest.bulimov.questdelta.repository.Repository;
@@ -46,6 +47,9 @@ public enum GameService {
 
     public void create(FormData formData) {
         Game game = Mapper.game.parse(formData);
+        game.setQuestId(1L);
+        game.setCurrentQuestionId(1L);
+        game.setGameStatus(GameStatus.PLAY);
         gameRepository.create(game);
     }
 

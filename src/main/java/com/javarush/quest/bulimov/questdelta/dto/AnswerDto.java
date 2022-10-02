@@ -1,6 +1,5 @@
 package com.javarush.quest.bulimov.questdelta.dto;
 
-import com.javarush.quest.bulimov.questdelta.entity.AbstractEntity;
 import com.javarush.quest.bulimov.questdelta.entity.GameStatus;
 import lombok.Builder;
 import lombok.Data;
@@ -11,13 +10,11 @@ import java.time.ZonedDateTime;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Builder(builderMethodName = "with")
-public class GameDto{
+public class AnswerDto{
     Long id;
-    ZonedDateTime startTime;
-    Long currentQuestionId;
-    Long questId;
-    String userName;
-    GameStatus gameStatus;
+    Long questionId;
+    String text;
+    Long nextQuestionId;
+    Boolean correct;
 
 }
-

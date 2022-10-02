@@ -21,6 +21,7 @@ public class GameRepository extends AbstractRepository<Game> implements Reposito
     public Stream<Game> find(Game pattern) {
         return map.values().stream()
                 .filter(entity -> isOk(pattern, entity, Game::getId)
+                        && isOk(pattern, entity, Game::getUserName)
                         && isOk(pattern, entity, Game::getGameStatus)
                         && isOk(pattern, entity, Game::getCurrentQuestionId)
 

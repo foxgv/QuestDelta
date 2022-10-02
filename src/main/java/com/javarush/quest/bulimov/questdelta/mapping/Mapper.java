@@ -1,9 +1,13 @@
 package com.javarush.quest.bulimov.questdelta.mapping;
 
+import com.javarush.quest.bulimov.questdelta.dto.AnswerDto;
 import com.javarush.quest.bulimov.questdelta.dto.FormData;
 import com.javarush.quest.bulimov.questdelta.dto.GameDto;
+import com.javarush.quest.bulimov.questdelta.dto.QuestionDto;
 import com.javarush.quest.bulimov.questdelta.entity.AbstractEntity;
+import com.javarush.quest.bulimov.questdelta.entity.Answer;
 import com.javarush.quest.bulimov.questdelta.entity.Game;
+import com.javarush.quest.bulimov.questdelta.entity.Question;
 import lombok.experimental.UtilityClass;
 
 
@@ -22,6 +26,9 @@ public interface Mapper<E extends AbstractEntity, R> {
     E parse(FormData formData);
 
     Mapper<Game, GameDto> game = new GameMapper();
+    Mapper<Question, QuestionDto> question = new QuestionMapper();
+
+    Mapper<Answer, AnswerDto> answer = new AnswerMapper();
 
 
     default E fill(E entity, FormData formData) {

@@ -9,6 +9,9 @@ import com.javarush.quest.bulimov.questdelta.repository.QuestionRepository;
 
 import lombok.experimental.UtilityClass;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 @UtilityClass
 public class RepositoryLoader {
     private final QuestRepository questRepository = QuestRepository.get();
@@ -109,17 +112,20 @@ public class RepositoryLoader {
                 .nextQuestionId(7L)
                 .text("Солгать о себе").build();
 
-
+        question1.setAnswers(new HashSet<>());
         question1.getAnswers().add(answer1);
         question1.getAnswers().add(answer2);
 
+        question2.setAnswers(new HashSet<>());
         question2.getAnswers().add(answer3);
         question2.getAnswers().add(answer4);
 
+        question3.setAnswers(new HashSet<>());
         question3.getAnswers().add(answer5);
+        question4.setAnswers(new HashSet<>());
         question4.getAnswers().add(answer6);
 
-
+        questJavaRush.setQuestions(new HashSet<>());
         questJavaRush.getQuestions().add(question1);
         questJavaRush.getQuestions().add(question2);
         questJavaRush.getQuestions().add(question3);
