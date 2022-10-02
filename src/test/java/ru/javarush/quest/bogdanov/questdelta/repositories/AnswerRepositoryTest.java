@@ -15,7 +15,7 @@ class AnswerRepositoryTest {
 
     @BeforeAll
     public static void init() {
-        answerRepository = new AnswerRepository();
+        answerRepository = AnswerRepository.getInstance();
     }
 
     @Test

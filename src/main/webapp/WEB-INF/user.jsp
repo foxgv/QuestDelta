@@ -34,9 +34,9 @@
                 <label class="col-md-4 control-label" for="roleSelect">Role</label>
                 <div class="col-md-4">
                     <select id="roleSelect" name="select" class="form-control">
-                        <option value="ADMIN">ADMIN</option>
-                        <option value="USER">USER</option>
-                        <option value="GUEST">GUEST</option>
+                        <c:forEach var="role" items="${applicationScope.roles}">
+                            <option value="${role}" ${role==requestScope.user.role?"selected":""}>${role}</option>
+                        </c:forEach>
                     </select>
                 </div>
             </div>

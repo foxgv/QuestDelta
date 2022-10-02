@@ -6,10 +6,19 @@ import java.util.*;
 
 public class GameRepository implements Repository<Game> {
 
+    private static GameRepository instance;
+
     private final Map<Long, Game> map = new HashMap<>();
 
-    public GameRepository() {
+    private GameRepository() {
         map.put(1L, new Game(1L, 1L));
+    }
+
+    public static GameRepository getInstance() {
+        if (instance == null) {
+            instance = new GameRepository();
+        }
+        return instance;
     }
 
     @Override
@@ -29,7 +38,7 @@ public class GameRepository implements Repository<Game> {
 
     @Override
     public void update(Game entity) {
-
+        map.replace(entity.id, entity);
     }
 
     @Override

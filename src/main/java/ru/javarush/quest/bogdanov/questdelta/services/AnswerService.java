@@ -9,7 +9,7 @@ public enum AnswerService {
 
     ANSWER_SERVICE;
 
-    private final AnswerRepository answerRepository = new AnswerRepository();
+    private final AnswerRepository answerRepository = AnswerRepository.getInstance();
 
     public List<Answer> getAll() {
         return answerRepository.getAll();

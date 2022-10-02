@@ -1,8 +1,8 @@
 package ru.javarush.quest.bogdanov.questdelta.services;
 
+import ru.javarush.quest.bogdanov.questdelta.entities.Game;
 import ru.javarush.quest.bogdanov.questdelta.entities.Role;
 import ru.javarush.quest.bogdanov.questdelta.entities.User;
-import ru.javarush.quest.bogdanov.questdelta.repositories.Repository;
 import ru.javarush.quest.bogdanov.questdelta.repositories.UserRepository;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.Optional;
 public enum UserService {
     USER_SERVICE;
 
-    private final Repository<User> userRepository = new UserRepository();
+    private final UserRepository userRepository = new UserRepository();
 
     public List<User> getAll() {
         return userRepository.getAll();
@@ -41,5 +41,9 @@ public enum UserService {
     public Optional<User> find(String login, String password) {
         User user = new User(login, password);
         return userRepository.find(user);
+    }
+
+    public void addGame(Game game, long id) {
+        userRepository.addGame(game, id);
     }
 }

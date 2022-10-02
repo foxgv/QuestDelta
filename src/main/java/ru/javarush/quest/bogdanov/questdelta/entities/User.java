@@ -1,5 +1,6 @@
 package ru.javarush.quest.bogdanov.questdelta.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -20,9 +21,8 @@ public class User {
         this.role = role;
         this.login = login;
         this.password = password;
-    }
-
-    public User() {
+        this.quests = new ArrayList<>();
+        this.games = new ArrayList<>();
     }
 
     public User(String login, String password) {
@@ -62,6 +62,14 @@ public class User {
         this.password = password;
     }
 
+    public List<Quest> getQuests() {
+        return quests;
+    }
+
+    public List<Game> getGames() {
+        return games;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -69,6 +77,7 @@ public class User {
                 ", role=" + role +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", games='" + games + '\'' +
                 '}';
     }
 }

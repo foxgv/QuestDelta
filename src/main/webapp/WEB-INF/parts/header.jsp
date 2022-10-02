@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link href="${pageContext.request.contextPath}/static/main.css" rel="stylesheet" type="text/css">
 <html>
 <head>
     <title>Квесты онлайн</title>
@@ -19,7 +20,7 @@
             <li><a href="${pageContext.request.contextPath}/quests" class="nav-link px-2 link-dark">Квесты</a></li>
             <li><a href="notimplemented" class="nav-link px-2 link-dark">Создать</a></li>
             <li><a href="${pageContext.request.contextPath}/game" class="nav-link px-2 link-dark">Играть</a></li>
-            <li><a href="notimplemented" class="nav-link px-2 link-dark">Статистика</a></li>
+            <li><a href="${pageContext.request.contextPath}/stats" class="nav-link px-2 link-dark">Статистика</a></li>
             <li><a href="${pageContext.request.contextPath}/users" class="nav-link px-2 link-dark">Пользователи</a></li>
         </ul>
 

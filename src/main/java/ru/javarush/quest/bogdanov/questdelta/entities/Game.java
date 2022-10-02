@@ -21,4 +21,33 @@ public class Game {
         this.userId = userId;
         this.questId = questId;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getQuestId() {
+        return questId;
+    }
+
+    public long getCurrentQuestionId() {
+        return currentQuestionId;
+    }
+
+    public GameState getGameState() {
+        return gameState;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "userId=" + userId +
+                ", questId=" + questId +
+                ", gameState=" + gameState +
+                '}';
+    }
 }

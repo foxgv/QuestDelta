@@ -7,12 +7,22 @@ import java.util.*;
 
 public class QuestRepository implements Repository<Quest> {
 
+    private static QuestRepository instance;
+
     QuestionService questionService = QuestionService.QUESTION_SERVICE;
 
     private final Map<Long, Quest> map = new HashMap<>();
 
-    public QuestRepository() {
+    private QuestRepository() {
         map.put(1L, new Quest(questionService.getQuestionsByQuestId(1L), "тест квест", "тест квест", 1L));
+        map.put(2L, new Quest(questionService.getQuestionsByQuestId(2L), "JR Quest", "Ты попал на корабль пришельцев. Попробуй вернуться домой живым!", 1L));
+    }
+
+    public static QuestRepository getInstance() {
+        if (instance == null) {
+            instance = new QuestRepository();
+        }
+        return instance;
     }
 
     @Override

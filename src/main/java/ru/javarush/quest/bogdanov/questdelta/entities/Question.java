@@ -28,10 +28,9 @@ public class Question {
         this.text = text;
     }
 
-    public Question(long questId, long correctQuestionId, String text) {
+    public Question(long questId, String text) {
         this.id = ID_QUESTION_COUNTER.getAndIncrement();
         this.questId = questId;
-        this.correctQuestionId = correctQuestionId;
         this.text = text;
     }
 
@@ -47,32 +46,16 @@ public class Question {
         return answerList;
     }
 
-    public void setAnswerList(List<Answer> answerList) {
-        this.answerList = answerList;
-    }
-
     public long getQuestId() {
         return questId;
-    }
-
-    public void setQuestId(long questId) {
-        this.questId = questId;
     }
 
     public long getCorrectQuestionId() {
         return correctQuestionId;
     }
 
-    public void setCorrectQuestionId(long correctQuestionId) {
-        this.correctQuestionId = correctQuestionId;
-    }
-
     public long getIncorrectQuestionId() {
         return incorrectQuestionId;
-    }
-
-    public void setIncorrectQuestionId(long incorrectQuestionId) {
-        this.incorrectQuestionId = incorrectQuestionId;
     }
 
     public String getText() {

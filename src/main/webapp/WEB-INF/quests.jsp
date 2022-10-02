@@ -1,21 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="parts/header.jsp" %>
 <div class="container">
-    <div class="container">
-        <ul>
-            <c:forEach var="quest" items="${requestScope.all}">
-                <li>
-                    <a href="quest?id=${quest.id}">${quest}</a>
-                </li>
-            </c:forEach>
-            <c:if test="${not empty sessionScope.user}">
-                <c:if test="${sessionScope.user.role == Role.ADMIN}">
-                    <li>
-                        <a href="quest?id=0">Create new quest</a>
-                    </li>
-                </c:if>
-            </c:if>
-        </ul>
-    </div>
+    <c:forEach var="quest" items="${requestScope.all}">
+        <div class="quests">
+            <h2>${quest.name}</h2>
+            <b>Описание: ${quest.description}</b>
+            <br>
+            <b>Автор: *доделать*</b>
+            <br>
+            <button class="answerButton" onclick="window.location.href='/game?questid=${quest.id}'">Играть!</button>
+        </div>
+        <br>
+    </c:forEach>
 </div>
 <%@include file="parts/footer.jsp" %>

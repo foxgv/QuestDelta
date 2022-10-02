@@ -8,9 +8,9 @@ import java.util.List;
 public enum QuestionService {
     QUESTION_SERVICE;
 
-    private final QuestionRepository questionRepository = new QuestionRepository();
+    private final QuestionRepository questionRepository = QuestionRepository.getInstance();
 
-    public Question getQuestion(long id) {
+    public Question getQuestionById(long id) {
         return questionRepository.getByID(id);
     }
 
@@ -26,8 +26,12 @@ public enum QuestionService {
         questionRepository.create(question);
     }
 
-    public Question getQuestionByAnswer(long questionId, long answerId) {
+    public Question getNextQuestionByAnswer(long questionId, long answerId) {
         return questionRepository.findQuestionByAnswer(questionId, answerId);
+    }
+
+    public long firstQuestionId(long id) {
+        return questionRepository.getFirstQuestionId(id);
     }
 
 }

@@ -14,13 +14,13 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@WebFilter({"/", "/users", "/login", "/logout", "/profile", "/user", "/signup", "/notimplemented", "/game", "/quests"})
+@WebFilter({"/", "/users", "/login", "/signup","/notimplemented", "/logout", "/profile", "/quests", "/stats", "/sugnupinfo", "/game", "/user", "/finish"})
 public class RoleSelector implements Filter {
 
     private final Map<Role, List<String>> uriMap = Map.of(
-            Role.GUEST, List.of("/", "/users", "/login", "/signup", "/notimplemented", "/game", "/quests"),
-            Role.USER, List.of("/", "/users", "/login", "/signup", "/notimplemented", "/logout", "/profile", "/game", "/quests"),
-            Role.ADMIN, List.of("/", "/users", "/login", "/signup", "/logout", "/notimplemented", "/user", "/profile", "/game", "/quests")
+            Role.GUEST, List.of("/", "/users", "/login", "/signup", "/notimplemented", "/logout", "/profile", "/quests", "/stats", "/sugnupinfo"),
+            Role.USER, List.of("/", "/users", "/login", "/signup", "/notimplemented", "/logout", "/profile", "/quests", "/stats", "/game", "/finish"),
+            Role.ADMIN, List.of("/", "/users", "/login", "/signup", "/notimplemented","/logout",  "/profile", "/quests", "/stats", "/game", "/user", "/finish")
     );
 
     @Override
@@ -35,12 +35,12 @@ public class RoleSelector implements Filter {
         String command = getCommand(request);
         Object rawUser = request.getSession().getAttribute("user");
         Role role = Objects.isNull(rawUser)
-                ? Role.USER
+                ? Role.GUEST
                 : ((User) rawUser).role;
         if (uriMap.get(role).contains(command)) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            response.sendRedirect("/users");
+            response.sendRedirect("/signupinfo");
         }
     }
 
