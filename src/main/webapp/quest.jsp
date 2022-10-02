@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="ua.com.javarush.quest.khmelov.questdelta.data.Quest" %><%--
   Created by IntelliJ IDEA.
   User: Администратор
   Date: 21.09.2022
@@ -19,10 +20,34 @@
 <br>
 <p>You accepted the challenge. Go up to the bridge to the captain?</p>
 
-<p><input type="checkbox" name="browser" value="IE" /> Go up to the bridge.</p>
-<p><input type="checkbox" name="browser" value="IE" /> Refuse to go up to the bridge.</p>
-<a href="/start"><input type="button" /> SUBMIT</a>
+<%
+    Quest quest = (Quest) session.getAttribute("quest");
+    List<String> levelText = quest.getCurrentLevelText(quest.getLEVEL());
 
+//    if (names != null && !names.isEmpty()) {
+//        out.println("<ui>");
+//        for (String s : names) {
+//            out.println("<li>" + s + "</li>");
+//        }
+//        out.println("</ui>");
+//    } else out.println("<p>There are no users yet!</p>");
+%>
+
+<h3><%
+
+    out.println(levelText.get(0));
+    out.println(request.getAttribute("userName"));
+    out.println(session.getAttribute("userName"));
+%></h3>
+
+
+<form action="/quest" method="GET">
+    <input type="checkbox" name="answer" value="1" /> <% out.println(levelText.get(1)); %>
+    <input type="checkbox" name="answer" value="0" /> <% out.println(levelText.get(2)); %>
+    <input type="submit" value="submit">
+</form>
+
+<input type="button" value="TRY AGAIN" onClick="document.location = '/restart'"/>
 
 </body>
 </html>
