@@ -13,7 +13,7 @@ public class ExceptionServlet extends HttpServlet {
     private String message;
 
     public void init() {
-        message = "Ошибка!";
+        message = "Игра прекращена! Ошибка!";
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -21,7 +21,7 @@ public class ExceptionServlet extends HttpServlet {
         // Hello
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1>" + request.getSession().getAttribute("login") + message + "</h1>");
+        out.println("<h1>" + message + "</h1>");
         out.println("</body></html>");
 
     }

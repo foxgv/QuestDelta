@@ -16,4 +16,5 @@ public class Question extends AbstractEntity{
     String text;
     Long incorrectQuestionId;
     Long correctQuestionId;
+
 }

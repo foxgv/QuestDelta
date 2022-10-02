@@ -23,7 +23,7 @@ public class GameRepository extends AbstractRepository<Game> implements Reposito
                 .filter(entity -> isOk(pattern, entity, Game::getId)
                         && isOk(pattern, entity, Game::getGameStatus)
                         && isOk(pattern, entity, Game::getCurrentQuestionId)
-                        && isOk(pattern, entity, Game::getUserId)
+
                 )
                 .sorted(Comparator.comparingLong(Game::getId));
     }
