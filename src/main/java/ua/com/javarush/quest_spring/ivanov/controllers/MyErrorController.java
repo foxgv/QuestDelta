@@ -15,7 +15,10 @@ public class MyErrorController implements ErrorController {
     public String handleError(HttpServletRequest request, Model model) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         Object message = request.getAttribute(RequestDispatcher.ERROR_EXCEPTION);
-        model.addAttribute("status",status);
+        if (status.toString().equals("404")) {
+            message = "Page not found";
+        }
+        model.addAttribute("status", status);
         model.addAttribute("message", message);
         return "error";
     }
