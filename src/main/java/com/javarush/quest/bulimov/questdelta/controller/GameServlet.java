@@ -31,9 +31,9 @@ public class GameServlet extends HttpServlet {
             Long questionId = gameService.find(FormData.of(req)).get().getCurrentQuestionId();
             req.setAttribute("questionText", questionService.get(questionId).get().getText());
 
+            answerService.get(questionId).get()
 
-
-            req.setAttribute("ans1", answerService.get(questionId).get());
+            req.setAttribute("ans1", );
             req.setAttribute("ans2", "test");
 
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("game.jsp");
