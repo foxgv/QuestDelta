@@ -12,6 +12,7 @@ import ua.com.javarush.quest.ryabov.questdelta.util.Jsp;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
 
 @SuppressWarnings("DuplicatedCode")
 @MultipartConfig(fileSizeThreshold = 1 << 20)
@@ -20,6 +21,7 @@ public class SignupServlet extends HttpServlet {
 
     private final UserService userService = UserService.INSTANCE;
     private final AvatarService avatarService = AvatarService.INSTANCE;
+    private final AtomicLong atomicLong = new AtomicLong(31);
 
     @Override
     public void init() {
@@ -38,7 +40,7 @@ public class SignupServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         long id = getId(req);
         Part data = req.getPart("image");
-        String image = "avatar-" + id;
+        String image = "avatar-" + atomicLong.getAndIncrement();
         avatarService.uploadAvatar(image, data.getInputStream());
         User user = User.with()
                 .id(id)

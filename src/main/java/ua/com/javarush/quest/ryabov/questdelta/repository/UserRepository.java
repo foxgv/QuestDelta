@@ -1,6 +1,5 @@
 package ua.com.javarush.quest.ryabov.questdelta.repository;
 
-import ua.com.javarush.quest.ryabov.questdelta.entity.Role;
 import ua.com.javarush.quest.ryabov.questdelta.entity.User;
 
 import java.util.*;
@@ -18,15 +17,6 @@ public class UserRepository implements Repository<User> {
     }
 
     private UserRepository() {
-        map.put(1L, User.with()
-                .id(1L).login("Ivan").password("456")
-                .image("avatar-1").role(Role.ADMIN).get());
-        map.put(2L, User.with()
-                .id(2L).login("Andrew").password("789")
-                .image("avatar-2").role(Role.GUEST).get());
-        map.put(3L, User.with()
-                .id(3L).login("Elena").password("123")
-                .image("avatar-3").role(Role.USER).get());
     }
 
     @Override
