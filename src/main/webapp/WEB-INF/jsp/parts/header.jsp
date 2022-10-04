@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="ua.com.javarush.quest.kossatyy.questdelta.entity.Role" %>
 
@@ -18,7 +19,7 @@
                 <c:if test="${Role.ADMIN == sessionScope.user.role or Role.EDITOR == sessionScope.user.role}">
                     <li><a href="${pageContext.request.contextPath}/edit" class="nav-link px-2 text-white">Edit</a></li>
                 </c:if>
-                <li><a href="${pageContext.request.contextPath}/game" class="nav-link px-2 text-white">Game</a></li>
+                <li><a href="${pageContext.request.contextPath}/play" class="nav-link px-2 text-white">Play</a></li>
             </ul>
 
             <div class="d-flex align-items-center">

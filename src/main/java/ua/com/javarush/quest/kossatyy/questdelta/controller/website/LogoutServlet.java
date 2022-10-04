@@ -1,4 +1,4 @@
-package ua.com.javarush.quest.kossatyy.questdelta.controller;
+package ua.com.javarush.quest.kossatyy.questdelta.controller.website;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

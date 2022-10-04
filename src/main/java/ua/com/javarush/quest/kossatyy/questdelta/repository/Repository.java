@@ -11,7 +11,7 @@ public interface Repository<T> {
 
     T getById(long id);
 
-    Stream<User> find(T entity);
+    Stream<T> find(T entity);
 
     void create(T entity);
 

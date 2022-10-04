@@ -1,7 +1,6 @@
 package ua.com.javarush.quest.kossatyy.questdelta.repository;
 
-import ua.com.javarush.quest.kossatyy.questdelta.entity.Role;
-import ua.com.javarush.quest.kossatyy.questdelta.entity.User;
+import ua.com.javarush.quest.kossatyy.questdelta.entity.Button;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,33 +9,33 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Stream;
 
-public class UserRepository implements Repository<User>{
+public class ButtonRepository implements Repository<Button>{
 
     private static final AtomicLong id = new AtomicLong(System.currentTimeMillis());
 
-    private final Map<Long, User> users = new HashMap<>();
+    private final Map<Long, Button> buttons = new HashMap<>();;
 
     @Override
-    public Collection<User> getAll() {
-        return users.values()
+    public Collection<Button> getAll() {
+        return buttons.values()
                 .stream()
                 .toList();
     }
 
     @Override
-    public User getById(long id) {
-        return users.get(id);
+    public Button getById(long id) {
+        return buttons.get(id);
     }
 
     @Override
-    public Stream<User> find(User user) {
-        return users.values()
+    public Stream<Button> find(Button entity) {
+        return buttons.values()
                 .stream()
-                .filter(userInDB -> Objects.equals(userInDB.getLogin(), user.getLogin()));
+                .filter(buttonInDb -> Objects.equals(buttonInDb.getId(), entity.getId()));
     }
 
     @Override
-    public void create(User entity) {
+    public void create(Button entity) {
         if (entity.getId() == null) {
             entity.setId(id.incrementAndGet());
         }
@@ -44,12 +43,12 @@ public class UserRepository implements Repository<User>{
     }
 
     @Override
-    public void update(User entity) {
-        users.put(entity.getId(), entity);
+    public void update(Button entity) {
+        buttons.put(entity.getId(), entity);
     }
 
     @Override
     public void deleteById(long id) {
-        users.remove(id);
+        buttons.remove(id);
     }
 }

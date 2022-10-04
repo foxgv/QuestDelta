@@ -11,6 +11,7 @@ public class UserMapper implements Mapper<UserDto, User> {
                 .id(entity.getId())
                 .login(entity.getLogin())
                 .role(entity.getRole())
+                .gamesIdWithSession(entity.getGamesIdWithSession())
                 .build();
     }
 }

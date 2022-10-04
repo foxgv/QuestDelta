@@ -1,4 +1,4 @@
-package ua.com.javarush.quest.kossatyy.questdelta.controller;
+package ua.com.javarush.quest.kossatyy.questdelta.controller.website;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
 import ua.com.javarush.quest.kossatyy.questdelta.service.UserService;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Attribute;
+import ua.com.javarush.quest.kossatyy.questdelta.config.Container;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Jsp;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ import static ua.com.javarush.quest.kossatyy.questdelta.utils.ErrorMessage.*;
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
 
-    private final UserService userService = UserService.INSTANCE;
+    private final UserService userService = new UserService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

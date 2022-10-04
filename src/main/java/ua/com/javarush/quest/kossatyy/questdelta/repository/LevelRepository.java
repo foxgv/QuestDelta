@@ -1,7 +1,6 @@
 package ua.com.javarush.quest.kossatyy.questdelta.repository;
 
-import ua.com.javarush.quest.kossatyy.questdelta.entity.Role;
-import ua.com.javarush.quest.kossatyy.questdelta.entity.User;
+import ua.com.javarush.quest.kossatyy.questdelta.entity.Level;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,33 +9,33 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Stream;
 
-public class UserRepository implements Repository<User>{
+public class LevelRepository implements Repository<Level>{
 
     private static final AtomicLong id = new AtomicLong(System.currentTimeMillis());
 
-    private final Map<Long, User> users = new HashMap<>();
+    private final Map<Long, Level> levels = new HashMap<>();;
 
     @Override
-    public Collection<User> getAll() {
-        return users.values()
+    public Collection<Level> getAll() {
+        return levels.values()
                 .stream()
                 .toList();
     }
 
     @Override
-    public User getById(long id) {
-        return users.get(id);
+    public Level getById(long id) {
+        return levels.get(id);
     }
 
     @Override
-    public Stream<User> find(User user) {
-        return users.values()
+    public Stream<Level> find(Level entity) {
+        return levels.values()
                 .stream()
-                .filter(userInDB -> Objects.equals(userInDB.getLogin(), user.getLogin()));
+                .filter(levelInDB -> Objects.equals(levelInDB.getName(), entity.getName()));
     }
 
     @Override
-    public void create(User entity) {
+    public void create(Level entity) {
         if (entity.getId() == null) {
             entity.setId(id.incrementAndGet());
         }
@@ -44,12 +43,12 @@ public class UserRepository implements Repository<User>{
     }
 
     @Override
-    public void update(User entity) {
-        users.put(entity.getId(), entity);
+    public void update(Level entity) {
+        levels.put(entity.getId(), entity);
     }
 
     @Override
     public void deleteById(long id) {
-        users.remove(id);
+        levels.remove(id);
     }
 }

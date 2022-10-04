@@ -1,4 +1,4 @@
-package ua.com.javarush.quest.kossatyy.questdelta.controller;
+package ua.com.javarush.quest.kossatyy.questdelta.controller.website;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.*;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
 import ua.com.javarush.quest.kossatyy.questdelta.service.UserService;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Attribute;
+import ua.com.javarush.quest.kossatyy.questdelta.config.Container;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -16,7 +17,7 @@ import static ua.com.javarush.quest.kossatyy.questdelta.utils.ErrorMessage.*;
 @WebServlet(name = "DeleteServlet", value = "/accounts/delete")
 public class DeleteServlet extends HttpServlet {
 
-    private final UserService userService = UserService.INSTANCE;
+    private final UserService userService = new UserService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

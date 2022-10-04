@@ -6,6 +6,7 @@ import ua.com.javarush.quest.kossatyy.questdelta.entity.User;
 import ua.com.javarush.quest.kossatyy.questdelta.mapper.Mapper;
 import ua.com.javarush.quest.kossatyy.questdelta.mapper.UserMapper;
 import ua.com.javarush.quest.kossatyy.questdelta.repository.Repository;
+import ua.com.javarush.quest.kossatyy.questdelta.config.Container;
 import ua.com.javarush.quest.kossatyy.questdelta.repository.UserRepository;
 
 import java.util.Collection;
@@ -16,10 +17,9 @@ import java.util.regex.Pattern;
 
 import static java.util.Objects.nonNull;
 
-public enum UserService {
-    INSTANCE;
+public class UserService {
 
-    private final Repository<User> userRepository = UserRepository.getInstance();
+    private final Repository<User> userRepository = Container.getInstance(UserRepository.class);
     private final Mapper<UserDto, User> userMapper = new UserMapper();
 
     public Collection<UserDto> getAll(int pageNumber, int pageSize) {

@@ -1,4 +1,4 @@
-package ua.com.javarush.quest.kossatyy.questdelta.controller;
+package ua.com.javarush.quest.kossatyy.questdelta.controller.website;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.*;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
 import ua.com.javarush.quest.kossatyy.questdelta.service.UserService;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Attribute;
+import ua.com.javarush.quest.kossatyy.questdelta.config.Container;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Jsp;
 
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class AccountServlet extends HttpServlet {
 
     private static final int DEFAULT_PAGE_SIZE = 10;
     private static final int DEFAULT_PAGE_NUMBER = 0;
-    private final UserService userService = UserService.INSTANCE;
+    private final UserService userService = new UserService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

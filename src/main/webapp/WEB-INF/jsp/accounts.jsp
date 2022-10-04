@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/accounts.css"/>
 </head>
 
 <body>
@@ -38,17 +38,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="user" items="${requestScope.users}" varStatus="index">
+                <c:forEach var="game" items="${requestScope.users}" varStatus="index">
                     <tr>
                         <th scope="row"><c:out value="${index.count + 10 * requestScope.page}"/></th>
-                        <td><c:out value="${user.login}"/></td>
-                        <td><c:out value="${user.role}"/></td>
+                        <td><c:out value="${game.login}"/></td>
+                        <td><c:out value="${game.role}"/></td>
                         <c:if test="${Role.ADMIN == sessionScope.role}">
                             <td>
-                                <a href="${pageContext.request.contextPath}/update?login=${user.login}">Edit</a>
+                                <a href="${pageContext.request.contextPath}/update?login=${game.login}">Edit</a>
                             </td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/accounts/delete?login=${user.login}">Delete</a>
+                                <a href="${pageContext.request.contextPath}/accounts/delete?login=${game.login}">Delete</a>
                             </td>
                         </c:if>
                     </tr>
