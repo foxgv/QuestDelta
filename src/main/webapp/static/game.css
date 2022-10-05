@@ -4,11 +4,11 @@
 }
 
 body {
-    font-family: 'Gabriela', serif;
+    /*font-family: 'Gabriela', serif;*/
 }
 
 .container {
-    background-image: url(/images/quest/tomb-of-magic/util/bg_quest.jpg);
+    font-family: 'Gabriela', serif;
     background-size: cover;
     max-width: 100vw;
     height: 100vh;
@@ -93,7 +93,6 @@ body {
 .jumbotron {
     display: flex;
     flex-direction: column;
-    background-image: url(/images/quest/tomb-of-magic/util/bg_card.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;

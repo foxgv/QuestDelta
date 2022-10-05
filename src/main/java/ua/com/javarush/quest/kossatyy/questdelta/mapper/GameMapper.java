@@ -1,9 +1,7 @@
 package ua.com.javarush.quest.kossatyy.questdelta.mapper;
 
 import ua.com.javarush.quest.kossatyy.questdelta.dto.GameDto;
-import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.Game;
-import ua.com.javarush.quest.kossatyy.questdelta.entity.User;
 
 public class GameMapper implements Mapper<GameDto, Game> {
 
@@ -15,9 +13,9 @@ public class GameMapper implements Mapper<GameDto, Game> {
                 .description(entity.getDescription())
                 .image(entity.getImage())
                 .authorId(entity.getAuthorId())
-                .startQuestionId(entity.getStartQuestionId())
+                .startLevelId(entity.getStartQuestionId())
+                .requirementDescription(entity.getRequirementDescription())
                 .requirements(entity.getRequirements())
-                .levels(entity.getLevels().size())
                 .build();
     }
 }

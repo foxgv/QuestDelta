@@ -1,45 +1,49 @@
 package ua.com.javarush.quest.kossatyy.questdelta.service;
 
+import ua.com.javarush.quest.kossatyy.questdelta.dto.ButtonDto;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.Button;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.Requirement;
 import ua.com.javarush.quest.kossatyy.questdelta.repository.ButtonRepository;
 import ua.com.javarush.quest.kossatyy.questdelta.repository.Repository;
 import ua.com.javarush.quest.kossatyy.questdelta.config.Container;
+import ua.com.javarush.quest.kossatyy.questdelta.repository.RequirementRepository;
 
+import java.util.List;
 import java.util.Objects;
 
 import static java.util.Objects.isNull;
 
 public class ButtonService {
 
-    private final Repository<Button> buttonRepository = Container.getInstance(ButtonRepository.class);
-//    private final Repository<Requirement> requirementRepository = (Repository<Requirement>) Container.BUTTON_REPOSITORY.getInstance();
+    private final Repository<Requirement> requirementRepository = Container.getInstance(RequirementRepository.class);
 
-    public Button getButton(Long buttonId) {
-        return buttonRepository.getById(buttonId);
-    }
-
-    public String getDescription(Requirement requirement, Button button) {
-        if (isNull(requirement)) {
+    private String getDescription(Button button, Requirement requirement) {
+        if (isNull(button.getRequirementId())) {
             return button.getMainDescription();
         }
 
-//        return Objects.equals(button.getRequirement(), requirement)
-//                ? button.getMainDescription()
-//                : button.getAltDescription();
-        return button.getAltDescription();
+        Requirement buttonRequirement = requirementRepository.getById(button.getRequirementId());
+        return Objects.equals(buttonRequirement, requirement)
+                ? button.getMainDescription()
+                : button.getAltDescription();
     }
 
-    public Long getNextLevelId(Requirement requirement, Long buttonId) {
-        Button button = buttonRepository.getById(buttonId);
+    public Long getNextLevelId(Button button, Requirement requirement) {
+        if (isNull(button.getRequirementId())) {
+            return button.getMainLevelId();
+        }
 
-//        if (isNull(button.getRequirement())) {
-//            return button.getMainLevelId();
-//        }
+        Requirement buttonRequirement = requirementRepository.getById(button.getRequirementId());
+        return Objects.equals(buttonRequirement, requirement)
+                ? button.getMainLevelId()
+                : button.getAltLevelId();
+    }
 
-//        return Objects.equals(button.getRequirement(), requirement)
-//                ? button.getMainLevelId()
-//                : button.getAltLevelId();
-        return button.getAltLevelId();
+    public ButtonDto getBtnDto(Button button, Requirement requirement) {
+        return ButtonDto.builder()
+                .id(button.getId())
+                .description(getDescription(button, requirement))
+                .levelId(getNextLevelId(button, requirement))
+                .build();
     }
 }

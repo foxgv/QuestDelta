@@ -6,6 +6,7 @@
 <head>
     <title>Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="static/play.css"/>
@@ -23,15 +24,14 @@
                     <tr>
                         <th scope="row" class="center"><c:out value="${index.count}"/></th>
                         <td class="d-flex align-items-center">
-                                <%--                            TODO check css game-image-logo / text_table--%>
-                            <img src="images/quest/game_1/${game.image}" alt="game-image" class="game_logo me-3">
+                            <img src="images/games/game_${game.id}/${game.image}" alt="game-image" class="game_logo me-3">
                             <div class="pl-3 container_mini">
                                 <span><strong><c:out value="${game.name}"/></strong></span>
                                 <span><c:out value="${game.description}"/></span>
                             </div>
                         </td>
                         <td class="center">
-                            <a href="${pageContext.request.contextPath}/game?id=${game.id}" class="btn btn-danger me-2">Play</a>
+                            <a href="${pageContext.request.contextPath}/game?gameId=${game.id}" class="btn btn-danger me-2">Play</a>
                         </td>
                     </tr>
                 </c:forEach>

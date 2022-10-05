@@ -19,6 +19,9 @@ public class Jsp {
     public final String PROFILE = "profile.jsp";
     public final String UPDATE = "update.jsp";
     public final String PLAY = "play.jsp";
+    public final String GAME_MENU = "game-menu.jsp";
+    public final String REQUIREMENT = "requirement.jsp";
+    public final String LEVEL = "level.jsp";
 
     public void forward(HttpServletRequest request, HttpServletResponse response, String filename) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(PATH_TO_JSP + filename);

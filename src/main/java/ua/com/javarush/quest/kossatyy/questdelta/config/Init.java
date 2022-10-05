@@ -60,6 +60,7 @@ public class Init {
                 .image("tomb_of_magic.jpg")
                 .authorId(maxim.getId())
                 .startQuestionId(0L)
+                .requirementDescription("Стихия повлияет на ваши возможности и доступные действия")
                 .build();
 
         //----  Requirements

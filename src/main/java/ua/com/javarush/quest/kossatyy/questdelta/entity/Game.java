@@ -15,6 +15,7 @@ public class Game {
     private String image;
     private Long authorId;
     private Long startQuestionId;
+    private String requirementDescription;
     private List<Requirement> requirements;
     private List<Level> levels;
 

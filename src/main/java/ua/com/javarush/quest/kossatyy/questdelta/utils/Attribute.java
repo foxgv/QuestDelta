@@ -4,9 +4,11 @@ public enum Attribute {
     COUNT_USERS("count"),
     ERROR("error"),
     GAME_ID("gameId"),
+    GAME("game"),
     GAME_SESSION("gameSession"),
     GAMES("games"),
     ID("id"),
+    LEVEL("level"),
     LOGIN("login"),
     LOGIN_NEW("loginNew"),
     PAGE_COUNT("pageCount"),
@@ -16,7 +18,8 @@ public enum Attribute {
     ROLE("role"),
     USER("user"),
     USER_UPDATE("userUpdate"),
-    USERS("users");
+    USERS("users"),
+    BUTTON("button");
 
 
     private final String value;

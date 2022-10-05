@@ -7,13 +7,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import ua.com.javarush.quest.kossatyy.questdelta.config.Container;
+import ua.com.javarush.quest.kossatyy.questdelta.dto.GameDto;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.GameSessionDto;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
+import ua.com.javarush.quest.kossatyy.questdelta.entity.Game;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.GameSession;
 import ua.com.javarush.quest.kossatyy.questdelta.error.AppError;
 import ua.com.javarush.quest.kossatyy.questdelta.service.GameService;
 import ua.com.javarush.quest.kossatyy.questdelta.service.LevelService;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Attribute;
+import ua.com.javarush.quest.kossatyy.questdelta.utils.Jsp;
 
 import java.io.IOException;
 
@@ -33,43 +36,15 @@ public class GameServlet extends HttpServlet {
         try {
             gameId = Long.parseLong(paramGameId);
         } catch (NumberFormatException e) {
+            // TODO replace for display error / redirect?
             throw new AppError("Wrong format gameID - " + paramGameId, e);
         }
+        GameDto gameDto = gameService.getGame(gameId);
+        currentSession.setAttribute(Attribute.GAME.getValue(), gameDto);
 
         GameSessionDto gameSessionDto = gameService.getSession(user, gameId);
         currentSession.setAttribute(Attribute.GAME_SESSION.getValue(), gameSessionDto);
 
-//        Requirement requirement = (Requirement) currentSession.getAttribute("req");
-////
-//        String button = requirement.getParameter("button");
-
-//        Long levelId = (Long) currentSession.getAttribute("levelId");
-//        Requirement requirement = (Requirement) currentSession.getAttribute("req");
-//
-//        String button = requirement.getParameter("button");
-//
-//        Level nextLevel;
-//        if (button == null){
-//            nextLevel = levelService.getLevel(levelId);
-//        } else {
-//            int buttonId = Integer.parseInt(requirement.getParameter("button"));
-//            nextLevel = levelService.getNextLevel(requirement, levelId, buttonId);
-//        }
-//        if (nextLevel == null) {
-//            RequestDispatcher requestDispatcher = requirement.getRequestDispatcher("/element");
-//            requestDispatcher.forward(requirement, resp);
-//        } else {
-//            requirement.setAttribute("level", nextLevel);
-//            currentSession.setAttribute("levelId", nextLevel.getId());
-//            currentSession.setAttribute("levelName", nextLevel.getName());
-//
-//            RequestDispatcher requestDispatcher = requirement.getRequestDispatcher("/level.jsp");
-//            requestDispatcher.forward(requirement, resp);
-//        }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        Jsp.forward(req,resp, Jsp.GAME_MENU);
     }
 }

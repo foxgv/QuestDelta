@@ -1,6 +1,7 @@
 package ua.com.javarush.quest.kossatyy.questdelta.service;
 
 import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
+import ua.com.javarush.quest.kossatyy.questdelta.entity.GameSession;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.Role;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.User;
 import ua.com.javarush.quest.kossatyy.questdelta.mapper.Mapper;
@@ -11,6 +12,7 @@ import ua.com.javarush.quest.kossatyy.questdelta.repository.UserRepository;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -87,6 +89,15 @@ public class UserService {
         }
 
         user.setRole(role);
+
+        userRepository.update(user);
+    }
+
+    public void update(Long id, GameSession session) {
+        User user = userRepository.getById(id);
+
+        List<Long> gamesIdWithSession = user.getGamesIdWithSession();
+        gamesIdWithSession.add(session.getGameId());
 
         userRepository.update(user);
     }

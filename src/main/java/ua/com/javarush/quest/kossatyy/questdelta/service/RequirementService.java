@@ -12,6 +12,7 @@ public class RequirementService {
 
     private final Repository<Requirement> requirementRepository = Container.getInstance(RequirementRepository.class);
 
+    // TODO for edit game feature
     public List<Requirement> createRequirements(List<String> reqs){
         List<Requirement> requirements = new ArrayList<>();
         for (String name : reqs) {
@@ -25,4 +26,7 @@ public class RequirementService {
         return requirements;
     }
 
+    public Requirement getById(long requirementId) {
+        return requirementRepository.getById(requirementId);
+    }
 }

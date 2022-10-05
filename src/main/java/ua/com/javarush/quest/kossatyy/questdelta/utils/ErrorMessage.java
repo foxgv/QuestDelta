@@ -12,5 +12,6 @@ public class ErrorMessage {
    public final String USER_NOT_CREATED = "User not created";
    public final String WRONG_PASSWORD = "Wrong password";
    public final String DELETE_YOURSELF = "You can't delete your profile";
+   public final String REQ_ID_NOT_FOUND = "Requirement ID not found";
 
 }
