@@ -9,7 +9,6 @@ import java.util.HashMap;
 @Repository
 public class QuestionsRepoImpl implements QuestionsRepo {
 
-
     private HashMap<Integer, Question> questions;
     private final SourceLoader sourceLoader;
 

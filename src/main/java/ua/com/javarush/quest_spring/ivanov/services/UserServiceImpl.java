@@ -1,8 +1,8 @@
 package ua.com.javarush.quest_spring.ivanov.services;
 
+import org.springframework.stereotype.Service;
 import ua.com.javarush.quest_spring.ivanov.entities.User;
 import ua.com.javarush.quest_spring.ivanov.repository.UserRepoImpl;
-import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
