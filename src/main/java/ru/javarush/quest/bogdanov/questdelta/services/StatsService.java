@@ -2,9 +2,6 @@ package ru.javarush.quest.bogdanov.questdelta.services;
 
 import ru.javarush.quest.bogdanov.questdelta.entities.Game;
 import ru.javarush.quest.bogdanov.questdelta.entities.GameState;
-import ru.javarush.quest.bogdanov.questdelta.repositories.GameRepository;
-import ru.javarush.quest.bogdanov.questdelta.repositories.QuestRepository;
-import ru.javarush.quest.bogdanov.questdelta.repositories.UserRepository;
 
 import java.util.List;
 
@@ -12,26 +9,21 @@ public enum StatsService {
 
     STATS_SERVICE;
 
-    private final GameRepository gameRepository = GameRepository.getInstance();
-    private final UserRepository userRepository = UserRepository.getInstance();
-    private final QuestRepository questRepository = QuestRepository.getInstance();
+    private final GameService gameService = GameService.GAME_SERVICE;
+    private final UserService userService = UserService.USER_SERVICE;
+    private final QuestService questService = QuestService.QUEST_SERVICE;
 
     public String getGamesStats() {
-        List<Game> all = gameRepository.getAll();
+        List<Game> all = gameService.getAll();
         return getString(all);
     }
 
-    //TODO допилить метод
-    /*public List<String> getUsersGamesStats() {
-        return userRepository.getAll().stream().map(user -> getString(user.games)).collect(Collectors.toList());
-    }*/
-
     public String getUserLogin(Game game) {
-        return userRepository.getByID(game.userId).getLogin();
+        return userService.getUser(game.userId).get().getLogin();
     }
 
     public String getQuestName(Game game) {
-        return questRepository.getByID(game.questId).getName();
+        return questService.getQuestById(game.questId).getName();
     }
 
     private String getString(List<Game> games) {

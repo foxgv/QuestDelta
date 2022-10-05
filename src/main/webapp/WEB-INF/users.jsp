@@ -16,7 +16,7 @@
             <br>
             <b>Роль: ${user.role}</b>
             <br>
-            <b>Игры: ${user.games}</b>
+            <b>Всего игр сыграно: ${user.games.size()}</b>
             <br>
         </div>
         <br>

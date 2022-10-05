@@ -16,6 +16,10 @@ public enum QuestService {
         return questRepository.getAll();
     }
 
+    public Quest getQuestById(long id) {
+        return questRepository.getByID(id);
+    }
+
     public void create(Quest quest) {
         questRepository.create(quest);
     }
