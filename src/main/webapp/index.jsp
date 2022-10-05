@@ -9,17 +9,13 @@
 </head>
 <body>
 
-<a href="/quest">Start</a>
-<br>
-<br>
+<%--<a href="/quest">Start</a>--%>
 
 <form action="/quest" method="GET">
     Enter your name <input type="text" name="userName"/>
     <input type="submit" value="submit">
 </form>
-
 <br>
-<button onclick="restart()">Start again</button>
 <input type="button" value="TRY AGAIN" onClick="document.location = '/restart'"/>
 
 </body>

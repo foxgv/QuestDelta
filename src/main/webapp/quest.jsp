@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="ua.com.javarush.quest.khmelov.questdelta.data.Quest" %><%--
+<%@ page import="ua.com.javarush.quest.khmelov.questdelta.data.Quest" %>
+<%--
   Created by IntelliJ IDEA.
   User: Администратор
   Date: 21.09.2022
@@ -15,31 +16,16 @@
     <script src="./js/script.js"></script>
 </head>
 <body>
-<h1>NEW PAGE HELLO</h1>
-<br>
-<br>
-<p>You accepted the challenge. Go up to the bridge to the captain?</p>
 
 <%
+    // get current quest object
     Quest quest = (Quest) session.getAttribute("quest");
-    List<String> levelText = quest.getCurrentLevelText(quest.getLEVEL());
 
-//    if (names != null && !names.isEmpty()) {
-//        out.println("<ui>");
-//        for (String s : names) {
-//            out.println("<li>" + s + "</li>");
-//        }
-//        out.println("</ui>");
-//    } else out.println("<p>There are no users yet!</p>");
+    // get current level text for user
+    List<String> levelText = quest.getCurrentLevelText(quest.getLEVEL());
 %>
 
-<h3><%
-
-    out.println(levelText.get(0));
-    out.println(request.getAttribute("userName"));
-    out.println(session.getAttribute("userName"));
-%></h3>
-
+<h3><%out.println(levelText.get(0));%></h3>
 
 <form action="/quest" method="GET">
     <input type="checkbox" name="answer" value="1" /> <% out.println(levelText.get(1)); %>
@@ -48,6 +34,14 @@
 </form>
 
 <input type="button" value="TRY AGAIN" onClick="document.location = '/restart'"/>
+
+<div class="footer">
+    <h4>Statistic: </h4>
+    <p class="username">User name: <% out.println(quest.getUserName()); %></p>
+    <p class="user_address">IP Address - DeviceName/Address: <% out.println(quest.getUserAddress()); %> </p>
+    <p class="sessionID">Session ID: <% out.println(session.getId()); %> </p>
+</div>
+
 
 </body>
 </html>

@@ -1,6 +1,5 @@
 package ua.com.javarush.quest.khmelov.questdelta.data;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

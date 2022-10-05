@@ -16,8 +16,7 @@
 <body>
 <h1>YOU ARE LOSE</h1>
 <br>
-<br>
-<br>
-<button onclick="restart()">Start again</button>
+
+<input type="button" value="TRY AGAIN" onClick="document.location = '/restart'"/>
 </body>
 </html>

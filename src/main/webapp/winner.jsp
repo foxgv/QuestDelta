@@ -12,5 +12,8 @@
 </head>
 <body>
 <h1>YOU ARE WINNER</h1>
+
+<input type="button" value="TRY AGAIN" onClick="document.location = '/restart'"/>
+
 </body>
 </html>
