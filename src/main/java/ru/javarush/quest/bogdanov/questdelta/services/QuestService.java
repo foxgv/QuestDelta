@@ -10,6 +10,7 @@ public enum QuestService {
     QUEST_SERVICE;
 
     private final QuestRepository questRepository = QuestRepository.getInstance();
+    private final UserService userService = UserService.USER_SERVICE;
 
     public List<Quest> getAll() {
         return questRepository.getAll();
@@ -17,5 +18,9 @@ public enum QuestService {
 
     public void create(Quest quest) {
         questRepository.create(quest);
+    }
+
+    public String getAuthorLogin(long authorId) {
+        return userService.getUser(authorId).get().getLogin();
     }
 }

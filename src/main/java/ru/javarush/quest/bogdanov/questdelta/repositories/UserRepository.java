@@ -55,7 +55,8 @@ public class UserRepository implements Repository<User> {
         return map.values()
                 .stream()
                 .filter(x -> x.getLogin().equals(pattern.getLogin())
-                        && x.getPassword().equals(pattern.getPassword()))
+                        || (x.getLogin().equals(pattern.getLogin())
+                        && x.getPassword().equals(pattern.getPassword())))
                 .toList()
                 .stream()
                 .findFirst();

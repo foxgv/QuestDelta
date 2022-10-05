@@ -1,5 +1,6 @@
 package ru.javarush.quest.bogdanov.questdelta.entities;
 
+import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class Game {
@@ -16,10 +17,13 @@ public class Game {
 
     public GameState gameState;
 
+    public LocalDate date;
+
     public Game(long userId, long questId) {
         this.id = ID_GAME_COUNTER.getAndIncrement();
         this.userId = userId;
         this.questId = questId;
+        this.date = LocalDate.now();
     }
 
     public long getId() {
@@ -42,12 +46,20 @@ public class Game {
         return gameState;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Game{" +
                 "userId=" + userId +
-                ", questId=" + questId +
                 ", gameState=" + gameState +
+                ", date=" + date +
                 '}';
     }
 }

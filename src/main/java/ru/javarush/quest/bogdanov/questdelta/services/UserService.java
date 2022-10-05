@@ -21,21 +21,35 @@ public enum UserService {
         return Optional.ofNullable(userRepository.getByID(id));
     }
 
-    public void create(String login, String password, Role role) {
-        User user = new User(login, password, role);
-        userRepository.create(user);
+    public boolean create(String login, String password, Role role) {
+        if (find(login, password).isPresent()) {
+            return false;
+        } else {
+            User user = new User(login, password, role);
+            userRepository.create(user);
+            return true;
+        }
     }
 
-    public void update(long id, String login, String password, Role role) {
-        User user = getUser(id).get();
-        user.setLogin(login);
-        user.setPassword(password);
-        user.setRole(role);
-        userRepository.update(user);
+    public boolean update(long id, String login, String password, Role role) {
+        if (getUser(id).isPresent()) {
+            User user = getUser(id).get();
+            user.setLogin(login);
+            user.setPassword(password);
+            user.setRole(role);
+            userRepository.update(user);
+            return true;
+        }
+        return false;
     }
 
-    public void delete(Long id) {
-        userRepository.delete(id);
+    public boolean delete(Long id) {
+        if (getUser(id).isPresent()) {
+            User user = getUser(id).get();
+            userRepository.delete(user.id);
+            return true;
+        }
+        return false;
     }
 
     public Optional<User> find(String login, String password) {

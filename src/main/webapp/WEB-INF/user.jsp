@@ -61,7 +61,11 @@
                     </div>
                 </div>
             </c:if>
-
+            <c:if test="${not empty requestScope.error}">
+                <script type="text/javascript">
+                    alert("${requestScope.error}");
+                </script>
+            </c:if>
         </fieldset>
     </form>
 </div>

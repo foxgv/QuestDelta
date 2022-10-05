@@ -4,8 +4,8 @@
 <div class="container">
     <c:if test="${not empty sessionScope.user}">
         <c:if test="${sessionScope.user.role == Role.ADMIN}">
-            <div class="users">
-                <a href="user?id=0">Create new user</a>
+            <div class="buttons">
+                <button onclick="window.location.href='user?id=0'">Create new user!</button>
             </div>
         </c:if>
     </c:if>

@@ -5,14 +5,17 @@
     <div class="questText">
         <script src="<c:url value="/static/jquery-3.6.0.min.js"/>"></script>
         <h2>${sessionScope.question.text}</h2>
-        <br>
-        <c:forEach var="answer" items="${sessionScope.question.answerList}">
-            <button class="answerButton" onclick="sendAnswer(this)" id="${answer.id}">${answer.text}</button>
-        </c:forEach>
+        <div class="buttons">
+            <br>
+            <c:forEach var="answer" items="${sessionScope.question.answerList}">
+                <button onclick="sendAnswer(this)" id="${answer.id}">${answer.text}</button>
+            </c:forEach>
+        </div>
         <c:if test="${sessionScope.game.gameState != GameState.STARTED}">
-            <button class="answerButton" onclick="window.location.href='/finish'">Завершить!</button>
+            <div class="buttons">
+                <button onclick="window.location.href='/finish'">Завершить!</button>
+            </div>
         </c:if>
-        <br>
     </div>
 </div>
 <script>

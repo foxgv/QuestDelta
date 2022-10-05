@@ -27,24 +27,37 @@ public class UserServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Long userId = getUserId(request);
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         Role select = Role.valueOf(request.getParameter("select"));
-        postUser(request, userId, login, password, select);
-        response.sendRedirect("/users");
+        if (postUser(request, userId, login, password, select)) {
+            response.sendRedirect("/users");
+        } else {
+            request.getRequestDispatcher("WEB-INF/user.jsp").forward(request, response);
+        }
     }
 
-    private void postUser(HttpServletRequest request, long id, String login, String password, Role select) {
+    private boolean postUser(HttpServletRequest request, long id, String login, String password, Role select) {
         boolean userCheck = userService.getUser(getUserId(request)).isPresent();
         if (!userCheck && request.getParameter("create") != null) {
-            userService.create(login, password, select);
+            if (!userService.create(login, password, select)) {
+                request.setAttribute("error", "This login is present");
+                return false;
+            }
         } else if (userCheck && request.getParameter("delete") != null) {
-            userService.delete(id);
+            if (!userService.delete(id)) {
+                request.setAttribute("error", "This login is present");
+                return false;
+            }
         } else if (userCheck && request.getParameter("update") != null) {
-            userService.update(id, login, password, select);
+            if(!userService.update(id, login, password, select)) {
+                request.setAttribute("error", "This user was not found");
+                return false;
+            }
         }
+        return true;
     }
 
     private Long getUserId(HttpServletRequest request) {

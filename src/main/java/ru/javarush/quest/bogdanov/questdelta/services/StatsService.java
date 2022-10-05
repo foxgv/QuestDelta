@@ -3,6 +3,8 @@ package ru.javarush.quest.bogdanov.questdelta.services;
 import ru.javarush.quest.bogdanov.questdelta.entities.Game;
 import ru.javarush.quest.bogdanov.questdelta.entities.GameState;
 import ru.javarush.quest.bogdanov.questdelta.repositories.GameRepository;
+import ru.javarush.quest.bogdanov.questdelta.repositories.QuestRepository;
+import ru.javarush.quest.bogdanov.questdelta.repositories.UserRepository;
 
 import java.util.List;
 
@@ -11,7 +13,8 @@ public enum StatsService {
     STATS_SERVICE;
 
     private final GameRepository gameRepository = GameRepository.getInstance();
-    //private final UserRepository userRepository = new UserRepository();
+    private final UserRepository userRepository = UserRepository.getInstance();
+    private final QuestRepository questRepository = QuestRepository.getInstance();
 
     public String getGamesStats() {
         List<Game> all = gameRepository.getAll();
@@ -22,6 +25,14 @@ public enum StatsService {
     /*public List<String> getUsersGamesStats() {
         return userRepository.getAll().stream().map(user -> getString(user.games)).collect(Collectors.toList());
     }*/
+
+    public String getUserLogin(Game game) {
+        return userRepository.getByID(game.userId).getLogin();
+    }
+
+    public String getQuestName(Game game) {
+        return questRepository.getByID(game.questId).getName();
+    }
 
     private String getString(List<Game> games) {
         int wins = games.stream()
