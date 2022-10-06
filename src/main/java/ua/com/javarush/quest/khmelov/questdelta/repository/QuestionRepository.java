@@ -21,7 +21,8 @@ public class QuestionRepository extends AbstractRepository<Question> {
                         &&isCoincide(template, entity, Question::getQuestID)
                         &&isCoincide(template, entity, Question::getQuestionText)
                         &&isCoincide(template, entity, Question::getAnswers)
-                        &&isCoincide(template, entity, Question::isALast))
+                        &&isCoincide(template, entity, Question::isALast)
+                        &&isCoincide(template, entity, Question::getImage))
                 .collect(Collectors.toList());
     }
 }

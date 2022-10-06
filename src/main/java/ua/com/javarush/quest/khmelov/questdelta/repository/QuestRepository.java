@@ -21,7 +21,8 @@ public class QuestRepository extends AbstractRepository<Quest> {
                         &&isCoincide(template, entity, Quest::getName)
                         &&isCoincide(template, entity, Quest::isActive)
                         &&isCoincide(template, entity, Quest::getAuthorID)
-                        &&isCoincide(template, entity, Quest::getQuestions))
+                        &&isCoincide(template, entity, Quest::getQuestions)
+                        &&isCoincide(template, entity, Quest::getImage))
                 .collect(Collectors.toList());
     }
 }

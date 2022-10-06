@@ -12,6 +12,15 @@ public class Question extends AbstractEntity {
     private String questionText;
     private boolean isALast = false;
     Collection<Answer> answers;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public long getQuestID() {
         return questID;

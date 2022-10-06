@@ -10,15 +10,26 @@ public class Quest extends AbstractEntity {
     private long authorID;
     private Collection<Question> questions;
 
-    public Quest(String name, boolean isActive, long authorID, Collection<Question> questions) {
+    private String image;
+
+    public Quest(String name, boolean isActive, long authorID, Collection<Question> questions, String image) {
         this.name = name;
         this.isActive = isActive;
         this.authorID = authorID;
         this.questions = questions;
+        this.image = image;
     }
 
     public static QuestBuilder builder(){
         return new QuestBuilder();
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getName() {
@@ -77,6 +88,7 @@ public class Quest extends AbstractEntity {
         private boolean isActive = true;
         private long authorID;
         private Collection<Question> questions;
+        private String image;
 
         QuestBuilder() {
         }
@@ -112,8 +124,13 @@ public class Quest extends AbstractEntity {
             return this;
         }
 
+        public QuestBuilder image(String image){
+            this.image = image;
+            return this;
+        }
+
         public Quest build(){
-            return new Quest(name, isActive, authorID, questions);
+            return new Quest(name, isActive, authorID, questions, image);
         }
     }
 }
