@@ -1,18 +1,21 @@
 package ua.com.javarush.quest.kossatyy.questdelta.controller.website;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
 import ua.com.javarush.quest.kossatyy.questdelta.service.UserService;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Attribute;
-import ua.com.javarush.quest.kossatyy.questdelta.config.Container;
 
 import java.io.IOException;
 import java.util.Optional;
 
 import static java.util.Objects.isNull;
-import static ua.com.javarush.quest.kossatyy.questdelta.utils.ErrorMessage.*;
+import static ua.com.javarush.quest.kossatyy.questdelta.utils.ErrorMessage.DELETE_YOURSELF;
+import static ua.com.javarush.quest.kossatyy.questdelta.utils.ErrorMessage.USER_NOT_FOUND;
 
 @WebServlet(name = "DeleteServlet", value = "/accounts/delete")
 public class DeleteServlet extends HttpServlet {
@@ -24,8 +27,7 @@ public class DeleteServlet extends HttpServlet {
         String login = req.getParameter(Attribute.LOGIN.getValue());
         if (isNull(login)) {
             req.setAttribute(Attribute.ERROR.getValue(), USER_NOT_FOUND);
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/accounts");
-            requestDispatcher.forward(req,resp);
+            req.getRequestDispatcher("/accounts").forward(req,resp);
             return;
         }
 
@@ -33,14 +35,12 @@ public class DeleteServlet extends HttpServlet {
         String userLogin = currentUser.getLogin();
         if (login.equals(userLogin)) {
             req.setAttribute(Attribute.ERROR.getValue(), DELETE_YOURSELF);
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/accounts");
-            requestDispatcher.forward(req,resp);
+            req.getRequestDispatcher("/accounts").forward(req,resp);
             return;
         }
 
         Optional<UserDto> user = userService.findByLogin(login);
         user.ifPresent(userDto -> userService.deleteById(userDto.getId()));
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/accounts");
-        requestDispatcher.forward(req,resp);
+        req.getRequestDispatcher("/accounts").forward(req,resp);
     }
 }

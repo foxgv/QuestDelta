@@ -10,7 +10,6 @@ import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.Role;
 import ua.com.javarush.quest.kossatyy.questdelta.service.UserService;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Attribute;
-import ua.com.javarush.quest.kossatyy.questdelta.config.Container;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Jsp;
 
 import java.io.IOException;

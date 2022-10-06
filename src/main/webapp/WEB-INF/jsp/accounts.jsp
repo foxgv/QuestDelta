@@ -23,7 +23,8 @@
         <div class="card-body">
             <h4 class="card-title text-center">Accounts list</h4>
             <c:if test="${Role.ADMIN == sessionScope.role}">
-                <a href="${pageContext.request.contextPath}/signup">Create new user</a>
+                <a href="${pageContext.request.contextPath}/signup"><img class="bi me-2" width="35" height="35" src="${pageContext.request.contextPath}/images/icon/icon_create_user.svg" alt="create icon"/>
+                </a>
             </c:if>
 
             <table class="table table-striped">
@@ -46,10 +47,10 @@
                         <td><c:out value="${game.role}"/></td>
                         <c:if test="${Role.ADMIN == sessionScope.role}">
                             <td>
-                                <a href="${pageContext.request.contextPath}/update?login=${game.login}">Edit</a>
+                                <a href="${pageContext.request.contextPath}/update?login=${game.login}"><img class="bi me-2" width="25" height="25" src="${pageContext.request.contextPath}/images/icon/icon_edit.svg" alt="edit icon"/></a>
                             </td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/accounts/delete?login=${game.login}">Delete</a>
+                                <a href="${pageContext.request.contextPath}/accounts/delete?login=${game.login}"><img class="bi me-2" width="25" height="25" src="${pageContext.request.contextPath}/images/icon/icon_delete.svg" alt="delete icon"/></a>
                             </td>
                         </c:if>
                     </tr>

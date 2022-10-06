@@ -1,14 +1,12 @@
 package ua.com.javarush.quest.kossatyy.questdelta.service;
 
+import ua.com.javarush.quest.kossatyy.questdelta.config.Container;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.ButtonDto;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.Button;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.Requirement;
-import ua.com.javarush.quest.kossatyy.questdelta.repository.ButtonRepository;
 import ua.com.javarush.quest.kossatyy.questdelta.repository.Repository;
-import ua.com.javarush.quest.kossatyy.questdelta.config.Container;
 import ua.com.javarush.quest.kossatyy.questdelta.repository.RequirementRepository;
 
-import java.util.List;
 import java.util.Objects;
 
 import static java.util.Objects.isNull;

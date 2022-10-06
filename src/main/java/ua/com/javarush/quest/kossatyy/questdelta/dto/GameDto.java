@@ -18,7 +18,5 @@ public class GameDto {
     private Long startLevelId;
     private String requirementDescription;
     private List<Requirement>  requirements;
-//    private List<Level> levelsId;
-//    private int levels;
 
 }

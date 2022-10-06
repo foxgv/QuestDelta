@@ -6,15 +6,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import ua.com.javarush.quest.kossatyy.questdelta.config.Container;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.GameDto;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.GameSessionDto;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
-import ua.com.javarush.quest.kossatyy.questdelta.entity.Game;
-import ua.com.javarush.quest.kossatyy.questdelta.entity.GameSession;
 import ua.com.javarush.quest.kossatyy.questdelta.error.AppError;
 import ua.com.javarush.quest.kossatyy.questdelta.service.GameService;
-import ua.com.javarush.quest.kossatyy.questdelta.service.LevelService;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Attribute;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Jsp;
 

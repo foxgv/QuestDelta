@@ -31,12 +31,11 @@ public class LevelService {
         return levelDto;
     }
 
-    public LevelDto getLevel(Long levelId, Requirement requirement, int buttonNumber) {
+    public Long getNextLevelId(Long levelId, Requirement requirement, int buttonNumber) {
         Level level = levelRepository.getById(levelId);
         List<Button> buttons = level.getButtons();
         Button button = buttons.get(buttonNumber);
-        Long nextLevelId = buttonService.getNextLevelId(button, requirement);
 
-        return getLevel(nextLevelId, requirement);
+        return buttonService.getNextLevelId(button, requirement);
     }
 }

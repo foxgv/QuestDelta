@@ -1,6 +1,5 @@
 package ua.com.javarush.quest.kossatyy.questdelta.config;
 
-import ua.com.javarush.quest.kossatyy.questdelta.entity.GameSession;
 import ua.com.javarush.quest.kossatyy.questdelta.repository.*;
 
 import java.util.Arrays;

@@ -1,12 +1,13 @@
 package ua.com.javarush.quest.kossatyy.questdelta.controller.website;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
 import ua.com.javarush.quest.kossatyy.questdelta.service.UserService;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Attribute;
-import ua.com.javarush.quest.kossatyy.questdelta.config.Container;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Jsp;
 
 import java.io.IOException;

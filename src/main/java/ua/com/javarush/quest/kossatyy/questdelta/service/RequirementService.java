@@ -12,7 +12,7 @@ public class RequirementService {
 
     private final Repository<Requirement> requirementRepository = Container.getInstance(RequirementRepository.class);
 
-    // TODO for edit game feature
+    // TODO create edit game feature
     public List<Requirement> createRequirements(List<String> reqs){
         List<Requirement> requirements = new ArrayList<>();
         for (String name : reqs) {
@@ -22,7 +22,6 @@ public class RequirementService {
             requirementRepository.create(requirement);
             requirements.add(requirement);
         }
-
         return requirements;
     }
 

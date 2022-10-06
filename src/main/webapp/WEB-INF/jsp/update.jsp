@@ -19,7 +19,7 @@
     <form class="form-horizontal" action="update?id=${requestScope.userUpdate.id}" method="post">
 
         <fieldset>
-            <img class="mb-3 mx-auto d-block" src="images/eagle-black.svg" alt="logo" width="100" height="100">
+            <img class="mb-3 mx-auto d-block" src="../../images/site/eagle-black.svg" alt="logo" width="100" height="100">
             <legend class="text-center">${requestScope.userUpdate.login}</legend>
 
             <div class="form-group">

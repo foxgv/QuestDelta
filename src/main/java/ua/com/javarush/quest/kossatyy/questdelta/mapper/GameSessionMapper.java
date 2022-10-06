@@ -1,8 +1,6 @@
 package ua.com.javarush.quest.kossatyy.questdelta.mapper;
 
-import ua.com.javarush.quest.kossatyy.questdelta.dto.GameDto;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.GameSessionDto;
-import ua.com.javarush.quest.kossatyy.questdelta.entity.Game;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.GameSession;
 
 public class GameSessionMapper implements Mapper<GameSessionDto, GameSession> {

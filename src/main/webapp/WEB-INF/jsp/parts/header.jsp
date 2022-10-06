@@ -7,7 +7,7 @@
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="${pageContext.request.contextPath}/menu"
                class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <img class="bi me-2" width="40" height="40" src="${pageContext.request.contextPath}/images/eagle-white.svg" alt="eagle-logo"/>
+                <img class="bi me-2" width="40" height="40" src="${pageContext.request.contextPath}/images/site/eagle-white.svg" alt="eagle-logo"/>
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">

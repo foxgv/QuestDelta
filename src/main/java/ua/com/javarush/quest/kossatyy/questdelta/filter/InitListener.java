@@ -8,9 +8,6 @@ import ua.com.javarush.quest.kossatyy.questdelta.config.Init;
 @WebListener
 public class InitListener implements ServletContextListener, HttpSessionListener, HttpSessionAttributeListener {
 
-    public InitListener() {
-    }
-
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         Init.load();
@@ -18,6 +15,6 @@ public class InitListener implements ServletContextListener, HttpSessionListener
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        /* This method is called when the servlet Context is undeployed or Application Server shuts down. */
+        //TODO save all repository before destroy
     }
 }

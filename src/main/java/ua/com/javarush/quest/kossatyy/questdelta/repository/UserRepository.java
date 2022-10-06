@@ -1,6 +1,5 @@
 package ua.com.javarush.quest.kossatyy.questdelta.repository;
 
-import ua.com.javarush.quest.kossatyy.questdelta.entity.Role;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.User;
 
 import java.util.Collection;

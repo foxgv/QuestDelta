@@ -4,20 +4,19 @@ import ua.com.javarush.quest.kossatyy.questdelta.config.Container;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.GameDto;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.GameSessionDto;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
-import ua.com.javarush.quest.kossatyy.questdelta.entity.*;
+import ua.com.javarush.quest.kossatyy.questdelta.entity.Game;
+import ua.com.javarush.quest.kossatyy.questdelta.entity.GameSession;
+import ua.com.javarush.quest.kossatyy.questdelta.entity.GameStatus;
+import ua.com.javarush.quest.kossatyy.questdelta.entity.Requirement;
 import ua.com.javarush.quest.kossatyy.questdelta.error.AppError;
 import ua.com.javarush.quest.kossatyy.questdelta.mapper.GameMapper;
 import ua.com.javarush.quest.kossatyy.questdelta.mapper.GameSessionMapper;
 import ua.com.javarush.quest.kossatyy.questdelta.mapper.Mapper;
-import ua.com.javarush.quest.kossatyy.questdelta.mapper.UserMapper;
 import ua.com.javarush.quest.kossatyy.questdelta.repository.GameRepository;
 import ua.com.javarush.quest.kossatyy.questdelta.repository.GameSessionRepository;
 import ua.com.javarush.quest.kossatyy.questdelta.repository.Repository;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 public class GameService {
 
@@ -60,9 +59,13 @@ public class GameService {
                     .gameId(gameId)
                     .currentQuestionId(game.getStartQuestionId())
                     .build();
-            sessionDto = gameSessionMapper.toDto(userSession);
+
             gameSessionRepository.create(userSession);
             userService.update(userDto.getId(), userSession);
+            sessionDto = gameSessionRepository.find(userSession)
+                    .findFirst()
+                    .map(gameSessionMapper::toDto)
+                    .orElseThrow(() -> new AppError("Session not found for gameID - " + gameId + " userID - " + userDto.getId()));
         }
 
         return sessionDto;
@@ -84,6 +87,16 @@ public class GameService {
         if (id != null) {
             GameSession gameSession = gameSessionRepository.getById(gameSessionDto.getId());
             gameSession.setGameStatus(status);
+            gameSessionRepository.update(gameSession);
+        }
+    }
+
+    public void updateLevel(GameSessionDto gameSessionDto, Long nextLevelId) {
+        gameSessionDto.setCurrentQuestionId(nextLevelId);
+        Long id = gameSessionDto.getId();
+        if (id != null) {
+            GameSession gameSession = gameSessionRepository.getById(gameSessionDto.getId());
+            gameSession.setCurrentQuestionId(nextLevelId);
             gameSessionRepository.update(gameSession);
         }
     }

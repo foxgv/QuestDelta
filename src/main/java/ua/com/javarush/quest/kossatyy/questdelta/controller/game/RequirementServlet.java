@@ -1,6 +1,5 @@
 package ua.com.javarush.quest.kossatyy.questdelta.controller.game;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,10 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.GameDto;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.GameSessionDto;
-import ua.com.javarush.quest.kossatyy.questdelta.dto.UserDto;
-import ua.com.javarush.quest.kossatyy.questdelta.entity.GameSession;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.Requirement;
-import ua.com.javarush.quest.kossatyy.questdelta.error.AppError;
 import ua.com.javarush.quest.kossatyy.questdelta.service.GameService;
 import ua.com.javarush.quest.kossatyy.questdelta.service.RequirementService;
 import ua.com.javarush.quest.kossatyy.questdelta.utils.Attribute;
@@ -49,6 +45,9 @@ public class RequirementServlet extends HttpServlet {
         Requirement requirement = requirementService.getById(requirementId);
         GameSessionDto gameSessionDto = (GameSessionDto) currentSession.getAttribute(Attribute.GAME_SESSION.getValue());
         gameService.updateRequirement(gameSessionDto, requirement);
+
+        GameDto gameDto = (GameDto) currentSession.getAttribute(Attribute.GAME.getValue());
+        gameService.updateLevel(gameSessionDto, gameDto.getStartLevelId());
         req.getRequestDispatcher("level").forward(req,resp);
     }
 }

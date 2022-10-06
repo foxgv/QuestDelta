@@ -1,6 +1,5 @@
 package ua.com.javarush.quest.kossatyy.questdelta.repository;
 
-import ua.com.javarush.quest.kossatyy.questdelta.entity.Button;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.Requirement;
 
 import java.util.Collection;
@@ -14,7 +13,7 @@ public class RequirementRepository implements Repository<Requirement>{
 
     private static final AtomicLong id = new AtomicLong(System.currentTimeMillis());
 
-    private final Map<Long, Requirement> requirements = new HashMap<>();;
+    private final Map<Long, Requirement> requirements = new HashMap<>();
 
     @Override
     public Collection<Requirement> getAll() {

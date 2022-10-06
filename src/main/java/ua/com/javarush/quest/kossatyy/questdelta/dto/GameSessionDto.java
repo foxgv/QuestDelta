@@ -5,8 +5,6 @@ import lombok.Data;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.GameStatus;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.Requirement;
 
-import java.util.List;
-
 @Data
 @Builder
 public class GameSessionDto {

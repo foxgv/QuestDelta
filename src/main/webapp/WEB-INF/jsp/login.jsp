@@ -15,7 +15,7 @@
 
 <main class="form-signin w-100 m-auto">
     <form action="${pageContext.request.contextPath}/login" method="post">
-        <img class="mb-3 mx-auto d-block" src="images/eagle-black.svg" alt="" width="100" height="100">
+        <img class="mb-3 mx-auto d-block" src="${pageContext.request.contextPath}/images/site/eagle-black.svg" alt="" width="100" height="100">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
         <div class="form-floating">

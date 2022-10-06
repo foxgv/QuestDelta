@@ -28,7 +28,7 @@
             </div>
             <img src="images/games/game_${sessionScope.game.id}/${sessionScope.game.image}" class="image img-fluid mb-4"
                  alt="image">
-            <c:if test="${GameStatus.PLAY eq sessionScope.gameSession.gameStatus}">
+            <c:if test="${sessionScope.gameSession.gameStatus == GameStatus.PLAY}">
                 <div class="col m-2">
                     <a href="level" class="button">Продолжить</a>
                 </div>

@@ -1,6 +1,5 @@
 package ua.com.javarush.quest.kossatyy.questdelta.repository;
 
-import ua.com.javarush.quest.kossatyy.questdelta.entity.Button;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.GameSession;
 
 import java.util.Collection;
@@ -15,7 +14,6 @@ public class GameSessionRepository implements Repository<GameSession> {
     private static final AtomicLong id = new AtomicLong(System.currentTimeMillis());
 
     private final Map<Long, GameSession> sessions = new HashMap<>();
-    ;
 
     @Override
     public Collection<GameSession> getAll() {

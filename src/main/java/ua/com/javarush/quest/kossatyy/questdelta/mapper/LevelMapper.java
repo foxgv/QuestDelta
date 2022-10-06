@@ -1,8 +1,6 @@
 package ua.com.javarush.quest.kossatyy.questdelta.mapper;
 
-import ua.com.javarush.quest.kossatyy.questdelta.dto.GameDto;
 import ua.com.javarush.quest.kossatyy.questdelta.dto.LevelDto;
-import ua.com.javarush.quest.kossatyy.questdelta.entity.Game;
 import ua.com.javarush.quest.kossatyy.questdelta.entity.Level;
 
 public class LevelMapper implements Mapper<LevelDto, Level> {

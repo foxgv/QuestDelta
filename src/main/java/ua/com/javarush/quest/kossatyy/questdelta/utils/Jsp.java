@@ -24,7 +24,6 @@ public class Jsp {
     public final String LEVEL = "level.jsp";
 
     public void forward(HttpServletRequest request, HttpServletResponse response, String filename) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(PATH_TO_JSP + filename);
-        requestDispatcher.forward(request, response);
+        request.getRequestDispatcher(PATH_TO_JSP + filename).forward(request, response);
     }
 }

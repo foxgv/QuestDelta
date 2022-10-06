@@ -13,7 +13,43 @@
 <body>
 <c:import url="/WEB-INF/jsp/parts/header.jsp"/>
 
-<h1><%= "MENU" %></h1>
+<div class="container marketing my-5">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">Принимай вызов. <span class="text-muted">Играй в любимые квесты.</span></h2>
+            <p class="lead">Пользовательские игры на любой выбор вкуса и сложности</p>
+        </div>
+        <div class="col-md-5">
+            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="200" height="200" src="${pageContext.request.contextPath}/images/site/play.svg" alt="eagle-logo"/>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading fw-normal lh-1">Сохраняй прогресс.<span class="text-muted">Личный профиль</span></h2>
+            <p class="lead">Создай свой профиль и продолжай играть с последнего места.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="200" height="200" src="${pageContext.request.contextPath}/images/site/save.svg" alt="eagle-logo"/>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">Погружайся в процесс разработки. <span class="text-muted">Редактор квестов</span></h2>
+            <p class="lead">Создавай свой собственный квест. Делись с другими пользователями.</p>
+        </div>
+        <div class="col-md-5">
+            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="200" height="200" src="${pageContext.request.contextPath}/images/site/edit.svg" alt="eagle-logo"/>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+
+</div>
 
 <c:import url="/WEB-INF/jsp/parts/footer.jsp"/>
 <c:import url="/WEB-INF/jsp/parts/scripts.jsp"/>
