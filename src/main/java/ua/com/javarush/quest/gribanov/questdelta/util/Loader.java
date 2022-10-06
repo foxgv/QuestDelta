@@ -1,4 +1,4 @@
-package ua.com.javarush.quest.khmelov.questdelta.util;
+package ua.com.javarush.quest.gribanov.questdelta.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

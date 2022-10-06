@@ -1,4 +1,4 @@
-package ua.com.javarush.quest.khmelov.questdelta.entity;
+package ua.com.javarush.quest.gribanov.questdelta.entity;
 
 import java.util.Objects;
 

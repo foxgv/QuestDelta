@@ -1,6 +1,6 @@
-package ua.com.javarush.quest.khmelov.questdelta.repository;
+package ua.com.javarush.quest.gribanov.questdelta.repository;
 
-import ua.com.javarush.quest.khmelov.questdelta.entity.AbstractEntity;
+import ua.com.javarush.quest.gribanov.questdelta.entity.AbstractEntity;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;

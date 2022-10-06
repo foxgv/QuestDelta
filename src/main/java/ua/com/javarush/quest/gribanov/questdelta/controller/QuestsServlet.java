@@ -1,4 +1,4 @@
-package ua.com.javarush.quest.khmelov.questdelta.controller;
+package ua.com.javarush.quest.gribanov.questdelta.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -9,11 +9,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "Login", value = "/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "quests", value = "/quests")
+public class QuestsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("WEB-INF/login.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("WEB-INF/quests.jsp");
         requestDispatcher.forward(req, resp);
     }
 }

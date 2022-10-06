@@ -1,6 +1,6 @@
-package ua.com.javarush.quest.khmelov.questdelta.repository;
+package ua.com.javarush.quest.gribanov.questdelta.repository;
 
-import ua.com.javarush.quest.khmelov.questdelta.entity.Question;
+import ua.com.javarush.quest.gribanov.questdelta.entity.Question;
 
 import java.util.Collection;
 import java.util.stream.Collectors;

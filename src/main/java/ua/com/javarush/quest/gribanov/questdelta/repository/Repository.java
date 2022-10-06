@@ -1,7 +1,6 @@
-package ua.com.javarush.quest.khmelov.questdelta.repository;
+package ua.com.javarush.quest.gribanov.questdelta.repository;
 
 import java.util.Collection;
-import java.util.Optional;
 
 public interface Repository<T> {
     Collection<T> getAll();
