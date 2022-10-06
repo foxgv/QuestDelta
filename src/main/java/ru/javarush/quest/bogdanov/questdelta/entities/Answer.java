@@ -41,10 +41,6 @@ public class Answer {
         return correct;
     }
 
-    public void setCorrect(boolean correct) {
-        this.correct = correct;
-    }
-
     public String getText() {
         return text;
     }

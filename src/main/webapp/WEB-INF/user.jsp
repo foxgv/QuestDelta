@@ -55,7 +55,7 @@
 
 
             <!-- Button -->
-            <c:if test="${requestScope.user.id>0}">
+            <c:if test="${requestScope.user.id>0 && requestScope.user.id!=sessionScope.user.id}">
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="delete"></label>
                     <div class="col-md-4">
