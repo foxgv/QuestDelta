@@ -13,10 +13,10 @@
 <body>
 <c:import url="/WEB-INF/jsp/parts/header.jsp"/>
 
-<div class="container my-5">
+<div class="container my-3 d-flex justify-content-center">
 
     <img src="${pageContext.request.contextPath}/images/site/profile.png"
-         class="image img-fluid shadow mb-5 bg-white rounded" alt="image">
+         class="image img-fluid shadow mb-5 bg-white rounded w-75" alt="image">
 
 </div>
 

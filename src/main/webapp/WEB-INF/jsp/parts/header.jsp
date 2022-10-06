@@ -30,7 +30,7 @@
                     </c:when>
                     <c:otherwise>
                         <p class="mb-0 px-3">${sessionScope.user.login}</p>
-                        <a href="${pageContext.request.contextPath}/menu" class="btn btn-outline-light me-2">Profile</a>
+                        <a href="${pageContext.request.contextPath}/profile" class="btn btn-outline-light me-2">Profile</a>
                         <a href="${pageContext.request.contextPath}/logout" class="btn btn-primary">Logout</a>
                     </c:otherwise>
                 </c:choose>
