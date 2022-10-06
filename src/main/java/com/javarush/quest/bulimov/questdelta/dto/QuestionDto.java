@@ -15,5 +15,6 @@ public class QuestionDto{
     Long id;
     Long questId;
     String text;
+    Collection<AnswerDto> answers;
 
 }

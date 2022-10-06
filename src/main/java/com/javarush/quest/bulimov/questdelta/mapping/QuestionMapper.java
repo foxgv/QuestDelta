@@ -16,6 +16,7 @@ public class QuestionMapper implements Mapper<Question, QuestionDto>{
                         .id(question.getId())
                         .text(question.getText())
                         .questId(question.getQuestId())
+                        .answers(question.getAnswers().stream().map(Mapper.answer::get).toList().stream().map(Optional::get).toList())
                 .build()
         ) : Optional.empty();
     }

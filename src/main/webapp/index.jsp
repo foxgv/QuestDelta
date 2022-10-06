@@ -10,7 +10,7 @@
 <br/>
 <h1><%= "История начинается неожиданно:"%></h1>
 <br/>
-<form class="form-horizontal" action="game" method="get">
+<form class="form-horizontal" action="create" method="get">
 <div class="form-group">
     <label class="col-md-4 control-label" for="name">Name</label>
     <div class="col-md-4">
