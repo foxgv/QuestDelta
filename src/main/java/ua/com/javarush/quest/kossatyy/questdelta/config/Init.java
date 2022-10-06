@@ -197,7 +197,7 @@ public class Init {
         // Level - 4
         Button btn4_1 = Button.builder()
                 .id(8L)
-                .mainDescription("Новая игра")
+                .mainDescription("Завершить")
                 .mainLevelId(-1L)
                 .build();
         buttonRepository.create(btn4_1);
@@ -437,7 +437,7 @@ public class Init {
         // Level - 14
         Button btn14_1 = Button.builder()
                 .id(24L)
-                .mainDescription("Новая игра")
+                .mainDescription("Завершить")
                 .mainLevelId(-1L)
                 .build();
         buttonRepository.create(btn14_1);
@@ -637,7 +637,7 @@ public class Init {
         // Level - 23
         Button btn23_1 = Button.builder()
                 .id(37L)
-                .mainDescription("Новая игра")
+                .mainDescription("Завершить")
                 .mainLevelId(-1L)
                 .build();
         buttonRepository.create(btn23_1);
@@ -783,7 +783,7 @@ public class Init {
         // Level - 29
         Button btn29_1 = Button.builder()
                 .id(47L)
-                .mainDescription("Новая игра")
+                .mainDescription("Завершить")
                 .mainLevelId(-1L)
                 .build();
         buttonRepository.create(btn29_1);
@@ -803,7 +803,7 @@ public class Init {
         // Level - 30
         Button btn30_1 = Button.builder()
                 .id(48L)
-                .mainDescription("Новая игра")
+                .mainDescription("Завершить")
                 .mainLevelId(-1L)
                 .build();
         buttonRepository.create(btn30_1);
@@ -845,7 +845,7 @@ public class Init {
         // Level - 32
         Button btn32_1 = Button.builder()
                 .id(50L)
-                .mainDescription("Новая игра")
+                .mainDescription("Завершить")
                 .mainLevelId(-1L)
                 .build();
         buttonRepository.create(btn32_1);
@@ -887,7 +887,7 @@ public class Init {
         // Level - 34
         Button btn34_1 = Button.builder()
                 .id(52L)
-                .mainDescription("Новая игра")
+                .mainDescription("Завершить")
                 .mainLevelId(-2L)
                 .build();
         buttonRepository.create(btn34_1);
