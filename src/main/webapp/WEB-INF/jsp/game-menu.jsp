@@ -8,7 +8,7 @@
 <head>
     <title>Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.png" type="image/x-icon">
     <%--    Fonts   --%>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
     <%--    Styles   --%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="static/game.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/game.css"/>
 </head>
 <body>
 <div class="container" style="background-image: url(/images/games/game_${sessionScope.game.id}/util/bg.jpg);">
@@ -26,7 +26,7 @@
             <div class="block_name">
                 <h1 class="text_name"><c:out value="${sessionScope.game.name}"/></h1>
             </div>
-            <img src="images/games/game_${sessionScope.game.id}/${sessionScope.game.image}" class="image img-fluid mb-4"
+            <img src="${pageContext.request.contextPath}/images/games/game_${sessionScope.game.id}/${sessionScope.game.image}" class="image img-fluid mb-4"
                  alt="image">
             <c:if test="${sessionScope.gameSession.gameStatus == GameStatus.PLAY}">
                 <div class="col m-2">

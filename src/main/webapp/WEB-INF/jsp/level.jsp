@@ -10,7 +10,7 @@
 <head>
     <title>Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.png" type="image/x-icon">
 
     <%--    Fonts   --%>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
     <%--    Styles   --%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="static/game.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/game.css"/>
 </head>
 <body>
 <div class="container d-flex flex-column align-items-center" style="background-image: url(/images/games/game_${game.id}/util/bg.jpg);">
@@ -37,7 +37,7 @@
             <c:out value="${level.name}"/></p>
         </div>
         <div class="jumbotron p-3 p-md-5" style="background-image: url(/images/games/game_${game.id}/util/bg_card.jpg);">
-            <img src="images/games/game_${game.id}/${level.image}" class="image img-fluid shadow" alt="image">
+            <img src="${pageContext.request.contextPath}/images/games/game_${game.id}/${level.image}" class="image img-fluid shadow" alt="image">
             <div class="block_text mt-3 p-3">
                 <p class="text text-start lead">${level.description}</p>
             </div>

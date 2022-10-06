@@ -7,10 +7,10 @@
 <html>
 <head>
     <title>Edit</title>
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="static/signin.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/signin.css"/>
 </head>
 <body>
 <c:import url="/WEB-INF/jsp/parts/header.jsp"/>
@@ -19,7 +19,7 @@
     <form class="form-horizontal" action="update?id=${requestScope.userUpdate.id}" method="post">
 
         <fieldset>
-            <img class="mb-3 mx-auto d-block" src="../../images/site/eagle-black.svg" alt="logo" width="100" height="100">
+            <img class="mb-3 mx-auto d-block" src="${pageContext.request.contextPath}/images/site/eagle-black.svg" alt="logo" width="100" height="100">
             <legend class="text-center">${requestScope.userUpdate.login}</legend>
 
             <div class="form-group">
