@@ -14,7 +14,7 @@ import java.io.IOException;
 
 import static java.util.Objects.isNull;
 
-@WebServlet(name = "MenuServlet", value = "/menu")
+@WebServlet(name = "MenuServlet", value = {"/menu", ""})
 public class MenuServlet extends HttpServlet {
 
     @Override
