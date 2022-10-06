@@ -11,12 +11,12 @@
 
 ## Чтобы запустить
 
-1. Использовать Tomcat v10
-2. Установить вариант использования распакованного архива, с Application context " / " (forward slash)
+1. Установите Tomcat v10
+2. Установите вариант использования распакованного архива, с Application context " / " (forward slash)
 ![image](https://user-images.githubusercontent.com/101488434/194349178-8bfdf1ea-a7cd-437f-8e98-01d5f82f3bcc.png)
-3. Начальный URL установить на запрос меню /menu
-![image](https://user-images.githubusercontent.com/101488434/194349777-ac811338-f161-4578-b1aa-04f1beb0dfbc.png)
-4. Запустить
+3. Проверьте начальный URL
+![image](https://user-images.githubusercontent.com/101488434/194376943-54587d46-a722-45f0-942d-fd245fa1f0b3.png)
+4. Запустите
 
 Пользователя с правами admin может создать только другой администратор.
 Изначально присутствуют пользователи "admin" и "maxim" с правами администратора (пароль "111").
