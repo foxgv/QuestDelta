@@ -49,11 +49,11 @@ public class LevelServlet extends HttpServlet {
             }
         }
 
-        if (Objects.nonNull(nextLevel)){
+        if (Objects.nonNull(nextLevel)) {
             req.setAttribute(Attribute.LEVEL.getValue(), nextLevel);
-        Jsp.forward(req, resp, Jsp.LEVEL);
+            Jsp.forward(req, resp, Jsp.LEVEL);
         } else {
-            req.getRequestDispatcher("game?gameId="+gameSessionDto.getGameId()).forward(req,resp);
+            req.getRequestDispatcher("game?gameId=" + gameSessionDto.getGameId()).forward(req, resp);
         }
     }
 }

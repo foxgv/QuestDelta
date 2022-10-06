@@ -21,7 +21,6 @@ public enum Attribute {
     USERS("users"),
     BUTTON("button");
 
-
     private final String value;
 
     Attribute(String value) {

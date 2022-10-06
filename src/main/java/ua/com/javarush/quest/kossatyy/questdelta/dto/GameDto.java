@@ -17,6 +17,6 @@ public class GameDto {
     private Long authorId;
     private Long startLevelId;
     private String requirementDescription;
-    private List<Requirement>  requirements;
+    private List<Requirement> requirements;
 
 }

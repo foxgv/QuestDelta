@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class UserDto{
+public class UserDto {
 
     private Long id;
     private String login;
@@ -16,4 +16,3 @@ public class UserDto{
     List<Long> gamesIdWithSession;
 
 }
-

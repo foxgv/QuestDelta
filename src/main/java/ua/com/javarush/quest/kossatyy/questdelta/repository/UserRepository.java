@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Stream;
 
-public class UserRepository implements Repository<User>{
+public class UserRepository implements Repository<User> {
 
     private static final AtomicLong id = new AtomicLong(System.currentTimeMillis());
 

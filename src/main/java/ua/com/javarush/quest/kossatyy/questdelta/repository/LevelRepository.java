@@ -9,11 +9,11 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Stream;
 
-public class LevelRepository implements Repository<Level>{
+public class LevelRepository implements Repository<Level> {
 
     private static final AtomicLong id = new AtomicLong(System.currentTimeMillis());
 
-    private final Map<Long, Level> levels = new HashMap<>();;
+    private final Map<Long, Level> levels = new HashMap<>();
 
     @Override
     public Collection<Level> getAll() {

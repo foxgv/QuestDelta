@@ -80,11 +80,11 @@ public class UserService {
     public void update(Long id, String login, String password, Role role) {
         User user = userRepository.getById(id);
 
-        if(nonNull(login) && !login.isBlank()) {
+        if (nonNull(login) && !login.isBlank()) {
             user.setLogin(login);
         }
 
-        if(nonNull(password) && !password.isBlank()) {
+        if (nonNull(password) && !password.isBlank()) {
             user.setPassword(password);
         }
 

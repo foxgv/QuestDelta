@@ -9,11 +9,11 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Stream;
 
-public class ButtonRepository implements Repository<Button>{
+public class ButtonRepository implements Repository<Button> {
 
     private static final AtomicLong id = new AtomicLong(System.currentTimeMillis());
 
-    private final Map<Long, Button> buttons = new HashMap<>();;
+    private final Map<Long, Button> buttons = new HashMap<>();
 
     @Override
     public Collection<Button> getAll() {

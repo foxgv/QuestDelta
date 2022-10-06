@@ -22,6 +22,6 @@ public class PlayServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Collection<GameDto> games = playService.getAll();
         req.setAttribute(Attribute.GAMES.getValue(), games);
-        Jsp.forward(req,resp, Jsp.PLAY);
+        Jsp.forward(req, resp, Jsp.PLAY);
     }
 }

@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
         Optional<UserDto> user = userService.findByLogin(login);
 
         if (user.isPresent()) {
-            Optional<UserDto> userDtoFromDB = userService.findByCredentials(login,password);
+            Optional<UserDto> userDtoFromDB = userService.findByCredentials(login, password);
 
             if (userDtoFromDB.isPresent()) {
                 HttpSession session = req.getSession();

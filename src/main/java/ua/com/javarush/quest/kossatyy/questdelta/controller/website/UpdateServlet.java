@@ -72,7 +72,7 @@ public class UpdateServlet extends HttpServlet {
         String roleParameter = req.getParameter(Attribute.ROLE.getValue());
         Role userRole = userService.getRole(roleParameter);
 
-        String idParam =  req.getParameter(Attribute.ID.getValue());
+        String idParam = req.getParameter(Attribute.ID.getValue());
         long id = idParam != null && !idParam.isBlank()
                 ? Long.parseLong(idParam)
                 : 0L;

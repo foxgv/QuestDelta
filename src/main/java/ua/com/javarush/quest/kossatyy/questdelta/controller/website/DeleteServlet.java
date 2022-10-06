@@ -1,6 +1,5 @@
 package ua.com.javarush.quest.kossatyy.questdelta.controller.website;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -27,7 +26,7 @@ public class DeleteServlet extends HttpServlet {
         String login = req.getParameter(Attribute.LOGIN.getValue());
         if (isNull(login)) {
             req.setAttribute(Attribute.ERROR.getValue(), USER_NOT_FOUND);
-            req.getRequestDispatcher("/accounts").forward(req,resp);
+            req.getRequestDispatcher("/accounts").forward(req, resp);
             return;
         }
 
@@ -35,12 +34,12 @@ public class DeleteServlet extends HttpServlet {
         String userLogin = currentUser.getLogin();
         if (login.equals(userLogin)) {
             req.setAttribute(Attribute.ERROR.getValue(), DELETE_YOURSELF);
-            req.getRequestDispatcher("/accounts").forward(req,resp);
+            req.getRequestDispatcher("/accounts").forward(req, resp);
             return;
         }
 
         Optional<UserDto> user = userService.findByLogin(login);
         user.ifPresent(userDto -> userService.deleteById(userDto.getId()));
-        req.getRequestDispatcher("/accounts").forward(req,resp);
+        req.getRequestDispatcher("/accounts").forward(req, resp);
     }
 }

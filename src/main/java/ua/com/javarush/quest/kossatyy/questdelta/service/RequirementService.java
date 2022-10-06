@@ -13,7 +13,7 @@ public class RequirementService {
     private final Repository<Requirement> requirementRepository = Container.getInstance(RequirementRepository.class);
 
     // TODO create edit game feature
-    public List<Requirement> createRequirements(List<String> reqs){
+    public List<Requirement> createRequirements(List<String> reqs) {
         List<Requirement> requirements = new ArrayList<>();
         for (String name : reqs) {
             Requirement requirement = Requirement.builder()

@@ -26,7 +26,7 @@ public class AccountServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pageNumber = request.getParameter(Attribute.PAGE_NUMBER.getValue());
         int pageNumberValue;
-        if(isNull(pageNumber)){
+        if (isNull(pageNumber)) {
             pageNumberValue = DEFAULT_PAGE_NUMBER;
         } else {
             try {

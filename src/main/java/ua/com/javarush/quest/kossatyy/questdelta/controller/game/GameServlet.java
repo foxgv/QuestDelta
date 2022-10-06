@@ -41,6 +41,6 @@ public class GameServlet extends HttpServlet {
         GameSessionDto gameSessionDto = gameService.getSession(user, gameId);
         currentSession.setAttribute(Attribute.GAME_SESSION.getValue(), gameSessionDto);
 
-        Jsp.forward(req,resp, Jsp.GAME_MENU);
+        Jsp.forward(req, resp, Jsp.GAME_MENU);
     }
 }

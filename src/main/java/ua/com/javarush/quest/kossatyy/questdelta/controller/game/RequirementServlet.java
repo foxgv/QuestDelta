@@ -48,6 +48,6 @@ public class RequirementServlet extends HttpServlet {
 
         GameDto gameDto = (GameDto) currentSession.getAttribute(Attribute.GAME.getValue());
         gameService.updateLevel(gameSessionDto, gameDto.getStartLevelId());
-        req.getRequestDispatcher("level").forward(req,resp);
+        req.getRequestDispatcher("level").forward(req, resp);
     }
 }

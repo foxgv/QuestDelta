@@ -14,7 +14,7 @@ import java.util.List;
 
 public class LevelService {
 
-    private final Repository<Level> levelRepository =  Container.getInstance(LevelRepository.class);
+    private final Repository<Level> levelRepository = Container.getInstance(LevelRepository.class);
     private final ButtonService buttonService = new ButtonService();
     private final LevelMapper levelMapper = new LevelMapper();
 
