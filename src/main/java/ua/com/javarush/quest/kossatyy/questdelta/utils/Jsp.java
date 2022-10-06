@@ -22,6 +22,7 @@ public class Jsp {
     public final String GAME_MENU = "game-menu.jsp";
     public final String REQUIREMENT = "requirement.jsp";
     public final String LEVEL = "level.jsp";
+    public final String EDIT = "edit.jsp";
 
     public void forward(HttpServletRequest request, HttpServletResponse response, String filename) throws ServletException, IOException {
         request.getRequestDispatcher(PATH_TO_JSP + filename).forward(request, response);
