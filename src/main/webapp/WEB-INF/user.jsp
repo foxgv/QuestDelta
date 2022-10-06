@@ -40,6 +40,7 @@
                     </select>
                 </div>
             </div>
+            <br>
 
             <!-- Button -->
             <div class="form-group">
@@ -50,6 +51,7 @@
                     </button>
                 </div>
             </div>
+            <br>
 
 
             <!-- Button -->

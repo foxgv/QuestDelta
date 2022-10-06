@@ -2,8 +2,10 @@ package ru.javarush.quest.bogdanov.questdelta.services;
 
 import ru.javarush.quest.bogdanov.questdelta.entities.Game;
 import ru.javarush.quest.bogdanov.questdelta.entities.GameState;
+import ru.javarush.quest.bogdanov.questdelta.entities.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public enum StatsService {
 
@@ -19,7 +21,11 @@ public enum StatsService {
     }
 
     public String getUserLogin(Game game) {
-        return userService.getUser(game.userId).get().getLogin();
+        Optional<User> user = userService.getUser(game.userId);
+        if (user.isPresent()) {
+            return user.get().getLogin();
+        }
+        return "Unknown user";
     }
 
     public String getQuestName(Game game) {
