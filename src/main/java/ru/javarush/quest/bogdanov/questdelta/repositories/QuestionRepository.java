@@ -68,7 +68,7 @@ public class QuestionRepository implements Repository<Question> {
     public List<Question> findQuestionsByQuestId(long id) {
         return getAll()
                 .stream()
-                .filter(answer -> answer.questId == id)
+                .filter(question -> question.questId == id)
                 .collect(Collectors.toList());
     }
 
@@ -82,6 +82,7 @@ public class QuestionRepository implements Repository<Question> {
     }
 
     public long getFirstQuestionId(long id) {
-        return findQuestionsByQuestId(id).stream().findFirst().get().id;
+        Optional<Question> first = findQuestionsByQuestId(id).stream().findFirst();
+        return first.map(question -> question.id).orElse(1L);
     }
 }

@@ -1,9 +1,11 @@
 package ru.javarush.quest.bogdanov.questdelta.services;
 
 import ru.javarush.quest.bogdanov.questdelta.entities.Quest;
+import ru.javarush.quest.bogdanov.questdelta.entities.User;
 import ru.javarush.quest.bogdanov.questdelta.repositories.QuestRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public enum QuestService {
 
@@ -25,6 +27,7 @@ public enum QuestService {
     }
 
     public String getAuthorLogin(long authorId) {
-        return userService.getUser(authorId).get().getLogin();
+        Optional<User> user = userService.getUser(authorId);
+        return user.map(User::getLogin).orElse("Unknown person");
     }
 }

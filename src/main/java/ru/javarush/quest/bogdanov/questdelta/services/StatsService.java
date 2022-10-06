@@ -22,10 +22,7 @@ public enum StatsService {
 
     public String getUserLogin(Game game) {
         Optional<User> user = userService.getUser(game.userId);
-        if (user.isPresent()) {
-            return user.get().getLogin();
-        }
-        return "Unknown user";
+        return user.map(User::getLogin).orElse("Unknown user");
     }
 
     public String getQuestName(Game game) {

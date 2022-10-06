@@ -5,8 +5,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import ru.javarush.quest.bogdanov.questdelta.entities.Quest;
 import ru.javarush.quest.bogdanov.questdelta.services.QuestService;
 
@@ -15,8 +13,6 @@ import java.util.List;
 
 @WebServlet(name = "QuestsServlet", value = "/quests")
 public class QuestsServlet extends HttpServlet {
-
-    private static final Logger log = LogManager.getLogger();
 
     private final QuestService questService = QuestService.QUEST_SERVICE;
 

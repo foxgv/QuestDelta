@@ -6,8 +6,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import ru.javarush.quest.bogdanov.questdelta.entities.User;
 import ru.javarush.quest.bogdanov.questdelta.services.UserService;
 
@@ -16,8 +14,6 @@ import java.util.Optional;
 
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
-
-    private static final Logger log = LogManager.getLogger();
 
     private final UserService userService = UserService.USER_SERVICE;
 
