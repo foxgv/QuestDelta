@@ -25,6 +25,7 @@ public class QuestionServlet extends HttpServlet {
         //TODO НАДО ПРОЙТИСЬ ПО СЕССИИ И УЗНАТЬ ПОСЛЕДНИЙ ВОПРОС В ТЕСТЕ
         String question = null;
         List<Answer> answers = null;
+        int size = 0;
         HttpSession session = req.getSession();
         String newGame = req.getParameter("newGame");
         if (newGame != null && newGame.equals("newGame")){
@@ -35,12 +36,16 @@ public class QuestionServlet extends HttpServlet {
             if (lastQuestion == null) {
                 question = questionService.get(2).get().getQuestion();
                 answers = questionService.get(2).get().getAnswers();
+                size = answers.size();
+
             } else {
                 question = lastQuestion.get().getQuestion();
                 answers = lastQuestion.get().getAnswers();
+                size = answers.size();
             }
             req.setAttribute("question", question);
             req.setAttribute("answers", answers);
+            req.setAttribute("size", size);
             Jsp.forward(req, resp, "question");
         }
     }
@@ -49,13 +54,18 @@ public class QuestionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String nextQuestionID = req.getParameter("nextQuestionID");
+        int size = 0;
         if (nextQuestionID != null) {
             long id = Long.parseLong(nextQuestionID);
             Optional<Question> question = questionService.get(id);
             String text = question.get().getQuestion();
             List<Answer> answers = question.get().getAnswers();
+            if (answers != null){
+                size = answers.size();
+            }
             req.setAttribute("question", text);
             req.setAttribute("answers", answers);
+            req.setAttribute("size", size);
             session.setAttribute("lastQuestion", question);
         }
         Jsp.forward(req, resp, "question");

@@ -42,7 +42,6 @@
                     </c:otherwise>
                 </c:choose>
             </ul>
-
         </div>
     </header>
 </div>
