@@ -16,7 +16,7 @@ public class CreateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(req.getSession().getAttribute("id") == null){
+        if(req.getSession().getAttribute("id") == null || !req.getSession().getAttribute("status").toString().equals("PLAY")){
             doPost(req, resp);
         }
         else{
@@ -28,6 +28,11 @@ public class CreateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = gameService.create(req.getParameter("name"));
+        int count = gameService.getAll().stream().map(s->s.getUserName().equals(req.getParameter("name"))).toList().size();
+        req.getSession().setAttribute("name", req.getParameter("name"));
+        req.getSession().setAttribute("count", count);
+        req.getSession().setAttribute("status",gameService.get(id).getStatus());
+
         req.getSession().setAttribute("id", id);
         doGet(req, resp);
     }

@@ -32,6 +32,11 @@
                 <button id="submit" class="btn btn-success">Играть</button>
             </div>
         </div>
+
+        <div>
+            <h5 class = "uk-heading-medium">Имя: <%= request.getSession().getAttribute("name") %> </h5>
+            <h5 class = "uk-heading-medium">Игр сыграно: <%= request.getSession().getAttribute("count") %> </h5>
+        </div>
     </div>
 </form>
 </body>

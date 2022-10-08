@@ -15,6 +15,7 @@ public class Game extends AbstractEntity{
     ZonedDateTime startTime;
     Long currentQuestionId;
     Long questId;
+    GameStatus status;
 
 
 }

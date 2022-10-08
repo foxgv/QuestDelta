@@ -1,6 +1,7 @@
 package com.javarush.quest.bulimov.questdelta.services;
 
 import com.javarush.quest.bulimov.questdelta.entity.Game;
+import com.javarush.quest.bulimov.questdelta.entity.GameStatus;
 import com.javarush.quest.bulimov.questdelta.repository.GameRepository;
 import com.javarush.quest.bulimov.questdelta.repository.Repository;
 
@@ -33,6 +34,7 @@ public enum GameService {
                 .questId(1L)
                 .currentQuestionId(1L)
                 .userName(name)
+                .status(GameStatus.PLAY)
                 .startTime(ZonedDateTime.now())
                 .build();
         return gameRepository.create(game);

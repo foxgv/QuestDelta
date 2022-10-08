@@ -13,7 +13,7 @@
             <h5 class = "uk-heading-large"><%= request.getAttribute("questionText") %> </h5>
         </div>
         <div>
-            <% request.setAttribute("id" , null);
+            <% request.getSession().setAttribute("id" , null);
             %>
         </div>
 
