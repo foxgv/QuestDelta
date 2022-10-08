@@ -13,7 +13,7 @@ public interface Repository<T extends AbstractEntity> {
 
     T get(long id);
 
-    void create(T entity);
+    Long create(T entity);
 
     void update(T entity);
 

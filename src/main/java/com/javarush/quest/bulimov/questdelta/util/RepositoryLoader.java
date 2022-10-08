@@ -88,12 +88,12 @@ public class RepositoryLoader {
 
 
         Answer answer3 = Answer.with()
-                .questionId(1L)
+                .questionId(2L)
                 .id(3L)
                 .text("Подняться на мостик")
                 .nextQuestionId(3L).build();
         Answer answer4 = Answer.with()
-                .questionId(1L)
+                .questionId(2L)
                 .id(4L)
                 .correct(false)
                 .nextQuestionId(6L)
@@ -101,12 +101,12 @@ public class RepositoryLoader {
 
 
         Answer answer5 = Answer.with()
-                .questionId(1L)
+                .questionId(3L)
                 .id(5L)
                 .text("Рассказать правду")
                 .nextQuestionId(4L).build();
         Answer answer6 = Answer.with()
-                .questionId(1L)
+                .questionId(3L)
                 .id(6L)
                 .correct(false)
                 .nextQuestionId(7L)
@@ -122,8 +122,8 @@ public class RepositoryLoader {
 
         question3.setAnswers(new HashSet<>());
         question3.getAnswers().add(answer5);
-        question4.setAnswers(new HashSet<>());
-        question4.getAnswers().add(answer6);
+        question3.getAnswers().add(answer6);
+
 
         questJavaRush.setQuestions(new HashSet<>());
         questJavaRush.getQuestions().add(question1);

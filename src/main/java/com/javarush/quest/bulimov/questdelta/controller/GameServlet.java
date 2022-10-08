@@ -1,7 +1,6 @@
 package com.javarush.quest.bulimov.questdelta.controller;
 
-import com.javarush.quest.bulimov.questdelta.dto.AnswerDto;
-import com.javarush.quest.bulimov.questdelta.dto.FormData;
+import com.javarush.quest.bulimov.questdelta.entity.Answer;
 import com.javarush.quest.bulimov.questdelta.services.GameService;
 import com.javarush.quest.bulimov.questdelta.services.QuestionService;
 import jakarta.servlet.RequestDispatcher;
@@ -21,25 +20,46 @@ public class GameServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long currentQuestionId = gameService.find(FormData.of(req)).get().getCurrentQuestionId();
-        if(req.getParameter("answer1") != null || req.getParameter("answer2")!= null ){
-            currentQuestionId = req.getAttribute("answer1") != null ?
-                    questionService.get(currentQuestionId).get().getAnswers().stream().toList().get(0).getNextQuestionId()
-                    : questionService.get(currentQuestionId).get().getAnswers().stream().toList().get(1).getNextQuestionId();
+        Long currentQuestionId = gameService.get((Long)req.getSession().getAttribute("id")).getCurrentQuestionId();
+        if(req.getParameter("1") != null || req.getParameter("2")!= null ){
+            if(req.getParameter("1") != null){
+                Answer answer = questionService.get(currentQuestionId).getAnswers().stream().toList().get(0);
+                req.getSession().setAttribute("correct", answer.getCorrect());
+                currentQuestionId = answer.getNextQuestionId();
 
+            }
+            else {
+                Answer answer = questionService.get(currentQuestionId).getAnswers().stream().toList().get(1);
+                req.getSession().setAttribute("correct", answer.getCorrect());
+                currentQuestionId = answer.getNextQuestionId();
+            }
+            gameService.get((Long)req.getSession().getAttribute("id")).setCurrentQuestionId(currentQuestionId);
 
         }
 
-        go(req, currentQuestionId);
+
+        go(req,resp, currentQuestionId);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("game.jsp");
         requestDispatcher.forward(req, resp);
+
     }
 
-    private void go(HttpServletRequest req, long currentQuestionId){
-        req.setAttribute("questionText", questionService.get(currentQuestionId).get().getText());
+    private void go(HttpServletRequest req, HttpServletResponse resp, long currentQuestionId) throws ServletException, IOException {
+        req.setAttribute("questionText", questionService.get(currentQuestionId).getText());
 
-        Collection<AnswerDto> answers = questionService.get(currentQuestionId).get().getAnswers();
+        Collection<Answer> answers = questionService.get(currentQuestionId).getAnswers();
+
+        if(answers==null){
+            if(req.getSession().getAttribute("correct")==null){
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("win.jsp");
+                requestDispatcher.forward(req, resp);
+            }
+            else{
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("lose.jsp");
+                requestDispatcher.forward(req, resp);
+            }
+        }
 
         req.setAttribute("ans1", answers.stream().toList().get(0).getText());
         req.setAttribute("ans2", answers.stream().toList().get(1).getText());

@@ -1,6 +1,5 @@
 package com.javarush.quest.bulimov.questdelta.controller;
 
-import com.javarush.quest.bulimov.questdelta.dto.FormData;
 import com.javarush.quest.bulimov.questdelta.services.GameService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -17,7 +16,7 @@ public class CreateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(req.getAttribute("id") == null){
+        if(req.getSession().getAttribute("id") == null){
             doPost(req, resp);
         }
         else{
@@ -28,9 +27,8 @@ public class CreateServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        gameService.create(FormData.of(req));
-        req.setAttribute("name", gameService.find(FormData.of(req)).get().getUserName());
-        req.setAttribute("id", gameService.find(FormData.of(req)).get().getId());
+        Long id = gameService.create(req.getParameter("name"));
+        req.getSession().setAttribute("id", id);
         doGet(req, resp);
     }
 }

@@ -35,10 +35,13 @@ public abstract class AbstractRepository<T extends AbstractEntity> implements Re
     }
 
     @Override
-    public void create(T entity){
-        entity.setId(id.incrementAndGet());
+    public Long create(T entity){
+        Long currentId = id.incrementAndGet();
+        entity.setId(currentId);
         update(entity);
+        return currentId;
     }
+
 
     @Override
     public void update(T entity){
