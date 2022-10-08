@@ -1,0 +1,61 @@
+.index {
+    background-image: url("images/background.jpg");
+}
+
+.block1, .block2 {
+    margin: auto;
+    width: 800px;
+    background: lightgray;
+    padding: 10px;
+    border: solid 1px white;
+    font-size: 14pt;
+    text-align: justify;
+}
+
+.name {
+    margin: 30px 10px;
+    width: 700px;
+    background: #dbc0c0;
+    padding: 10px;
+    border: solid 1px white;
+    font-size: 14pt;
+}
+
+.button {
+    font-size: 16pt;
+    border-radius: 10px;
+    border: solid 2px white;
+    padding: 5px;
+}
+
+h2 {
+    text-align: center;
+}
+
+h4 {
+    color: white;
+    font-size: 14pt;
+    margin: 10px;
+}
+
+.button_href {
+    background-color: #FF4500;
+    border: none;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.forms {
+    margin: 10px;
+    width: 400px;
+    background: #bebbbb;
+    padding: 10px;
+    border: solid 2px #080000;
+    font-size: 14pt;
+}
