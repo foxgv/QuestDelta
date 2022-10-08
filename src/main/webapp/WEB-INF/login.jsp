@@ -16,7 +16,6 @@
                     <input id="userLogin" name="login" type="text" placeholder="set login" class="form-control input-md"
                            required=""
                            value="${requestScope.user.login}">
-
                 </div>
             </div>
 

@@ -22,7 +22,7 @@
             <li><a href="#" class="nav-link px-2 link-dark">Квесты</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">Создать</a></li>
             <li><a href="${pageContext.request.contextPath}/question" class="nav-link px-2 link-dark">Играть</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Статистика</a></li>
+            <li><a href="${pageContext.request.contextPath}/stats" class="nav-link px-2 link-dark">Статистика</a></li>
         </ul>
 
         <div class="col-md-3 text-end">
