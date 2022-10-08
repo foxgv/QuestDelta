@@ -10,7 +10,7 @@
         <div class="col-md-4">
         </div>
         <div>
-            <h5 class = "uk-heading-large"><%= request.getAttribute("questionText") %> </h5>
+            <h1><%= request.getAttribute("questionText") %> </h1>
         </div>
         <div>
             <% request.getSession().setAttribute("id" , null);

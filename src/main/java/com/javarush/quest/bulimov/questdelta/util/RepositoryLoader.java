@@ -35,7 +35,7 @@ public class RepositoryLoader {
         Question question1 = Question.with()
                 .id(1L)
                 .questId(1L)
-                .text("Ты потерял память. Принять вызов НЛО").build();
+                .text("Ты потерял память. Принять вызов НЛО?").build();
 
         Question question2 = Question.with()
                 .id(2L)
