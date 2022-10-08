@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.javarush.quest.bogdanov.questdelta.entities.Game;
 import ru.javarush.quest.bogdanov.questdelta.entities.GameState;
 import ru.javarush.quest.bogdanov.questdelta.entities.Question;
@@ -17,6 +19,8 @@ import java.io.IOException;
 
 @WebServlet(name = "GameServlet", value = "/game")
 public class GameServlet extends HttpServlet {
+
+    private static final Logger log = LogManager.getLogger(GameServlet.class);
 
     private final GameService gameService = GameService.GAME_SERVICE;
     private final QuestionService questionService = QuestionService.QUESTION_SERVICE;
@@ -56,6 +60,7 @@ public class GameServlet extends HttpServlet {
         long questId = getQuestId(request);
         long currentUserId = (long) session.getAttribute("id");
         Game game = new Game(currentUserId, questId);
+        log.info("game {} initialized, with {} quest, by user {}", game.id, questId, currentUserId);
         long firstQuestionId = questionService.firstQuestionId(questId);
         game.currentQuestionId = firstQuestionId;
         game.gameState = GameState.STARTED;

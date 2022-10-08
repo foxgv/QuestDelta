@@ -35,7 +35,7 @@ class UserRepositoryTest {
 
     @Test
     void findUserFromMapWithLoginAndPasswordAndNotFound() {
-        User pattern = new User("Misha", "1112");
+        User pattern = new User("Misha1", "1112");
         Optional<User> actual = userRepository.find(pattern);
         assertTrue(actual.isEmpty());
     }
