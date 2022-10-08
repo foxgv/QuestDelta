@@ -1,21 +1,16 @@
 package ua.com.javarush.quest.rbityutskih.entity;
-
 import lombok.*;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Builder(builderMethodName = "with")
-
-public final class User extends Entity{
-
+public class Game extends  Entity {
     Long id;
-    String login;
-    String password;
-    //String image;
-
-
+    Long questId;
+    Long userId;
+    Long currentQuestonId;
+    //GmaeState gameState;
     @Override
     public Long getId() {
         return null;
@@ -25,4 +20,6 @@ public final class User extends Entity{
     public void setId() {
 
     }
+    private int gameCounter;
+    private int gameWond;
 }
