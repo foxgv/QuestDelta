@@ -12,6 +12,7 @@ import ua.com.javarush.quest.belyasnik.questdelta.util.Go;
 import ua.com.javarush.quest.belyasnik.questdelta.util.Jsp;
 
 import java.io.IOException;
+import java.util.Date;
 
 @WebServlet(name = "WinServlet", value = "/win")
 public class WinServlet extends HttpServlet {
@@ -21,7 +22,7 @@ public class WinServlet extends HttpServlet {
         Question question = (Question) request.getAttribute("question");
         //Statistic statistic = (Statistic) request.getSession().getAttribute("statistic");
         Statistic statistic = Statistic.builder()
-                .dateTime(Statistic.currentTime())
+                .dateTime(Statistic.currentTime( new Date(System.currentTimeMillis())))
                 .lastQuestion(question)
                 .result("Выигрыш")
                 .build();

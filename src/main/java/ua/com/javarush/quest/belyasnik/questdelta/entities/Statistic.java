@@ -15,10 +15,13 @@ public class Statistic {
     Question lastQuestion;
     String result;
 
-    public static String currentTime() {
+    public static String currentTime(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-        Date date = new Date(System.currentTimeMillis());
-        return formatter.format(date);
+        Date date1 = date;
+        if (date1 == null) {
+            date1 = new Date(System.currentTimeMillis());
+        }
+        return formatter.format(date1);
     }
 
     @Override
