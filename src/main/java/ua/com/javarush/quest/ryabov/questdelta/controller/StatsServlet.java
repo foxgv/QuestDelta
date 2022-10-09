@@ -13,6 +13,11 @@ import java.io.IOException;
 public class StatsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Jsp.forward(req, resp, "stats");
+        String back = req.getParameter("back");
+        if (back != null && back.equals("back")) {
+            Jsp.redirect(resp, "/");
+        }else {
+            Jsp.forward(req, resp, "stats");
+        }
     }
 }

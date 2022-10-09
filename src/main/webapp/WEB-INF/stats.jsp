@@ -4,15 +4,11 @@
 <div class="container">
     <div class="container">
         <legend>Страница находится на разработке. Нужно проявить терпение....</legend>
-        <legend>Страница находится на разработке. Нужно проявить терпение....</legend>
-
-        <legend>Сколько будет 2+2</legend>
-        <legend>2+2 = ${2+2}</legend>
         <form method="get">
             <div class="form-group">
                 <label class="col-md-4 control-label" for="newGame"></label>
                 <div class="col-md-4">
-                    <button id="newGame" name="newGame" value="newGame"
+                    <button id="newGame" name="back" value="back"
                             class="btn btn-warning">Назад
                     </button>
                 </div>
