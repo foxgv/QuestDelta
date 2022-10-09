@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="ua.com.javarush.quest.khmelov.questdelta.data.Quest" %>
+<%@ page import="ua.com.javarush.quest.mogutov.questdelta.data.Quest" %>
 <%--
   Created by IntelliJ IDEA.
   User: Администратор
@@ -28,8 +28,8 @@
 <h3><%out.println(levelText.get(0));%></h3>
 
 <form action="/quest" method="GET">
-    <input type="checkbox" name="answer" value="1" /> <% out.println(levelText.get(1)); %>
-    <input type="checkbox" name="answer" value="0" /> <% out.println(levelText.get(2)); %>
+    <input type="radio"  name="answer" value="1" /> <% out.println(levelText.get(1)); %>
+    <input type="radio" name="answer" value="0" /> <% out.println(levelText.get(2)); %>
     <input type="submit" value="submit">
 </form>
 

@@ -1,4 +1,4 @@
-package ua.com.javarush.quest.khmelov.questdelta.servlets;
+package ua.com.javarush.quest.mogutov.questdelta.servlets;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

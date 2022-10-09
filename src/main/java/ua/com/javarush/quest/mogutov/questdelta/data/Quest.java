@@ -1,15 +1,13 @@
-package ua.com.javarush.quest.khmelov.questdelta.data;
+package ua.com.javarush.quest.mogutov.questdelta.data;
 
 import java.net.InetAddress;
 import java.util.List;
 
-import static ua.com.javarush.quest.khmelov.questdelta.data.constants.MAX_LEVEL;
+import static ua.com.javarush.quest.mogutov.questdelta.data.constants.MAX_LEVEL;
 
 public class Quest {
     private int LEVEL;
-
     private String USER_NAME;
-
     private InetAddress USER_ADDRESS;
     private QuestLevels questLevel;
 

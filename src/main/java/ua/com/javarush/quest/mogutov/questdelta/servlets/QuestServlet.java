@@ -1,6 +1,6 @@
-package ua.com.javarush.quest.khmelov.questdelta.servlets;
+package ua.com.javarush.quest.mogutov.questdelta.servlets;
 
-import ua.com.javarush.quest.khmelov.questdelta.data.Quest;
+import ua.com.javarush.quest.mogutov.questdelta.data.Quest;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,9 +21,6 @@ public class QuestServlet extends HttpServlet {
 
         // get quest object or not - create it
         Quest quest = extractCurrentQuest(currentSession, request);
-
-//        //get user IP Address
-//        InetAddress userIP = InetAddress.getLocalHost();
 
         // get current quest level
         int level = quest.getLEVEL();
@@ -46,7 +43,6 @@ public class QuestServlet extends HttpServlet {
 
         // update session
         currentSession.setAttribute("quest", quest);
-        //currentSession.setAttribute("userAddress", userIP);
 
         //send redirect & response
         getServletContext().getRequestDispatcher("/quest.jsp").forward(request, response);

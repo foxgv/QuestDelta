@@ -1,4 +1,4 @@
-package ua.com.javarush.quest.khmelov.questdelta.data;
+package ua.com.javarush.quest.mogutov.questdelta.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
