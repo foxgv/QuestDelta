@@ -8,7 +8,7 @@
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <form action="user" method="post">
                     <div class="form-floating mb-3">
-                        <input type="text" name="user" class="form-control" id="floatingInput" placeholder="Пользователь" required style="width: 300">
+                        <input type="text" name="user" class="form-control" id="floatingInput" placeholder="Пользователь" required style="width: 300px">
                         <label for="floatingInput">Пользователь</label>
                     </div>
                     <button type="submit" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Начать</button>
