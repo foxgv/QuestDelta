@@ -14,7 +14,7 @@
             </button>
         </c:if>
         <c:if test="${sessionScope.userId!=null }">
-            <button class="w3-btn w3-hover-pale-red w3-round-large" onclick="location.href='/quest'">Играть
+            <button class="w3-btn w3-hover-yellow w3-round-large" onclick="location.href='/quest'">Играть
             </button>
             <button class="w3-btn w3-hover-pale-red w3-round-large" onclick="location.href='/statistic'">Статистика
             </button>

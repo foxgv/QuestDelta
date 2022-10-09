@@ -11,12 +11,8 @@ import java.io.IOException;
 
 @UtilityClass
 public class Jsp {
-
-
-
     public void show(HttpServletRequest req, HttpServletResponse resp, String uri)
             throws ServletException, IOException {
-        //String path = WEB_INF_JSP.formatted(uri);
         String path = "WEB-INF/views" + uri + ".jsp";
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(path);
         requestDispatcher.forward(req, resp);

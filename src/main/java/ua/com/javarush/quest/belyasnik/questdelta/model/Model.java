@@ -24,23 +24,6 @@ public class Model {
         model.add(statistic);
     }
 
-    public int getListSize() {
-        return model.size();
-    }
-
-    public void clearList() {
-        model = new ArrayList<>();
-    }
-
-    public Statistic get(int index) {
-
-        return model.get(index);
-    }
-
-    public void change(Statistic statistic, int index) {
-        model.add(index, statistic);
-    }
-
     public List<String> list() {
         return model.stream()
                 .map(Statistic::toString)

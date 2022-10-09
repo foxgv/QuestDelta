@@ -17,7 +17,6 @@ public class Question extends Entity {
     String text;
     String viewAddress;
     String loosMessage;
-    //Answer[] answers;
     Collection<Answer> answers = new ArrayList<>();
     String[] answerPath;
     int submitAnswerIndex;

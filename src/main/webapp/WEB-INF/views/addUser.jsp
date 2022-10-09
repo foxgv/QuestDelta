@@ -9,21 +9,6 @@
 </head>
 <body>
 <div class="w3-container w3-padding">
-    <%--
-        <%
-            String login = (String) request.getAttribute("login");
-            if (login != null) {
-                Jsp.showMessage(request, response, login);
-
-                out.println("<div class=\"w3-panel w3-green w3-display-container w3-card-4 w3-round\">\n" +
-                        "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
-                        "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-green w3-border w3-border-green w3-hover-border-grey\">×</span>\n" +
-                        "   <h5>User '" + login + "' added!</h5>\n" +
-                        "</div>");
-
-            }
-        %>
-    --%>
     <div>
         <c:if test="${requestScope.login!=null}">
             <%

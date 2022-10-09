@@ -1,12 +1,10 @@
 package ua.com.javarush.quest.belyasnik.questdelta.repository;
 
-import ua.com.javarush.quest.belyasnik.questdelta.entities.Question;
+
 import ua.com.javarush.quest.belyasnik.questdelta.entities.User;
-import ua.com.javarush.quest.belyasnik.questdelta.model.Model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 
 public class UserRepository {
@@ -26,13 +24,4 @@ public class UserRepository {
     public void add(User user) {
         users.add(user);
     }
-
-    public int getUsersSize() {
-        return users.size();
-    }
-
-    public void clearUsersList() {
-        users = new ArrayList<>();
-    }
-
 }
