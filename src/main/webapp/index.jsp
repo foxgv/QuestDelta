@@ -9,10 +9,8 @@
 </head>
 <body>
 
-<%--<a href="/quest">Start</a>--%>
-
 <form action="/quest" method="GET">
-    Enter your name <input type="text" name="userName"/>
+    Введите ваше имя <input type="text" name="userName"/>
     <input type="submit" value="submit">
 </form>
 <br>
