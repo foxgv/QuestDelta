@@ -23,8 +23,8 @@ public class GameServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long currentQuestionId = gameService.get((Long)req.getSession().getAttribute("id")).getCurrentQuestionId();
-        if(req.getParameter("1") != null || req.getParameter("2")!= null ){
-            if(req.getParameter("1") != null){
+        if(req.getParameter("answer") != null){
+            if(req.getParameter("answer").equals("0")){
                 Answer answer = questionService.get(currentQuestionId).getAnswers().stream().toList().get(0);
                 req.getSession().setAttribute("correct", answer.getCorrect());
                 currentQuestionId = answer.getNextQuestionId();

@@ -14,14 +14,14 @@
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="1" id="1">
-            <label class="form-check-label" for="1">
+
+            <input class="form-check-input" type="radio" name="answer"  value="0" id="0">
+            <label class="form-check-label" for="0">
                 <%= request.getAttribute("ans1") %>
             </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="2" id="2">
-            <label class="form-check-label" for="2">
+            <br>
+            <input class="form-check-input" type="radio" name="answer"  value="1" id="1">
+            <label class="form-check-label" for="1">
                 <%= request.getAttribute("ans2") %>
             </label>
         </div>
