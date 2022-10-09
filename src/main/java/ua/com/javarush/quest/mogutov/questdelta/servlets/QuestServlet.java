@@ -15,7 +15,7 @@ import java.net.UnknownHostException;
 @WebServlet(name = "QuestServlet", value="/quest")
 public class QuestServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // get current session
         HttpSession currentSession = request.getSession();
 

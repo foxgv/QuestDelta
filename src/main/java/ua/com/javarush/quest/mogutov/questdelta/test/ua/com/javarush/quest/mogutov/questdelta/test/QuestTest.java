@@ -11,52 +11,50 @@ import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
 class QuestTest {
+    static Quest quest;
+    static String name;
+    static InetAddress USER_ADDRESS_TEST;
 
-    Quest quest;
-    String name;
-    InetAddress USER_ADDRESS_TEST;
-
-    @BeforeEach
-    public void init()throws UnknownHostException{
+    @BeforeAll
+    static void init()throws UnknownHostException{
         name = "Edward";
         USER_ADDRESS_TEST = InetAddress.getLocalHost();
         quest = new Quest(name, USER_ADDRESS_TEST);
     }
 
-
-    @org.junit.jupiter.api.Test
+    @Test
     void getUserAddress(){
         assertEquals(USER_ADDRESS_TEST, quest.getUserAddress());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getUserName() {
         assertEquals(name, quest.getUserName());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getLEVEL_TEST() {
         int test_level = 1;
         assertEquals(test_level, quest.getLEVEL());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void setLEVEL() {
         quest.setLEVEL(2);
         assertEquals(2, quest.getLEVEL());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void checkLose() {
         assertTrue(quest.checkLose(3));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void checkWin() {
         assertTrue(quest.checkWin(0));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getCurrentLevelText() {
         List<String> text_test = new ArrayList<>();
         text_test.add("You've lost your memory. Accept the UFO challenge?");
