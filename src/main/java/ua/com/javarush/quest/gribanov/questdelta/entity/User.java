@@ -1,7 +1,9 @@
 package ua.com.javarush.quest.gribanov.questdelta.entity;
 
 import lombok.Builder;
+import lombok.Singular;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -12,7 +14,9 @@ public class User extends AbstractEntity {
     private String password;
     private Role role;
     private String avatar;
+
     private Collection<Game> playingGames;
+
     private Collection<Quest> createdQuests;
 
     public String getName() {
@@ -62,6 +66,12 @@ public class User extends AbstractEntity {
     public void setPlayingGames(Collection<Game> playingGames) {
         this.playingGames = playingGames;
     }
+    public void setPlayingGame(Game playingGame) {
+        if (this.playingGames == null){
+            this.playingGames = new ArrayList<>();
+        }
+        this.playingGames.add(playingGame);
+    }
 
     public Collection<Quest> getCreatedQuests() {
         return createdQuests;
@@ -69,6 +79,12 @@ public class User extends AbstractEntity {
 
     public void setCreatedQuests(Collection<Quest> createdQuests) {
         this.createdQuests = createdQuests;
+    }
+    public void setCreatedQuest(Quest createdQuest) {
+        if (this.createdQuests == null){
+            this.createdQuests = new ArrayList<>();
+        }
+        this.createdQuests.add(createdQuest);
     }
 
     @Override

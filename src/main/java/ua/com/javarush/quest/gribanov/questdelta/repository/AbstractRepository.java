@@ -31,7 +31,9 @@ public abstract class AbstractRepository<T extends AbstractEntity> implements Re
 
     @Override
     public boolean add(T entity) {
-        entity.setId(id.incrementAndGet());
+        if (entity.getId() == 0L){
+            entity.setId(id.incrementAndGet());
+        }
         if (!repository.containsKey(entity.getId())){
             repository.put(entity.getId(), entity);
             return true;

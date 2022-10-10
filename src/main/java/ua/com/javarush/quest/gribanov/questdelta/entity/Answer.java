@@ -4,14 +4,16 @@ import java.util.Objects;
 
 public class Answer extends AbstractEntity {
     private long questionID;
+    private long nextQuestionID;
     private String answerText;
 
     public static AnswerBuilder builder(){
         return new AnswerBuilder();
     }
 
-    public Answer(long questionID, String answerText) {
+    public Answer(long questionID, long nextQuestionID, String answerText) {
         this.questionID = questionID;
+        this.nextQuestionID = nextQuestionID;
         this.answerText = answerText;
     }
 
@@ -21,6 +23,14 @@ public class Answer extends AbstractEntity {
 
     public void setQuestionID(long questionID) {
         this.questionID = questionID;
+    }
+
+    public long getNextQuestionID() {
+        return nextQuestionID;
+    }
+
+    public void setNextQuestionID(long nextQuestionID) {
+        this.nextQuestionID = nextQuestionID;
     }
 
     public String getAnswerText() {
@@ -47,6 +57,7 @@ public class Answer extends AbstractEntity {
 
     public static class AnswerBuilder {
         private long questionID;
+        private long nextQuestionID;
         private String answerText;
 
         AnswerBuilder() {
@@ -62,8 +73,13 @@ public class Answer extends AbstractEntity {
             return this;
         }
 
+        public AnswerBuilder nextQuestionID(long nextQuestionID){
+            this.nextQuestionID = nextQuestionID;
+            return this;
+        }
+
         public Answer build(){
-            return new Answer(questionID, answerText);
+            return new Answer(questionID, nextQuestionID, answerText);
         }
     }
 }

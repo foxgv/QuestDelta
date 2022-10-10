@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 
 import static java.util.List.of;
 
-@WebServlet("/images/*")
+//@WebServlet("/images/*")
 public class ImageServlet extends HttpServlet {
 
     @Override

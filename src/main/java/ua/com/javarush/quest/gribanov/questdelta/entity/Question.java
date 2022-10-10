@@ -1,7 +1,9 @@
 package ua.com.javarush.quest.gribanov.questdelta.entity;
 
 import lombok.Builder;
+import lombok.Singular;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -11,6 +13,7 @@ public class Question extends AbstractEntity {
     private long questID;
     private String questionText;
     private boolean isALast = false;
+    @Singular
     Collection<Answer> answers;
     private String image;
 
@@ -52,6 +55,12 @@ public class Question extends AbstractEntity {
 
     public void setAnswers(Collection<Answer> answers) {
         this.answers = answers;
+    }
+    public void setAnswer(Answer answer){
+        if (this.answers == null) {
+            this.answers = new ArrayList<>();
+        }
+        this.answers.add(answer);
     }
 
     @Override

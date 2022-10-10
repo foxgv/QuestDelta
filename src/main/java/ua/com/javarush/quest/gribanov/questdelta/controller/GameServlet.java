@@ -6,16 +6,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ua.com.javarush.quest.gribanov.questdelta.repository.QuestRepository;
 
 import java.io.IOException;
 
-@WebServlet(name = "quests", value = "/quests")
-public class QuestsServlet extends HttpServlet {
+@WebServlet(value = "/game")
+public class GameServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("quests", QuestRepository.get().getAll());
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("WEB-INF/quests.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("WEB-INF/game.jsp");
         requestDispatcher.forward(req, resp);
     }
 }
