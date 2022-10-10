@@ -1,13 +1,26 @@
 package ua.com.javarush.quest.gribanov.questdelta.mapper;
 
+import ua.com.javarush.quest.gribanov.questdelta.dto.ClientData;
+import ua.com.javarush.quest.gribanov.questdelta.dto.UserDTO;
 import ua.com.javarush.quest.gribanov.questdelta.entity.AbstractEntity;
+import ua.com.javarush.quest.gribanov.questdelta.entity.User;
 
 import java.util.Optional;
 
-public class UserMapper implements Mapper {
+public class UserMapper implements Mapper<User, UserDTO> {
     @Override
-    public Optional get(AbstractEntity entity) {
-        return Optional.empty();
+    public Optional<UserDTO> get(User user) {
+        return user != null ? Optional.of(UserDTO.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .role(user.getRole())
+                .avatar(user.getAvatar())
+                .build())
+                : Optional.empty();
     }
 
+    @Override
+    public User create(ClientData data) {
+        return null;
+    }
 }

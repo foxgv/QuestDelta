@@ -35,12 +35,12 @@ public class LoaderService {
         MAPPER.enable(SerializationFeature.INDENT_OUTPUT);
     }
     public void load(){
-//        Path path = Paths.get(FileUtils.getTempDirectory().getAbsolutePath(), UUID.randomUUID().toString());
-//        try {
-//            TEMP_FOLDER = Files.createDirectories(path).toFile().getAbsolutePath();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        Path path = Paths.get(FileUtils.getTempDirectory().getAbsolutePath(), UUID.randomUUID().toString());
+        try {
+            TEMP_FOLDER = Files.createDirectories(path).toFile().getAbsolutePath();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         userRepository = UserRepository.get();
         questRepository = QuestRepository.get();

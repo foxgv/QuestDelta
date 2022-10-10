@@ -1,5 +1,6 @@
 package ua.com.javarush.quest.gribanov.questdelta.mapper;
 
+import ua.com.javarush.quest.gribanov.questdelta.dto.ClientData;
 import ua.com.javarush.quest.gribanov.questdelta.dto.QuestDTO;
 import ua.com.javarush.quest.gribanov.questdelta.entity.AbstractEntity;
 import ua.com.javarush.quest.gribanov.questdelta.entity.Quest;
@@ -16,5 +17,10 @@ public class QuestMapper implements Mapper<Quest, QuestDTO> {
                 .authorId(quest.getAuthorID())
                 .build()
         ) : Optional.empty();
+    }
+
+    @Override
+    public Quest create(ClientData data) {
+        return null;
     }
 }
