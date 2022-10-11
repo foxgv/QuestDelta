@@ -26,18 +26,10 @@
         <a class="p-2 text-dark" href="/">Главная<br></a>
     </nav>
     <a class="p-2 text-dark" href="/users">List of users</a>
-    <ul>
-        <c:choose>
-            <c:when test="${not empty sessionScope.user}">
-                <li><a href="/profile" class="nav-link px-2 link-dark">Profile</a></li>
-                <li><a href="/logout" class="nav-link px-2 link-dark">Logout</a></li>
-            </c:when>
-            <c:otherwise>
+    <ul class="nav col-md-3 text-end">
                 <li><a href="/login" class="nav-link px-2 link-dark">Login</a></li>
-                <li><a href="/signup" class="nav-link px-2 link-dark">Sign-up</a></li>
-            </c:otherwise>
-        </c:choose>
-    </ul>
+                <li><a href="/user" class="nav-link px-2 link-dark">Sign-up</a></li>
+     </ul>
 </div>
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">

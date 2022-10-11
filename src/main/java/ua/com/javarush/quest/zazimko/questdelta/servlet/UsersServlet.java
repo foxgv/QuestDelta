@@ -13,7 +13,7 @@ import java.util.Map;
 
 @WebServlet(name = "UsersServlet", value = "/users")
 public class UsersServlet extends HttpServlet {
-    UserRepository userRepository = new UserRepository();
+    UserRepository userRepository= UserRepository.getUserRepository();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

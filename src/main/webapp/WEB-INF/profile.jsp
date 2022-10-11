@@ -26,8 +26,8 @@
     </ul>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
         <input type="hidden" name="id" value="${user.id}">
-        <button id="start" name="start" class="btn btn-primary btn-lg px-4 gap-3">Start the game</button>
-        <button id="logout" name="logout" class="btn btn-outline-secondary btn-lg px-4">Выход</button>
+        <a class="p-2 text-dark" href="/game">Начать игру!</a>
+        <a class="p-2 text-dark" href="/logout">Выход</a>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
