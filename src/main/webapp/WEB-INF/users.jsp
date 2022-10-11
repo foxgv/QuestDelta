@@ -21,8 +21,7 @@
 <ul>
     <c:forEach var="user" items="${requestScope.users}">
         <li>
-                ${user.role}: <a href="user?id=${user.id}"> ${user.login}
-        </a>
+                ${user.role}: <a href="user?id=${user.id}"> ${user.login}</a>
         </li>
         <br>
     </c:forEach>

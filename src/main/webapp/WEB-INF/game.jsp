@@ -17,29 +17,34 @@
 <div class="header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">Game</h1>
 </div>
-<div>
-
-    <h1><%= request.getAttribute("question") %> </h1>
-</div>
-
-<div class="form-check">
-
-    <input class="form-check-input" type="radio" name="answer"  value="0" id="0">
-    <label class="form-check-label" for="0">
-        <%= request.getAttribute("ans1") %>
-    </label>
-    <br>
-    <input class="form-check-input" type="radio" name="answer"  value="1" id="1">
-    <label class="form-check-label" for="1">
-        <%= request.getAttribute("ans2") %>
-    </label>
-</div>
-
-<div class=" form-group">
-    <label class="col-md-4 control-label" for="submit"></label>
-    <div class="col-md-4">
-        <button id="submit" class="btn btn-success">Играть</button>
-    </div>
+<div class="w3-container w3-left-align">
+    <form method="post">
+        <div>
+            <h2>${requestScope.question.text}</h2>
+        </div>
+        <ul>
+            <c:forEach var="answer" items="${requestScope.question.answers}">
+                <c:if test="${answer.id=='0'}">
+                    <div>
+                        <input class="w3-radio" type="radio" name="answer" value="${answer.id}"
+                               id="answer${answer.id}" checked>
+                        <label for="answer${answer.id}">${answer.text}</label>
+                    </div>
+                </c:if>
+                <p></p>
+                <c:if test="${answer.id!='0'}">
+                    <div>
+                        <input class="w3-radio" type="radio" name="answer" value="${answer.id}"
+                               id="answer${answer.id}">
+                        <label for="answer${answer.id}">${answer.text}</label>
+                    </div>
+                </c:if>
+            </c:forEach>
+        </ul>
+        <div>    <!-- buttons holder -->
+            <p><input class="w3-btn w3-hover-sand w3-round-large" type="submit" value="Ответить"></p>
+        </div>
+    </form>
 </div>
 
 <div>
