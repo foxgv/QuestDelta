@@ -1,19 +1,13 @@
 package ua.com.javarush.quest.rbityutskih.entity;
 
 import lombok.*;
-
+import java.util.Collection;
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Builder(builderMethodName = "with")
-
-public final class User extends Entity{
-
+public class Quest extends Entity{
     Long id;
-    String login;
-    String password;
-
-
-
+    String name;
+    String authorId;
+    Collection<Question> questions;
 }

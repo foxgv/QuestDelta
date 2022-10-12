@@ -3,17 +3,10 @@ package ua.com.javarush.quest.rbityutskih.dto;
 import lombok.Builder;
 import lombok.Data;
 
-
 @Data
 @Builder(builderMethodName = "with")
-public class UserDto {
-
+public class AnswerDto {
     Long id;
-
-    String login;
-
-    String image;
-
-
-
+    String text;
+    Long nextQuestionId;
 }

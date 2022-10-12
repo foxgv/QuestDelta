@@ -1,39 +1,30 @@
 package ua.com.javarush.quest.rbityutskih.repository;
 
+
 import ua.com.javarush.quest.rbityutskih.entity.Game;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Comparator;
+import java.util.stream.Stream;
 
-public class GameRepository {
-    private final Map<Long, Game> games;
+public class GameRepository extends AbstractRepository<Game> implements Repository<Game>{
 
-    public GameStatistic() {
-        games = new HashMap<>();
-        games.put(1L, new Game());
-        games.put(2L, new Game());
+    private static final GameRepository gameRepository = new GameRepository();
+    public static GameRepository get(){
+        return gameRepository;
     }
 
-    public Map<Long, Game> getGames() {
-        return games;
-    }
+    public GameRepository(){
 
-    /*
-    public int getGamesCounter(long gameId) {
-        return games.get(gameId).getGamesCount();
     }
+    @Override
+    public Stream<Game> find(Game pattern) {
+        return map.values().stream()
+                .filter(entity -> isOk(pattern, entity, Game::getId)
+                        && isOk(pattern, entity, Game::getUserName)
+                        && isOk(pattern, entity, Game::getCurrentQuestionId)
+                        && isOk(pattern, entity, Game::getState)
 
-
-    public int getGamesId(long gameId) {
-        return games.get(gameId).getGamesWon();
-    }
-    */
-    public void setGamesCounter(long gameId) {
-        games.get(gameId).setGamesCounter();
-    }
-
-    public void setGamesId(long gameId) {
-        games.get(gameId).setGamesId();
+                )
+                .sorted(Comparator.comparingLong(Game::getId));
     }
 }
-
