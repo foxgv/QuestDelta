@@ -17,7 +17,7 @@
 <div class="header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">Game</h1>
 </div>
-<div class="w3-container w3-left-align">
+<div class="w3-container w3-left-align text-center">
     <form method="post">
         <div>
             <h2>${requestScope.question.text}</h2>

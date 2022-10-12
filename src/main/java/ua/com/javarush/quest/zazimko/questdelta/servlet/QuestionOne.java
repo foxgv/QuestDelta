@@ -45,9 +45,11 @@ public class QuestionOne extends HttpServlet {
                 currentQuestionId = Math.toIntExact(answer1.getNextQuestionId());
                 Jsp.redirect(request, response, "game");
             }else{
+                currentQuestionId=0;
                 Jsp.redirect(request, response, "logout");
             }
         }else {
+            currentQuestionId=0;
             Jsp.redirect(request, response, "logout");
         }
     }

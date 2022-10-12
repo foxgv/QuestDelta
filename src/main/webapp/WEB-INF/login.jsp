@@ -53,8 +53,16 @@
 
             </fieldset>
     </form>
-
 </div>
+<c:if test="${not empty requestScope.error}">
+    <div class="container d-flex flex-wrap justify-content-center">
+            <span class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+                <span class="alert alert-warning" role="alert">
+                        ${requestScope.error}
+                </span>
+            </span>
+    </div>
+</c:if>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>

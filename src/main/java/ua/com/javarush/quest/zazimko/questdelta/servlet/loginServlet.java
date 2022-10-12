@@ -22,7 +22,7 @@ public class loginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         Optional<User> optionalUser = userService.find(login, password);
@@ -34,7 +34,7 @@ public class loginServlet extends HttpServlet {
             Jsp.redirect(request,response,"profile");
 
         }else {
-            request.setAttribute("error", "User not found");
+            Jsp.forward(request,response,"login","Нет такого пользователя!");
         }
     }
 }

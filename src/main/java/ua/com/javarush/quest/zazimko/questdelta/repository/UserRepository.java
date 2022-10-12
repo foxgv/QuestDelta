@@ -15,11 +15,11 @@ public class UserRepository {
         return userRepository;
     }
 
-    public UserRepository() {
+   private  UserRepository() {
        userList= new HashMap<>();
        userList.put(1L,new User("Ivan","123", UserRole.ADMIN));
        userList.put(2L,new User("Fedor","456", UserRole.USER));
-       userList.put(3L,new User("Ivan","789", UserRole.USER));
+       userList.put(3L,new User("Elena","789", UserRole.USER));
        userList.put(4L,new User("Gleb","147", UserRole.USER));
     }
 

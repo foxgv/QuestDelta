@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public enum UserService {
     INSTANCE;
-    private final UserRepository userRepository=UserRepository.getUserRepository();
+    public static final UserRepository userRepository=UserRepository.getUserRepository();
     public Optional<User> find(String login, String password){
         User user =new User(login,password,null);
         Collection<User> users = userRepository.find(user);
