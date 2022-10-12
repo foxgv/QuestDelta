@@ -66,7 +66,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="save">Registration</label>
                 <div class="col-md-4">
-                    <button id="save" name="${requestScope.user.id>0?"update":"create"}"0
+                    <button id="save" name="${requestScope.user.id>0?"update":"create"}"
                             class="btn btn-success">${requestScope.user.id>0?"Update":"Create"}</button>
                 </div>
             </div>

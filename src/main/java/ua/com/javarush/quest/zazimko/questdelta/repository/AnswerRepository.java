@@ -1,15 +1,13 @@
 package ua.com.javarush.quest.zazimko.questdelta.repository;
 
 import ua.com.javarush.quest.zazimko.questdelta.entity.Answer;
-import ua.com.javarush.quest.zazimko.questdelta.entity.User;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class AnswerRepository {
-    private static  List<Answer> answers = new ArrayList<>();
-    private static  AnswerRepository answerRepository = new AnswerRepository();
+    private static final List<Answer> answers = new ArrayList<>();
+    private static final AnswerRepository answerRepository = new AnswerRepository();
 
     public AnswerRepository() {
         answers.add(Answer.with().text("Принять вызов").id(1L).nextQuestionId(2L).build());
@@ -26,7 +24,7 @@ public class AnswerRepository {
 
     public Answer find(Long id) {
         for (Answer answer : answers) {
-            if (answer.getId() == id) {
+            if (answer.getId().equals(id)) {
                 return answer;
             }
         }

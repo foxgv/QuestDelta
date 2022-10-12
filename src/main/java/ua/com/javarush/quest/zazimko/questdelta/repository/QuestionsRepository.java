@@ -41,7 +41,7 @@ public class QuestionsRepository {
     }
     public Question findQuestion(Long id){
         for (Question question : questionList) {
-            if(question.getId()==id){
+            if(question.getId().equals(id)){
                 return question;
             }
         }

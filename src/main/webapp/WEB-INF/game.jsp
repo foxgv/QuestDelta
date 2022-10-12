@@ -41,16 +41,15 @@
                 </c:if>
             </c:forEach>
         </ul>
-        <div>    <!-- buttons holder -->
+        <div>    <!-- buttons holder
             <p><input class="w3-btn w3-hover-sand w3-round-large" type="submit" value="Ответить"></p>
+            -->
+            <button id="reply" name="answer" value="${requestScope.question.id<90?requestScope.answer.id:100}"
+                    class="btn btn-success">${requestScope.question.id>=90?"Конец":"Ответить"}</button>
         </div>
     </form>
 </div>
 
-<div>
-    <h5 class = "uk-heading-medium">Имя: <%= request.getSession().getAttribute("name") %> </h5>
-    <h5 class = "uk-heading-medium">Игр сыграно: <%= request.getSession().getAttribute("count") %> </h5>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>

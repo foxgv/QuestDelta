@@ -5,7 +5,6 @@ import ua.com.javarush.quest.zazimko.questdelta.util.UserRole;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class UserRepository {
@@ -17,7 +16,7 @@ public class UserRepository {
     }
 
     public UserRepository() {
-       userList= new HashMap();
+       userList= new HashMap<>();
        userList.put(1L,new User("Ivan","123", UserRole.ADMIN));
        userList.put(2L,new User("Fedor","456", UserRole.USER));
        userList.put(3L,new User("Ivan","789", UserRole.USER));
@@ -28,8 +27,7 @@ public class UserRepository {
         return userList;
     }
     public  User getUser(long id) {
-        User user = userList.get(id);
-        return user;
+        return userList.get(id);
     }
 
     public void update(User user) {
@@ -47,8 +45,7 @@ public class UserRepository {
         userList.put(user.getId(), user);
     }
     public Collection<User> find(User user){
-        List<User> users = userList.values().stream().filter(userList -> userList.getLogin().equalsIgnoreCase(user.getLogin())).toList();
-        return users;
+        return userList.values().stream().filter(userList1 -> userList1.getLogin().equalsIgnoreCase(user.getLogin())).toList();
     }
 
 
