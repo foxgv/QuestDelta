@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "text": "True",
+    "correct":true,
+    "questionsId": 1
+  },
+  {
+    "id": 2,
+    "text": "False",
+    "correct":false,
+    "questionsId": 1
+  },
+  {
+    "id": 3,
+    "text": "0",
+    "correct":true,
+    "questionsId": 2
+  },
+  {
+    "id": 4,
+    "text": "null",
+    "correct":false,
+    "questionsId": 2
+  },
+  {
+    "id": 5,
+    "text": "A transient variable is a variable which is serialized during Serialization.",
+    "correct":false,
+    "questionsId": 3
+  },
+  {
+    "id": 6,
+    "text": "A transient variable is a variable that may not be serialized during Serialization.",
+    "correct":true,
+    "questionsId": 3
+  },
+  {
+    "id": 7,
+    "text": "True",
+    "correct":true,
+    "questionsId": 4
+  },
+  {
+    "id": 8,
+    "text": "False",
+    "correct":false,
+    "questionsId": 4
+  },
+  {
+    "id": 9,
+    "text": "StringBuilder",
+    "correct":true,
+    "questionsId": 5
+  },
+  {
+    "id": 10,
+    "text": "StringBuffer",
+    "correct":false,
+    "questionsId": 5
+  }
+]

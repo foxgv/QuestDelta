@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quest start</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+
+<h3>Welcome to our tasks. You can choose you prefereble format!</h3>
+<hr>
+<a th:href="@{start-quiz}" class="btn btn-primary">Easy Java quiz</a>
+<br>
+<a th:href="@{start-quest}" class="btn btn-primary">Simple quest</a>
+<br>
+<a th:href="@{/main_page}" class="btn btn-danger">Go to main page</a>
+</body>
+</html>
