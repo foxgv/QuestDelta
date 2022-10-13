@@ -8,9 +8,12 @@
     </style>
     <title>YOU LOSE</title>
 
+    <br/>
+    <br/>
+    Дата: <%= new java.util.Date()%>
+
 </head>
 <body>
-<body style='background-color: red;'>
 <form class="form-horizontal" action="index.jsp" method="get">
     <div class="form-group">
         <div class="col-md-4">
@@ -34,3 +37,4 @@
 </form>
 
 </body>
+</html>

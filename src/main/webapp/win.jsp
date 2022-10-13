@@ -8,7 +8,9 @@
 
   </style>
   <title>YOU WIN</title>
-
+  <br/>
+  <br/>
+  Дата: <%= new java.util.Date()%>
 </head>
 <body>
 
