@@ -1,9 +1,8 @@
 package ua.com.javarush.quest.gribanov.questdelta.repository;
 
 import ua.com.javarush.quest.gribanov.questdelta.entity.User;
-
-import java.util.Collection;
-import java.util.stream.Collectors;
+import java.util.Comparator;
+import java.util.stream.Stream;
 
 public class UserRepository extends AbstractRepository<User> {
 
@@ -15,7 +14,7 @@ public class UserRepository extends AbstractRepository<User> {
 
     }
     @Override
-    public Collection<User> find(User template) {
+    public Stream<User> find(User template) {
 
          return repository.values().stream()
                  .filter(entity->isCoincide(template, entity, User::getId)
@@ -26,6 +25,6 @@ public class UserRepository extends AbstractRepository<User> {
                         &&isCoincide(template, entity, User::getAvatar)
                         &&isCoincide(template, entity, User::getPlayingGames)
                         &&isCoincide(template, entity, User::getCreatedQuests))
-                 .collect(Collectors.toList());
+                 .sorted(Comparator.comparing(User::getId));
     }
 }

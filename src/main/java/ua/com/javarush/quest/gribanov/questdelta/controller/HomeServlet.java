@@ -1,6 +1,5 @@
 package ua.com.javarush.quest.gribanov.questdelta.controller;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,12 +8,13 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+import static ua.com.javarush.quest.gribanov.questdelta.util.GameDispatcher.*;
+
 @WebServlet(name = "Home", value = "/")
 public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //req.setAttribute(QUESTS, questService.getAll());
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("WEB-INF/index.jsp");
-        requestDispatcher.forward(req, resp);
+        forwardToJSP(req, resp, HOME_JSP);
     }
 }

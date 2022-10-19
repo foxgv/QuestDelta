@@ -1,12 +1,13 @@
 package ua.com.javarush.quest.gribanov.questdelta.entity;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Singular;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
-
+@EqualsAndHashCode
 @Builder
 public class User extends AbstractEntity {
     private String name;
@@ -87,17 +88,4 @@ public class User extends AbstractEntity {
         this.createdQuests.add(createdQuest);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        User user = (User) o;
-        return Objects.equals(name, user.name) && Objects.equals(login, user.login) && Objects.equals(password, user.password) && role == user.role && Objects.equals(avatar, user.avatar) && Objects.equals(playingGames, user.playingGames) && Objects.equals(createdQuests, user.createdQuests);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), name, login, password, role, avatar, playingGames, createdQuests);
-    }
 }

@@ -1,6 +1,7 @@
 package ua.com.javarush.quest.gribanov.questdelta.entity;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Singular;
 
 import java.util.ArrayList;
@@ -9,13 +10,28 @@ import java.util.Objects;
 
 
 @Builder
+@EqualsAndHashCode
 public class Question extends AbstractEntity {
-    private long questID;
+    private Long questID;
     private String questionText;
     private boolean isALast = false;
-    @Singular
+
+    private boolean isAWin = false;
+
     Collection<Answer> answers;
     private String image;
+
+    public Question() {
+    }
+
+    public Question(Long questID, String questionText, boolean isALast, boolean isAWin, Collection<Answer> answers, String image) {
+        this.questID = questID;
+        this.questionText = questionText;
+        this.isALast = isALast;
+        this.isAWin = isAWin;
+        this.answers = answers;
+        this.image = image;
+    }
 
     public String getImage() {
         return image;
@@ -25,11 +41,11 @@ public class Question extends AbstractEntity {
         this.image = image;
     }
 
-    public long getQuestID() {
+    public Long getQuestID() {
         return questID;
     }
 
-    public void setQuestID(long questID) {
+    public void setQuestID(Long questID) {
         this.questID = questID;
     }
 
@@ -49,6 +65,14 @@ public class Question extends AbstractEntity {
         isALast = ALast;
     }
 
+    public boolean isAWin() {
+        return isAWin;
+    }
+
+    public void setAWin(boolean AWin) {
+        isAWin = AWin;
+    }
+
     public Collection<Answer> getAnswers() {
         return answers;
     }
@@ -61,19 +85,5 @@ public class Question extends AbstractEntity {
             this.answers = new ArrayList<>();
         }
         this.answers.add(answer);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Question question = (Question) o;
-        return questID == question.questID && isALast == question.isALast && Objects.equals(questionText, question.questionText) && Objects.equals(answers, question.answers);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), questID, questionText, isALast, answers);
     }
 }

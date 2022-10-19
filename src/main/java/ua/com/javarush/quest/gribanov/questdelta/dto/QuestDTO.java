@@ -8,5 +8,7 @@ import lombok.Data;
 public class QuestDTO {
     Long id;
     Long authorId;
+    Long firstQuestionID;
     String name;
+
 }

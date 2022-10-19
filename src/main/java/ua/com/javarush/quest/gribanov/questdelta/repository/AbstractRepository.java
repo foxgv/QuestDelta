@@ -5,6 +5,7 @@ import ua.com.javarush.quest.gribanov.questdelta.entity.AbstractEntity;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 public abstract class AbstractRepository<T extends AbstractEntity> implements Repository<T>{
     public final static AtomicLong id = new AtomicLong(System.currentTimeMillis());
@@ -22,7 +23,7 @@ public abstract class AbstractRepository<T extends AbstractEntity> implements Re
     }
 
     @Override
-    public abstract Collection<T> find(T template);
+    public abstract Stream<T> find(T template);
 
     @Override
     public T get(long id) {
@@ -31,7 +32,7 @@ public abstract class AbstractRepository<T extends AbstractEntity> implements Re
 
     @Override
     public boolean add(T entity) {
-        if (entity.getId() == 0L){
+        if (entity.getId() == null || entity.getId() < 1){
             entity.setId(id.incrementAndGet());
         }
         if (!repository.containsKey(entity.getId())){

@@ -3,7 +3,9 @@ package ua.com.javarush.quest.gribanov.questdelta.repository;
 import ua.com.javarush.quest.gribanov.questdelta.entity.Question;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class QuestionRepository extends AbstractRepository<Question> {
 
@@ -15,14 +17,14 @@ public class QuestionRepository extends AbstractRepository<Question> {
 
     }
     @Override
-    public Collection<Question> find(Question template) {
-        return repository.values().stream()
+    public Stream<Question> find(Question template) {
+        return this.repository.values().stream()
                 .filter(entity->isCoincide(template, entity, Question::getId)
                         &&isCoincide(template, entity, Question::getQuestID)
                         &&isCoincide(template, entity, Question::getQuestionText)
                         &&isCoincide(template, entity, Question::getAnswers)
                         &&isCoincide(template, entity, Question::isALast)
                         &&isCoincide(template, entity, Question::getImage))
-                .collect(Collectors.toList());
+                .sorted(Comparator.comparing(Question::getId));
     }
 }

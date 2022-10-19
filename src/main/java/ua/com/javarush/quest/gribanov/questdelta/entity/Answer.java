@@ -1,35 +1,41 @@
 package ua.com.javarush.quest.gribanov.questdelta.entity;
 
+import lombok.EqualsAndHashCode;
+
 import java.util.Objects;
 
+@EqualsAndHashCode
 public class Answer extends AbstractEntity {
-    private long questionID;
-    private long nextQuestionID;
+    private Long questionID;
+    private Long nextQuestionID;
     private String answerText;
 
     public static AnswerBuilder builder(){
         return new AnswerBuilder();
     }
 
-    public Answer(long questionID, long nextQuestionID, String answerText) {
+    public Answer() {
+    }
+
+    public Answer(Long questionID, Long nextQuestionID, String answerText) {
         this.questionID = questionID;
         this.nextQuestionID = nextQuestionID;
         this.answerText = answerText;
     }
 
-    public long getQuestionID() {
+    public Long getQuestionID() {
         return questionID;
     }
 
-    public void setQuestionID(long questionID) {
+    public void setQuestionID(Long questionID) {
         this.questionID = questionID;
     }
 
-    public long getNextQuestionID() {
+    public Long getNextQuestionID() {
         return nextQuestionID;
     }
 
-    public void setNextQuestionID(long nextQuestionID) {
+    public void setNextQuestionID(Long nextQuestionID) {
         this.nextQuestionID = nextQuestionID;
     }
 
@@ -41,29 +47,16 @@ public class Answer extends AbstractEntity {
         this.answerText = answerText;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Answer answer = (Answer) o;
-        return questionID == answer.questionID && Objects.equals(answerText, answer.answerText);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), questionID, answerText);
-    }
 
     public static class AnswerBuilder {
-        private long questionID;
-        private long nextQuestionID;
+        private Long questionID;
+        private Long nextQuestionID;
         private String answerText;
 
         AnswerBuilder() {
         }
 
-        public AnswerBuilder questionID(long questionID){
+        public AnswerBuilder questionID(Long questionID){
             this.questionID = questionID;
             return  this;
         }
@@ -73,7 +66,7 @@ public class Answer extends AbstractEntity {
             return this;
         }
 
-        public AnswerBuilder nextQuestionID(long nextQuestionID){
+        public AnswerBuilder nextQuestionID(Long nextQuestionID){
             this.nextQuestionID = nextQuestionID;
             return this;
         }

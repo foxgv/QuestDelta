@@ -1,9 +1,12 @@
 package ua.com.javarush.quest.gribanov.questdelta.repository;
 
+import ua.com.javarush.quest.gribanov.questdelta.entity.AbstractEntity;
 import ua.com.javarush.quest.gribanov.questdelta.entity.Quest;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class QuestRepository extends AbstractRepository<Quest> {
 
@@ -15,7 +18,7 @@ public class QuestRepository extends AbstractRepository<Quest> {
 
     }
     @Override
-    public Collection<Quest> find(Quest template) {
+    public Stream<Quest> find(Quest template) {
         return repository.values().stream()
                 .filter(entity->isCoincide(template, entity, Quest::getId)
                         &&isCoincide(template, entity, Quest::getName)
@@ -23,6 +26,6 @@ public class QuestRepository extends AbstractRepository<Quest> {
                         &&isCoincide(template, entity, Quest::getAuthorID)
                         &&isCoincide(template, entity, Quest::getQuestions)
                         &&isCoincide(template, entity, Quest::getImage))
-                .collect(Collectors.toList());
+                .sorted(Comparator.comparing(Quest::getId));
     }
 }

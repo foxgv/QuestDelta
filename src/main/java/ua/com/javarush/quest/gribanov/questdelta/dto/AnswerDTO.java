@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 @Builder
 public class AnswerDTO {
-    long id;
-    long questionID;
-    long nextQuestionID;
+    Long id;
+    Long questionID;
+    Long nextQuestionID;
     String answerText;
 }

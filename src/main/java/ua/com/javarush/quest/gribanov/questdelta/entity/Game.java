@@ -1,16 +1,18 @@
 package ua.com.javarush.quest.gribanov.questdelta.entity;
 
+import lombok.EqualsAndHashCode;
+
 import java.time.ZonedDateTime;
 import java.util.Objects;
-
+@EqualsAndHashCode
 public class Game extends AbstractEntity {
     private final ZonedDateTime startingDate = ZonedDateTime.now();
-    private long userID;
-    private long currentQuestionID;
-    private long questID;
+    private Long userID;
+    private Long currentQuestionID;
+    private Long questID;
     private GameState state;
 
-    public Game(long userID, long currentQuestionID, long questID, GameState state) {
+    public Game(Long userID, Long currentQuestionID, Long questID, GameState state) {
         this.userID = userID;
         this.currentQuestionID = currentQuestionID;
         this.questID = questID;
@@ -27,7 +29,7 @@ public class Game extends AbstractEntity {
 
 
 
-    public long getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
@@ -35,7 +37,7 @@ public class Game extends AbstractEntity {
         this.userID = userID;
     }
 
-    public long getCurrentQuestionID() {
+    public Long getCurrentQuestionID() {
         return currentQuestionID;
     }
 
@@ -43,7 +45,7 @@ public class Game extends AbstractEntity {
         this.currentQuestionID = currentQuestionID;
     }
 
-    public long getQuestID() {
+    public Long getQuestID() {
         return questID;
     }
 
@@ -59,19 +61,6 @@ public class Game extends AbstractEntity {
         this.state = state;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Game game = (Game) o;
-        return userID == game.userID && currentQuestionID == game.currentQuestionID && questID == game.questID && Objects.equals(startingDate, game.startingDate) && state == game.state;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), startingDate, userID, currentQuestionID, questID, state);
-    }
 
     public static class GameBuilder {
         private long userID;

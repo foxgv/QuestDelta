@@ -2,13 +2,19 @@ package ua.com.javarush.quest.gribanov.questdelta.dto;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.util.Collection;
 
 @Data
 @Builder
+@EqualsAndHashCode
 public class QuestionDTO {
-    long id;
-    long questID;
+    Long id;
+    Long questID;
     String questionText;
     boolean isALast;
+    boolean isAWin;
     String image;
+    Collection<AnswerDTO> answers;
 }

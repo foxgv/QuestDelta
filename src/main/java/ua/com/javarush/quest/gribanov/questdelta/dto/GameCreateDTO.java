@@ -1,18 +1,17 @@
 package ua.com.javarush.quest.gribanov.questdelta.dto;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import ua.com.javarush.quest.gribanov.questdelta.entity.GameState;
 
 import java.time.ZonedDateTime;
 
 @Data
-@Builder
-public class GameDTO {
-    Long id;
+@AllArgsConstructor
+public class GameCreateDTO {
     ZonedDateTime startingDate;
     Long userID;
-    QuestionDTO currentQuestion;
+    Long currentQuestionID;
     Long questID;
     GameState state;
 }

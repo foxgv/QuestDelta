@@ -1,23 +1,30 @@
 package ua.com.javarush.quest.gribanov.questdelta.entity;
 
+import lombok.EqualsAndHashCode;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
-
+@EqualsAndHashCode
 public class Quest extends AbstractEntity {
     private String name;
     private boolean isActive = true;
-    private long authorID;
+    private Long authorID;
+    private Long firstQuestionID;
     private Collection<Question> questions;
 
     private String image;
 
-    public Quest(String name, boolean isActive, long authorID, Collection<Question> questions, String image) {
+    public Quest() {
+    }
+
+    public Quest(String name, boolean isActive, Long authorID, Long firstQuestionID, Collection<Question> questions, String image) {
         this.name = name;
         this.isActive = isActive;
         this.authorID = authorID;
         this.questions = questions;
         this.image = image;
+        this.firstQuestionID = firstQuestionID;
     }
 
     public static QuestBuilder builder(){
@@ -48,11 +55,11 @@ public class Quest extends AbstractEntity {
         isActive = active;
     }
 
-    public long getAuthorID() {
+    public Long getAuthorID() {
         return authorID;
     }
 
-    public void setAuthorID(long authorID) {
+    public void setAuthorID(Long authorID) {
         this.authorID = authorID;
     }
 
@@ -64,31 +71,27 @@ public class Quest extends AbstractEntity {
         this.questions = questions;
     }
 
+    public Long getFirstQuestionID() {
+        return firstQuestionID;
+    }
+
+    public void setFirstQuestionID(Long firstQuestionID) {
+        this.firstQuestionID = firstQuestionID;
+    }
+
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Quest quest = (Quest) o;
-        return isActive == quest.isActive && authorID == quest.authorID && Objects.equals(name, quest.name) && Objects.equals(questions, quest.questions);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), name, isActive, authorID, questions);
-    }
-
     public static class QuestBuilder {
         private String name;
         private boolean isActive = true;
-        private long authorID;
+        private Long authorID;
         private Collection<Question> questions;
         private String image;
+
+        private Long firstQuestionID;
 
         QuestBuilder() {
         }
@@ -103,8 +106,13 @@ public class Quest extends AbstractEntity {
             return this;
         }
 
-        public QuestBuilder authorID(long authorID){
+        public QuestBuilder authorID(Long authorID){
             this.authorID = authorID;
+            return this;
+        }
+
+        public QuestBuilder firstQuestionID(Long firstQuestionID){
+            this.firstQuestionID = firstQuestionID;
             return this;
         }
 
@@ -130,7 +138,7 @@ public class Quest extends AbstractEntity {
         }
 
         public Quest build(){
-            return new Quest(name, isActive, authorID, questions, image);
+            return new Quest(name, isActive, authorID, firstQuestionID, questions, image);
         }
     }
 }

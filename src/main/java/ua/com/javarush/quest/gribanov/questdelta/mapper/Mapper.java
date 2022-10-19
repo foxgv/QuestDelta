@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface Mapper <E extends AbstractEntity, R> {
 
-    Optional<R> get(E entity);
+    Optional<R> getDTO(E entity);
     E create(ClientData data);
 
     Mapper<User, UserDTO> user = new UserMapper();
