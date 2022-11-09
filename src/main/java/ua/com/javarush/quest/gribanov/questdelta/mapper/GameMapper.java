@@ -4,7 +4,6 @@ import ua.com.javarush.quest.gribanov.questdelta.dto.ClientData;
 import ua.com.javarush.quest.gribanov.questdelta.dto.GameDTO;
 import ua.com.javarush.quest.gribanov.questdelta.dto.QuestionDTO;
 import ua.com.javarush.quest.gribanov.questdelta.entity.Game;
-import ua.com.javarush.quest.gribanov.questdelta.repository.QuestRepository;
 import ua.com.javarush.quest.gribanov.questdelta.repository.QuestionRepository;
 
 
@@ -16,7 +15,7 @@ public class GameMapper implements Mapper<Game, GameDTO> {
 
         long questionID = game.getCurrentQuestionID();
         QuestionRepository questionRepository = QuestionRepository.get();
-        QuestionDTO questionDTO = Mapper.question.getDTO(questionRepository.get(questionID)).get();
+        QuestionDTO questionDTO = Mapper.question.getDTO(questionRepository.getByID(questionID)).get();
         return game != null
                 ? Optional.of(GameDTO.builder()
                 .id(game.getId())

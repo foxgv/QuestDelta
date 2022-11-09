@@ -18,6 +18,6 @@ public class Listener implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent sce) {
 
         //TODO
-        //ServletContextListener.super.contextDestroyed(sce);
+        LoaderService.save();
     }
 }

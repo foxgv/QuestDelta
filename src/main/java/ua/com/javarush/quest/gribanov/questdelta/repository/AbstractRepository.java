@@ -26,7 +26,7 @@ public abstract class AbstractRepository<T extends AbstractEntity> implements Re
     public abstract Stream<T> find(T template);
 
     @Override
-    public T get(long id) {
+    public T getByID(long id) {
         return repository.get(id);
     }
 

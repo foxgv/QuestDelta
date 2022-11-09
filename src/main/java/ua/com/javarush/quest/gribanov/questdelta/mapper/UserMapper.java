@@ -12,6 +12,7 @@ public class UserMapper implements Mapper<User, UserDTO> {
         return user != null ? Optional.of(UserDTO.builder()
                 .id(user.getId())
                 .name(user.getName())
+                .login(user.getLogin())
                 .role(user.getRole())
                 .avatar(user.getAvatar())
                 .build())

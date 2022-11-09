@@ -33,9 +33,9 @@ public class LoginServlet extends HttpServlet {
             req.getSession().setAttribute("user", optionalUser.get());
             forwardToJSP(req, resp, HOME_JSP);
         } else {
-            req.getSession().setAttribute("errorMessage", "Данного пользователя не существует");
-            resp.setStatus(200);
-            forwardToJSP(req, resp, LOGIN_JSP);
+            req.setAttribute("errorMessage", "hhh");
+            resp.setStatus(401, "Данного пользователя не существует");
+            //forwardToJSP(req, resp, LOGIN_JSP);
         }
     }
 }

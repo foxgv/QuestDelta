@@ -6,26 +6,47 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.SneakyThrows;
+import ua.com.javarush.quest.gribanov.questdelta.service.ImageService;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Optional;
 
 import static java.util.List.of;
 
-//WebServlet("/images/*")
+@WebServlet(value={"/user_images/*", "/quest_images/*"})
 public class ImageServlet extends HttpServlet {
 
     @Override
-    @SneakyThrows
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        String requestURI = req.getRequestURI();
-        String target = req.getContextPath() + "/images/";
-        String nameImage = requestURI.replace(target, "");
-        Path file = Paths.get(requestURI);
-        try (ServletOutputStream outputStream = resp.getOutputStream()) {
-            Files.copy(file, outputStream);
+        Optional<Path> file = resolveImagePath(req);
+        if (file.isPresent()) {
+            try (ServletOutputStream outputStream = resp.getOutputStream()) {
+                Files.copy(file.get(), outputStream);
+            } catch (IOException e) {
+
+            }
         }
+    }
+
+    private Optional<Path> resolveImagePath(HttpServletRequest req){
+        String requestURI = req.getRequestURI();
+        ImageService.Key key;
+        String target;
+        if (requestURI.contains("user_images")) {
+            target = req.getContextPath() + "/user_images/";
+            key = ImageService.Key.USER;
+        } else if (requestURI.contains("quest_images")){
+            target = req.getContextPath() + "/quest_images/";
+            key = ImageService.Key.QUEST;
+        } else {
+            return Optional.empty();
+        }
+        String nameImage = requestURI.replace(target, "");
+        Optional<Path> filePath = ImageService.getImagePath(key, nameImage);
+        return filePath;
     }
 
 }

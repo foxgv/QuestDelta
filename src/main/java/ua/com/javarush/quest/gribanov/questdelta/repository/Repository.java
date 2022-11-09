@@ -7,7 +7,7 @@ public interface Repository<T> {
     Collection<T> getAll();
 
     Stream<T> find(T template);
-    T get(long id);
+    T getByID(long id);
     boolean add(T entity);
     boolean update(T entity);
     boolean remove(T entity);

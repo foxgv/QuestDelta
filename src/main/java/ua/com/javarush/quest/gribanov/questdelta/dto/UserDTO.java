@@ -13,6 +13,7 @@ import java.util.Collection;
 public class UserDTO {
     Long id;
     String name;
+    String login;
     Role role;
     String avatar;
 }

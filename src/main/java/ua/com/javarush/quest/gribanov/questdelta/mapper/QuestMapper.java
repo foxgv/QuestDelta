@@ -14,6 +14,7 @@ public class QuestMapper implements Mapper<Quest, QuestDTO> {
                 .id(quest.getId())
                 .name(quest.getName())
                 .authorId(quest.getAuthorID())
+                .image(quest.getImage())
                 .build()
         ) : Optional.empty();
     }

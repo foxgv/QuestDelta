@@ -3,10 +3,10 @@ package ua.com.javarush.quest.gribanov.questdelta.entity;
 import lombok.EqualsAndHashCode;
 
 import java.time.ZonedDateTime;
-import java.util.Objects;
+
 @EqualsAndHashCode
 public class Game extends AbstractEntity {
-    private final ZonedDateTime startingDate = ZonedDateTime.now();
+    private ZonedDateTime startingDate;
     private Long userID;
     private Long currentQuestionID;
     private Long questID;
@@ -19,12 +19,19 @@ public class Game extends AbstractEntity {
         this.state = state;
     }
 
+    public Game(){
+
+    }
+
     public static GameBuilder builder(){
         return new GameBuilder();
     }
 
     public ZonedDateTime getStartingDate() {
         return startingDate;
+    }
+    public void setStartingDate() {
+        startingDate = ZonedDateTime.now();
     }
 
 
@@ -63,9 +70,9 @@ public class Game extends AbstractEntity {
 
 
     public static class GameBuilder {
-        private long userID;
-        private long currentQuestionID;
-        private long questID;
+        private Long userID;
+        private Long currentQuestionID;
+        private Long questID;
         private GameState state;
 
         GameBuilder() {

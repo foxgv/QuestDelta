@@ -15,6 +15,9 @@ public class GameDispatcher {
     public static final String HOME_JSP = "index.jsp";
     public static final String LOGIN_JSP = "login.jsp";
     public static final String QUESTS_JSP = "quests.jsp";
+    public static final String PROFILE_JSP = "profile.jsp";
+    public static final String STATISTIC_JSP = "statistic.jsp";
+
     public static void forwardToJSP(HttpServletRequest req, HttpServletResponse resp, String path) throws ServletException, IOException {
         String jspPath = PREFIX + path;
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(jspPath);

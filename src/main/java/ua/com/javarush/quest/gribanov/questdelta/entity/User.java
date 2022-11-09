@@ -1,12 +1,12 @@
 package ua.com.javarush.quest.gribanov.questdelta.entity;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Singular;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode
 @Builder
 public class User extends AbstractEntity {

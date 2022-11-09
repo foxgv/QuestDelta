@@ -10,5 +10,5 @@ public class QuestDTO {
     Long authorId;
     Long firstQuestionID;
     String name;
-
+    String image;
 }

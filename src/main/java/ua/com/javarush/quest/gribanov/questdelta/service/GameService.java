@@ -1,12 +1,9 @@
 package ua.com.javarush.quest.gribanov.questdelta.service;
 
 import ua.com.javarush.quest.gribanov.questdelta.dto.GameDTO;
-import ua.com.javarush.quest.gribanov.questdelta.entity.Answer;
-import ua.com.javarush.quest.gribanov.questdelta.entity.Game;
-import ua.com.javarush.quest.gribanov.questdelta.entity.GameState;
+import ua.com.javarush.quest.gribanov.questdelta.entity.*;
 import ua.com.javarush.quest.gribanov.questdelta.mapper.Mapper;
-import ua.com.javarush.quest.gribanov.questdelta.repository.AnswerRepository;
-import ua.com.javarush.quest.gribanov.questdelta.repository.GameRepository;
+import ua.com.javarush.quest.gribanov.questdelta.repository.*;
 
 import java.util.Optional;
 
@@ -21,26 +18,42 @@ public class GameService {
         return gameService;
     }
     public Optional<GameDTO> getGame(long userID, long questID){
+        GameRepository gameRepository = GameRepository.get();
+        UserRepository userRepository = UserRepository.get();
+        QuestRepository questRepository = QuestRepository.get();
+        User user = userRepository.getByID(userID);
+        Quest quest = questRepository.getByID(questID);
         Game gameTemplate = Game.builder()
                 .userID(userID)
+                .questID(questID)
                 .state(GameState.IN_PROGRESS)
                 .build();
-        Game existingGame = GameRepository.get().find(gameTemplate).findFirst().orElse(null);
+        Game existingGame = gameRepository.find(gameTemplate).findFirst().orElse(null);
         if (existingGame != null){
             return Mapper.game.getDTO(existingGame);
         } else {
-            GameRepository.get().add(gameTemplate);
+            gameRepository.add(gameTemplate);
             gameTemplate.setQuestID(questID);
-            gameTemplate.setCurrentQuestionID(1100);
+            gameTemplate.setCurrentQuestionID(quest.getFirstQuestionID());
+            gameTemplate.setStartingDate();
+            user.setPlayingGame(gameTemplate);
             return Mapper.game.getDTO(gameTemplate);
         }
     }
 
     public Optional<GameDTO> updateGame(Long gameID, Long answerID){
-        Game existingGame = GameRepository.get().get(gameID);
-        Answer answer = AnswerRepository.get().get(answerID);
+        Game existingGame = GameRepository.get().getByID(gameID);
+        Answer answer = AnswerRepository.get().getByID(answerID);
+        Question nextQuestion = QuestionRepository.get().getByID(answer.getNextQuestionID());
         if (existingGame != null && answer != null){
             existingGame.setCurrentQuestionID(answer.getNextQuestionID());
+            if (nextQuestion.isALast() && nextQuestion.isAWin()){
+                existingGame.setState(GameState.WIN);
+            } else if (nextQuestion.isALast() && !nextQuestion.isAWin()){
+                existingGame.setState(GameState.LOST);
+            } else {
+                existingGame.setState(GameState.IN_PROGRESS);
+            }
             return Mapper.game.getDTO(existingGame);
         } else {
             return Optional.empty();
