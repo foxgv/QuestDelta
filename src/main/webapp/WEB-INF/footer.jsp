@@ -6,23 +6,28 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+        <div class="lex-container">
+            <footer class="lex-footer">
+                    <nav class="lex-footer-nav">
+                        <ul class="lex-nav-list">
+                            <li class="nav-item-footer"><a href="/" class="nav-link px-2 text-muted">Домой</a></li>
+                            <li class="nav-item-footer"><a href="/quests" class="nav-link px-2 text-muted">Квесты</a></li>
+                            <c:if test="${not empty sessionScope.user}">
+                                <li class="nav-item-footer"><a href="/constructor" class="nav-link px-2 text-muted">Конструктор</a></li>
+                                <c:if test="${sessionScope.user.role=='ADMINISTRATOR'}">
+                                    <li class="nav-item-footer"><a href="#" class="nav-link px-2 text-muted">Пользователи</a></li>
+                                </c:if>
+                            </c:if>
+                            <li class="nav-item-footer"><a href="/statistic" class="nav-link px-2 text-muted">Статистика</a></li>
+                        </ul>
+                    </nav>
+                    <p class="text-center text-muted">© 2022 Lexink, Inc</p>
+            </footer>
+        </div>
 
-      <footer class="lex-footer">
-          <div class="lex-container">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-              <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
-              <li class="nav-item"><a href="/quests" class="nav-link px-2 text-muted">Quests</a></li>
-              <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Constructor</a></li>
-              <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Users</a></li>
-              <li class="nav-item"><a href="/statistic" class="nav-link px-2 text-muted">Statistics</a></li>
-            </ul>
-            <p class="text-center text-muted">© 2022 Lexink, Inc</p>
-          </div>
-      </footer>
-
-    <!-- JavaScript Bundle with Popper -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <script src="../js/myScript.js"></script>
-</body>
+        <!-- JavaScript  -->
+        <script src="../js/aeroplane.js"></script>
+        <script src="../js/three.js"></script>
+        <script src="../js/myScript.js"></script>
+    </body>
 </html>

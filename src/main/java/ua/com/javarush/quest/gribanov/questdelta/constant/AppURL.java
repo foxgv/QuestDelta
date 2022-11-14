@@ -8,5 +8,6 @@ public class AppURL {
     public static final String LOGOUT_URL = "/logout";
     public static final String QUESTS_URL = "/quests";
     public static final String USER_URL = "/user";
+    public static final String CONSTRUCTOR_URL = "/constructor";
     public static final String STAT_URL = "/statistic";
 }

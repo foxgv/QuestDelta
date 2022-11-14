@@ -8,7 +8,7 @@ jQuery(document).ready(function($){
         tabSignup = formModalTab.children('li').eq(1).children('a'),
         forgotPasswordLink = formLogin.find('.cd-form-bottom-message a'),
         backToLoginLink = formForgotPassword.find('.cd-form-bottom-message a'),
-        mainNav = $('.main-nav');
+        mainNav = $('.lex-main-nav');
 
     //open modal
     mainNav.on('click', function(event){
@@ -171,7 +171,7 @@ function signUpSubmit(signUpForm){
             console.log('success create')
         },
         error: () => {
-            $('#error-login').removeClass('is-hide');
+            $('#error-submit').removeClass('is-hide');
         }
     });
 }

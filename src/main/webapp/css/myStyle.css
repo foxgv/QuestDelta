@@ -1,15 +1,347 @@
-ol, ul {
-    padding: 0;
-    margin-bottom: 0;
+/* Common Style */
+html, body {
+    height:100%;
+    min-height:100%;
 }
-a {
-    color: #2f889a;
+a, a:link, a:visited, a:focus, a:hover, a:active {
     text-decoration: none;
 }
-
-img {
-    max-width: 100%;
+ul {
+    list-style: none;
+    padding: 0;
 }
+.lex-container {
+    padding: 0 50px;
+    background: black;
+}
+/* Header */
+.lex-header {
+    min-height: 100px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.lex-logo-wrap{
+    display: flex;
+    align-items: center;
+}
+.lex-logo-img {
+    margin-right: 10px;
+    height: 40px;
+    width: 40px;
+}
+.lex-logo-text {
+    color: wheat;
+    font-family: "Roboto Slab ExtraBold";
+    font-size: 2em;
+    line-height: 2em;
+    text-transform: uppercase;
+}
+.lex-header-nav {
+    display: flex;
+    align-items: center;
+}
+.lex-nav-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.lex-nav-item {
+    margin: 0 25px;
+    font-family: "Montserrat SemiBold";
+    font-size: 1.4em;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+.lex-nav-item:hover {
+    opacity: 0.7;
+}
+.lex-nav-item a {
+    color: whitesmoke;
+}
+
+.lex-auth {
+    display: flex;
+    align-items: center;
+}
+.lex-head-profile {
+    display: inline-block;
+    font-family: Roboto;
+    outline: none;
+}
+.lex-content {
+    min-height: calc(100vh - 150px);
+    background-image: url("../images/839ca099-1e2b-1220-d705-f157a9c6f43b.jpg");
+    background-repeat: repeat-y;
+}
+/* Footer */
+.lex-footer{
+    min-height: 150px;
+    padding: 20px 0;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.lex-footer-nav{
+    display: flex;
+    align-items: center;
+}
+.nav-item-footer{
+    margin: 0 25px;
+    font-family: "Montserrat SemiBold";
+    font-size: 1em;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+.nav-item-footer:hover {
+    opacity: 1;
+}
+.nav-item-footer a{
+    color: whitesmoke;
+}
+.text-center{
+    text-align:center!important
+}
+.text-muted {
+    --bs-text-opacity:1;
+    color: #808b94 !important
+}
+/* Profile */
+.profile-section {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.u-custom-font {
+    font-family: Allerta;
+}
+
+.u-text-1 {
+    text-transform: uppercase;
+    font-size: 3.75rem;
+    text-align: center;
+}
+
+.u-text-2 {
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.profile-form {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin: 20px auto;
+}
+
+.lex-details {
+    margin-right: 10px;
+    height: 300px;
+}
+.lex-profile-image-wrapper {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+
+.lex-profile-image {
+    display: block;
+    margin: 5px auto;
+    max-height: 200px;
+}
+.lex-image-input {
+    display: block;
+}
+/* Game */
+.question-form-wrapper {
+    width: 500px;
+    height: 500px;
+    margin: 10px auto;
+}
+
+.lex-question {
+    text-align: center;
+}
+
+.lex-table-wrapper {
+    margin: auto;
+    display: flex;
+}
+
+th {
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+}
+/* Homepage*/
+.lex-home {
+    min-height: calc(100vh - 150px);
+    background: url("../images/home-background.jpg")  center center/cover no-repeat;
+}
+.lex-h-home {
+    z-index: 10;
+    font-family: Montserrat;
+    height: auto;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    white-space: nowrap;
+    width: auto;
+    min-height: 0px;
+    min-width: 0px;
+    max-height: none;
+    max-width: none;
+    text-align: center;
+    line-height: 110px;
+    letter-spacing: -15px;
+    font-weight: 700;
+    font-size: 120px;
+    text-shadow: #494949 3px 0 15px;
+    backdrop-filter: none;
+    filter: blur(0px);
+    transform-origin: 50% 50%;
+    transform: translate(0px, 0px);
+    opacity: 1;
+    visibility: visible;
+    padding-left: 50px;
+    padding-top: 50px;
+}
+.lex-splitted-lines {
+    display: block;
+    text-align: left;
+    position: relative;
+}
+.lex-splitted-words {
+    position:relative;
+    display:inline-block;
+}
+.lex-char-home {
+    position: relative;
+    display: inline-block;
+    backdrop-filter: none;
+    filter: blur(0px);
+    transform-origin: 50% 50%;
+    opacity: 1;
+    transform: translate(0px, 0px);
+    color: #ffffff;
+}
+
+/* Quests */
+.lex-bulb-image-wrap {
+    position:relative;
+    width:100%;
+    margin:60px auto;
+    overflow:hidden;
+}
+.bulb1{
+    background:url(../images/bulb-1.png) no-repeat center center;
+    background-size:contain;
+    position:absolute;
+    width:272px;
+    height:412px;
+    left:42%;
+    top:0%;
+    z-index: 3;
+    animation: pendulum1 10s infinite cubic-bezier(0.310, 0.440, 0.445, 1.650);
+    -webkit-animation: pendulum 10s infinite cubic-bezier(0.310, 0.440, 0.445, 1.650);
+    transform-origin:center top;
+}
+
+.bulb2{
+    background:url(../images/bulb-2.1.png) no-repeat center center;
+    background-size:contain;
+    position:absolute;
+    z-index: 1;
+    width:144px;
+    height:418px;
+    left:36%;
+    top:21%;
+    z-index: 2;
+    animation: pendulum 9s infinite cubic-bezier(0.310, 0.440, 0.445, 1.650);
+    -webkit-animation: pendulum 9s infinite cubic-bezier(0.310, 0.440, 0.445, 1.650);
+    transform-origin:center top;
+}
+.bulb3{
+    background:url(../images/bulb-3.png) no-repeat center center;
+    background-size:contain;
+    position:absolute;
+    width:72px;
+    height:309px;
+    left:32%;
+    top:266px;
+    z-index: 1;
+    animation: pendulum 10s infinite cubic-bezier(0.310, 0.440, 0.445, 1.650);
+    -webkit-animation: pendulum 10s infinite cubic-bezier(0.310, 0.440, 0.445, 1.650);
+    transform-origin:center top;
+}
+
+.bulb1:hover{
+
+}
+.bulb2:hover{
+
+}
+.bulb3:hover{
+
+}
+/* Keyframes */
+@-webkit-keyframes
+pendulum {
+    0%, 100% { transform: rotate(2deg); }
+    25%, 75% { transform: rotate(-4deg); }
+    50% { transform: rotate(4deg); }
+
+}
+pendulum1 {
+    0%, 100% { transform: rotate(.6deg); }
+    25%, 75% { transform: rotate(-1.2deg); }
+    50% { transform: rotate(1.2deg); }
+}
+@keyframes pendulum {
+    0%, 100% { transform: rotate(2deg); }
+    25%, 75% { transform: rotate(-4deg); }
+    50% { transform: rotate(4deg); }
+
+}
+pendulum1 {
+    0%, 100% { transform: rotate(.6deg); }
+    25%, 75% { transform: rotate(-1.2deg); }
+    50% { transform: rotate(1.2deg); }
+
+}
+.lex-quests-content {
+    background:url(../images/bulb_background.jpg) no-repeat center center;
+    min-height: calc(100vh - 150px);
+    background-size: 100%;
+    position:relative;
+    overflow:hidden;
+}
+.lex-album-quests {
+    position: absolute;
+    top: 0;
+}
+
+.lex-card {
+    width: 400px;
+    min-height: 250px;
+    background: #d2d8d8;
+    display: flex;
+}
+.lex-quest-image-wrap {
+    width: 300px;
+    height: 200px;
+}
+
+.lex-card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*Modal login*/
 
 input, textarea {
     font-family: "PT Sans", sans-serif;
@@ -25,7 +357,7 @@ input::-ms-clear, textarea::-ms-clear {
 Main components
 
 -------------------------------- */
-.main-nav {
+.lex-main-nav {
     float: right;
     margin-right: 0%;
     width: 44px;
@@ -33,7 +365,7 @@ Main components
     background: url("../images/cd-icon-menu.svg") no-repeat center center;
     cursor: pointer;
 }
-.main-nav ul {
+.lex-main-nav ul {
     position: absolute;
     top: 0;
     left: 0;
@@ -44,14 +376,14 @@ Main components
     -o-transform: translateY(-100%);
     transform: translateY(-100%);
 }
-.main-nav ul.is-visible {
+.lex-main-nav ul.is-visible {
     -webkit-transform: translateY(50px);
     -moz-transform: translateY(50px);
     -ms-transform: translateY(50px);
     -o-transform: translateY(50px);
     transform: translateY(50px);
 }
-.main-nav a {
+.lex-main-nav a {
     display: block;
     height: 50px;
     line-height: 50px;
@@ -61,13 +393,13 @@ Main components
     color: #FFF;
 }
 @media only screen and (min-width: 768px) {
-    .main-nav {
+    .lex-main-nav {
         width: auto;
         height: auto;
         background: none;
         cursor: auto;
     }
-    .main-nav ul {
+    .lex-main-nav ul {
         position: relative;
         width: auto;
         -webkit-transform: translateY(0);
@@ -76,32 +408,33 @@ Main components
         -o-transform: translateY(0);
         transform: translateY(0);
     }
-    .main-nav ul.is-visible {
+    .lex-main-nav ul.is-visible {
         -webkit-transform: translateY(0);
         -moz-transform: translateY(0);
         -ms-transform: translateY(0);
         -o-transform: translateY(0);
         transform: translateY(0);
     }
-    .main-nav li {
+    .lex-main-nav li {
         display: inline-block;
         margin-left: 1em;
+        font-size: 1em;
     }
-    .main-nav li:nth-last-child(2) {
+    .lex-main-nav li:nth-last-child(2) {
         margin-left: 2em;
     }
-    .main-nav a {
+    .lex-main-nav a {
         display: inline-block;
         height: auto;
         line-height: normal;
         background: transparent;
     }
-    .main-nav a.cd-signin, .main-nav a.cd-signup, .main-nav a.cd-quit  {
+    .lex-main-nav a.cd-signin, .lex-main-nav a.cd-signup, .lex-main-nav a.cd-quit  {
         padding: .6em 1em;
         border: 1px solid rgba(255, 255, 255, 0.6);
         border-radius: 50em;
     }
-    .main-nav a.cd-signup, .main-nav a.cd-quit {
+    .lex-main-nav a.cd-signup, .lex-main-nav a.cd-quit {
         background: #2f889a;
         border: none;
     }
@@ -119,7 +452,7 @@ xsigin/signup popup
     width: 100%;
     height: 100%;
     background: rgba(52, 54, 66, 0.9);
-    z-index: 3;
+    z-index: 4;
     overflow-y: auto;
     cursor: pointer;
     visibility: hidden;
@@ -400,10 +733,6 @@ xsigin/signup popup
 #cd-login.is-selected, #cd-signup.is-selected, #cd-reset-password.is-selected {
     display: block;
 }
-.text-bg-dark {
-    color: #000000 !important;
-    background-color: RGBA(33,37,41,var(--bs-bg-opacity,1))!important;
-}
 
 .is-hide{
     display: none;
@@ -412,74 +741,12 @@ xsigin/signup popup
     width:1rem;
     height:1rem;
 }
-html, body {
-    height:100%;
-    min-height:100%;
-}
-.lex-content {
-    min-height: calc(100vh - 150px);
-    background-image: url("../images/839ca099-1e2b-1220-d705-f157a9c6f43b.jpg");
-    background-repeat: repeat-y;
-}
-.lex-footer{
-    height: 150px;
-    padding: 20px 0;
-    background-color: #0f0f0f;
-}
-.profile-section {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
 
-}
-
-.u-custom-font {
-    font-family: Allerta;
-}
-
-.u-text-1 {
-    text-transform: uppercase;
-    font-size: 3.75rem;
-    text-align: center;
-}
-
-.u-text-2 {
-    font-size: 1.25rem;
-    text-align: center;
-}
-
-.profile-form {
-    display: flex;
-    justify-content: space-between;
-    width: 60%;
-    margin: 20px auto;
-}
-
-.lex-details {
-    margin-right: 10px;
-    height: 300px;
-}
-.lex-profile-image-wrapper {
-    margin-left: 10px;
-    display: flex;
-    flex-direction: column;
-    height: 300px;
-}
-
-.lex-profile-image {
-    display: block;
-    margin: 5px auto;
-    max-height: 200px;
-}
-.lex-image-input {
-    display: block;
-}
-.question-form-wrapper {
-    width: 500px;
-    height: 500px;
-    margin: 10px auto;
-}
-
-.lex-question {
-    text-align: center;
+/* Stub */
+#world {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(#e4e0ba, #f7d9aa);
 }
