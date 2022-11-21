@@ -57,4 +57,5 @@ public abstract class AbstractRepository<T extends AbstractEntity> implements Re
     public boolean remove(T entity) {
         return repository.remove(entity.getId(), entity);
     }
+
 }

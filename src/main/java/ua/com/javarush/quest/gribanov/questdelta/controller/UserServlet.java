@@ -46,4 +46,13 @@ public class UserServlet extends HttpServlet {
             //forwardToJSP(req, resp, LOGIN_JSP);
         }
     }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserService userService = UserService.get();
+        Optional<UserDTO> user=userService.getUser(req.getSession());
+        if (user.isPresent()) {
+
+        }
+    }
 }

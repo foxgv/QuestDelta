@@ -18,19 +18,19 @@ import static ua.com.javarush.quest.gribanov.questdelta.util.GameDispatcher.*;
 @WebServlet(name = "Login", value = AppURL.LOGIN_URL)
 public class LoginServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       req.getSession().setAttribute("errorMessage", "Данного пользователя не существует");
-        forwardToJSP(req, resp, LOGIN_JSP);
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserService userService = UserService.get();
         String login = req.getParameter("login");
         String password = req.getParameter("password");
+        String rememberMe = req.getParameter("rememberMe");
         Optional<UserDTO> optionalUser = userService.findUser(login, password);
         if (optionalUser.isPresent()) {
             req.getSession().setAttribute("user", optionalUser.get());
+            if("on".equals(rememberMe)){
+                req.getSession().setMaxInactiveInterval(0);
+            } else {
+                req.getSession().setMaxInactiveInterval(600);
+            }
             forwardToJSP(req, resp, HOME_JSP);
         } else {
             req.setAttribute("errorMessage", "hhh");

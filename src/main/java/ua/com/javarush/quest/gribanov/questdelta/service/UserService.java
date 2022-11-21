@@ -7,7 +7,9 @@ import ua.com.javarush.quest.gribanov.questdelta.entity.User;
 import ua.com.javarush.quest.gribanov.questdelta.mapper.Mapper;
 import ua.com.javarush.quest.gribanov.questdelta.repository.UserRepository;
 
+import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class UserService {
     private static final UserService userService = new UserService();
@@ -39,6 +41,15 @@ public class UserService {
                 : Optional.empty();
     }
 
+    public Collection<UserDTO> getAllUsersDTO(){
+        Collection<User> users = userRepository.getAll();
+        return users.stream()
+                .filter(u->!("admin".equals(u.getLogin())))
+                .map(Mapper.user::getDTO)
+                .map(o->o.get())
+                .collect(Collectors.toList());
+    }
+
     public Optional<UserDTO> createUser(String name, String login, String password){
         User userTemplate = User.builder()
                 .login(login)
@@ -48,6 +59,7 @@ public class UserService {
         } else {
             userTemplate.setName(name);
             userTemplate.setPassword(password);
+            userTemplate.setRole(Role.GUEST);
             userRepository.add(userTemplate);
             return Mapper.user.getDTO(userTemplate);
         }

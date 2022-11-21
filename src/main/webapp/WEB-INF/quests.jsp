@@ -2,40 +2,61 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@include file="header.jsp" %>
 
-<div class="lex-quests-content">
-    <div class="bulb1"></div>
-    <div class="bulb2"></div>
-    <div class="bulb3"></div>
-    <div class="lex-album-quests">
-        <div class="lex-row-cols">
+<div class="app-body">
+    <audio autoplay loop >
+        <source src="../audio/mystic-audio.mp3" type="audio/mpeg" >
+    </audio>
+    <div class="lex-bulb-bg">
+        <div class="bulb1"></div>
+        <div class="bulb2"></div>
+        <div class="bulb3"></div>
+    </div>
+
+    <div class="lex-content-wrapper">
+        <div class="lex-content">
+            <div class="lex-col">
             <c:forEach var="quest" items="${requestScope.quests}">
-                <div class="lex-col">
-                    <div class="lex-card">
-                        <div class="lex-quest-image-wrap">
-                            <img src="quest_images/${quest.image}" class="lex-card-img-top" alt="No image found">
-                        </div>
-                        <div class="lex-card-body">
+                <div class="lex-card">
+                    <div class="lex-quest-image-wrap">
+                        <div class="lex-quest-image" style="background-image: url(quest_images/${quest.image});"></div>
+                    </div>
+                    <div class="lex-card-body">
+                        <div class="card-main">
                             <div class="card-body">
                                 <h5 class="card-title">${quest.name}</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <div class="lex-quest-icons">
+                                    <div class="lex-question-icon">
+                                        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                        <span> - ${quest.numberOfQuestions}</span>
+                                    </div>
+                                    <div class="lex-duration-icon">
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        <span> ~ ${quest.duration}</span>
+                                    </div>
+                                </div>
+                                <p class="card-text">${quest.description}</p>
+                            </div>
+                            <div class="text-muted">
+                                <c:if test="${not empty requestScope.authors}">
+                                    Автор: ${requestScope.authors.get(quest.authorId)}
+                                </c:if>
                             </div>
                             <div class="lex-play-button">
                                 <c:choose>
                                     <c:when test="${not empty sessionScope.user}">
-                                        <a href="game?questId=${quest.id}" class="btn btn-primary">Играть</a>
+                                        <a href="game?questId=${quest.id}" class="lex-quest-play">Играть</a>
                                     </c:when>
                                     <c:otherwise>
-                                        <a class="cd-signup" href="#0">Зарегистрируйтесь чтобы играть</a>
+                                        <a id="quest-not-play" class="lex-quest-play" href="#0">Играть</a>
                                     </c:otherwise>
                                 </c:choose>
                             </div>
-                            <div class="card-footer text-muted">
-                                AuthorID: ${quest.authorId}
-                            </div>
+
                         </div>
                     </div>
                 </div>
             </c:forEach>
+        </div>
         </div>
     </div>
 </div>

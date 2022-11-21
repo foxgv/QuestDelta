@@ -57,13 +57,20 @@ public class ImageService {
         Path resourcesPath = Path.of(resourcePathString.replace("%20", " "));
         Path defaultQuestImages = resourcesPath.resolve(QUEST_IMAGES_FOLDER);
         Path defaultUserImages = resourcesPath.resolve(USER_IMAGES_FOLDER);
+
         try {
-            if (Files.exists(defaultQuestImages) && Files.exists(questImages)){
+            if (Files.exists(defaultQuestImages)){
+                if (!Files.exists(questImages)){
+                    Files.createDirectory(questImages);
+                }
                 if(Files.list(questImages).count() == 0){
                     copyFiles(defaultQuestImages, questImages);
                 }
             }
-            if (Files.exists(defaultUserImages) && Files.exists(userImages)){
+            if (Files.exists(defaultUserImages)){
+                if (!Files.exists(userImages)) {
+                    Files.createDirectory(userImages);
+                }
                 if(Files.list(userImages).count() == 0){
                     copyFiles(defaultUserImages, userImages);
                 }

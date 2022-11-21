@@ -754,19 +754,22 @@ function handleMouseMove (event) {
 
 
 function init(event) {
-	createScene();
-	createLights();
-	createPlane();
-	createOrbit();
-	createSun();
-	createLand();
-	createForest();
-	createSky();
-	//createFox();
+	let divContainer = document.getElementById('world');
+	if(divContainer != null) {
+		createScene();
+		createLights();
+		createPlane();
+		createOrbit();
+		createSun();
+		createLand();
+		createForest();
+		createSky();
+		// createFox();
 
-	document.addEventListener('mousemove', handleMouseMove, false);
+		document.addEventListener('mousemove', handleMouseMove, false);
 
-	loop();
+		loop();
+	}
 }
 
 window.addEventListener('load', init, false);

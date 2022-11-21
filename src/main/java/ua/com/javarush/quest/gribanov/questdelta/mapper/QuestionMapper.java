@@ -8,7 +8,6 @@ import ua.com.javarush.quest.gribanov.questdelta.entity.Question;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class QuestionMapper implements Mapper<Question, QuestionDTO> {
     @Override
@@ -23,7 +22,8 @@ public class QuestionMapper implements Mapper<Question, QuestionDTO> {
                 .id(question.getId())
                 .questionText(question.getQuestionText())
                 .questID(question.getQuestID())
-                .isALast(question.isALast())
+                .isFirst(question.isFirst())
+                .isLast(question.isLast())
                 .image(question.getImage())
                 .answers(answersDTO)
                 .build())

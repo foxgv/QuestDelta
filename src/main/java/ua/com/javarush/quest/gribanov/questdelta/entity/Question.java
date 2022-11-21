@@ -2,11 +2,9 @@ package ua.com.javarush.quest.gribanov.questdelta.entity;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
-import lombok.Singular;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Objects;
 
 
 @Builder
@@ -14,9 +12,10 @@ import java.util.Objects;
 public class Question extends AbstractEntity {
     private Long questID;
     private String questionText;
-    private boolean isALast = false;
+    private boolean isFirst = false;
+    private boolean isLast = false;
 
-    private boolean isAWin = false;
+    private boolean isWin = false;
 
     Collection<Answer> answers;
     private String image;
@@ -24,11 +23,12 @@ public class Question extends AbstractEntity {
     public Question() {
     }
 
-    public Question(Long questID, String questionText, boolean isALast, boolean isAWin, Collection<Answer> answers, String image) {
+    public Question(Long questID, String questionText, boolean isFirst, boolean isLast, boolean isWin, Collection<Answer> answers, String image) {
         this.questID = questID;
         this.questionText = questionText;
-        this.isALast = isALast;
-        this.isAWin = isAWin;
+        this.isFirst = isFirst;
+        this.isLast = isLast;
+        this.isWin = isWin;
         this.answers = answers;
         this.image = image;
     }
@@ -57,20 +57,28 @@ public class Question extends AbstractEntity {
         this.questionText = questionText;
     }
 
-    public boolean isALast() {
-        return isALast;
+    public boolean isLast() {
+        return isLast;
     }
 
-    public void setALast(boolean ALast) {
-        isALast = ALast;
+    public void setLast(boolean last) {
+        isLast = last;
     }
 
-    public boolean isAWin() {
-        return isAWin;
+    public boolean isWin() {
+        return isWin;
     }
 
-    public void setAWin(boolean AWin) {
-        isAWin = AWin;
+    public void setWin(boolean win) {
+        isWin = win;
+    }
+
+    public boolean isFirst() {
+        return isFirst;
+    }
+
+    public void setFirst(boolean aFirst) {
+        isFirst = aFirst;
     }
 
     public Collection<Answer> getAnswers() {

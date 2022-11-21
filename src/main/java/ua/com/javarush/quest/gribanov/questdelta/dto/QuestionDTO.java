@@ -13,8 +13,9 @@ public class QuestionDTO {
     Long id;
     Long questID;
     String questionText;
-    boolean isALast;
-    boolean isAWin;
+    Boolean isFirst;
+    Boolean isLast;
+    Boolean isWin;
     String image;
     Collection<AnswerDTO> answers;
 }

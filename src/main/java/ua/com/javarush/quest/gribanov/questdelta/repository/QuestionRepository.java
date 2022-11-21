@@ -2,9 +2,7 @@ package ua.com.javarush.quest.gribanov.questdelta.repository;
 
 import ua.com.javarush.quest.gribanov.questdelta.entity.Question;
 
-import java.util.Collection;
 import java.util.Comparator;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class QuestionRepository extends AbstractRepository<Question> {
@@ -23,7 +21,7 @@ public class QuestionRepository extends AbstractRepository<Question> {
                         &&isCoincide(template, entity, Question::getQuestID)
                         &&isCoincide(template, entity, Question::getQuestionText)
                         &&isCoincide(template, entity, Question::getAnswers)
-                        &&isCoincide(template, entity, Question::isALast)
+                        &&isCoincide(template, entity, Question::isLast)
                         &&isCoincide(template, entity, Question::getImage))
                 .sorted(Comparator.comparing(Question::getId));
     }

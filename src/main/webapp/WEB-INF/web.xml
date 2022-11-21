@@ -10,5 +10,7 @@
         <url-pattern>/js/*</url-pattern>
         <url-pattern>/images/*</url-pattern>
         <url-pattern>/icons/*</url-pattern>
+        <url-pattern>/audio/*</url-pattern>
+        <url-pattern>/fonts/*</url-pattern>
     </servlet-mapping>
 </web-app>

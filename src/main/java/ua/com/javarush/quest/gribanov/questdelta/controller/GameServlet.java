@@ -13,6 +13,7 @@ import ua.com.javarush.quest.gribanov.questdelta.service.GameService;
 import ua.com.javarush.quest.gribanov.questdelta.service.UserService;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 
 import static ua.com.javarush.quest.gribanov.questdelta.util.GameDispatcher.*;
@@ -37,20 +38,20 @@ public class GameServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long gameID = Long.parseLong(req.getParameter("gameId"));
-        Long answerID = Long.parseLong(req.getParameter("answer"));
-        GameService gameService = GameService.get();
+        String answer = req.getParameter("answer");
+        if (Objects.nonNull(answer)){
+            Long answerID = Long.parseLong(answer);
+            GameService gameService = GameService.get();
+            Optional<GameDTO> game = gameService.updateGame(gameID, answerID);
+            if (game.isPresent()) {
+                req.setAttribute("game", game.get());
+                req.setAttribute("question", game.get().getCurrentQuestion());
+                req.setAttribute("state", game.get().getState());
 
-        Optional<GameDTO> game = gameService.updateGame(gameID, answerID);
-        if (game.isPresent()){
-            req.setAttribute("game", game.get());
-            req.setAttribute("question", game.get().getCurrentQuestion());
-            req.setAttribute("state", game.get().getState());
-
-            forwardToJSP(req, resp, GAME_JSP);
+                forwardToJSP(req, resp, GAME_JSP);
+            }
+        } else {
+            resp.sendError(406, "Any answer hasn't selected");
         }
-    }
-
-    private void forwardToQuestion(HttpServletRequest req, HttpServletResponse resp, QuestionDTO questionDTO){
-
     }
 }

@@ -47,9 +47,9 @@ public class GameService {
         Question nextQuestion = QuestionRepository.get().getByID(answer.getNextQuestionID());
         if (existingGame != null && answer != null){
             existingGame.setCurrentQuestionID(answer.getNextQuestionID());
-            if (nextQuestion.isALast() && nextQuestion.isAWin()){
+            if (nextQuestion.isLast() && nextQuestion.isWin()){
                 existingGame.setState(GameState.WIN);
-            } else if (nextQuestion.isALast() && !nextQuestion.isAWin()){
+            } else if (nextQuestion.isLast() && !nextQuestion.isWin()){
                 existingGame.setState(GameState.LOST);
             } else {
                 existingGame.setState(GameState.IN_PROGRESS);
