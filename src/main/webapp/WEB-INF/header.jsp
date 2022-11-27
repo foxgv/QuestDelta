@@ -31,17 +31,17 @@
                  </a>
                  <nav class="lex-header-nav">
                      <ul class="lex-nav-list">
-                         <li class="lex-nav-item"><a href="/" class="nav-link px-2 text-secondary">Домой</a></li>
-                         <li class="lex-nav-item"><a href="/quests" class="nav-link px-2 text-white">Квесты</a></li>
+                         <li class="lex-nav-item"><a href="${pageContext.request.contextPath}/" class="nav-link px-2 text-secondary">Домой</a></li>
+                         <li class="lex-nav-item"><a href="${pageContext.request.contextPath}/quests" class="nav-link px-2 text-white">Квесты</a></li>
                          <c:if test="${not empty sessionScope.user}">
                              <c:if test="${sessionScope.user.role!='GUEST'}">
-                                 <li class="lex-nav-item"><a href="/constructor" class="nav-link px-2 text-white">Конструктор</a></li>
+                                 <li class="lex-nav-item"><a href="${pageContext.request.contextPath}/constructor" class="nav-link px-2 text-white">Конструктор</a></li>
                              </c:if>
                              <c:if test="${sessionScope.user.role=='ADMINISTRATOR'}">
-                                 <li class="lex-nav-item"><a href="/users" class="nav-link px-2 text-white">Пользователи</a></li>
+                                 <li class="lex-nav-item"><a href="${pageContext.request.contextPath}/users" class="nav-link px-2 text-white">Пользователи</a></li>
                              </c:if>
                          </c:if>
-                         <li class="lex-nav-item"><a href="/statistic" class="nav-link px-2 text-white">Статистика</a></li>
+                         <li class="lex-nav-item"><a href="${pageContext.request.contextPath}/statistic" class="nav-link px-2 text-white">Статистика</a></li>
                      </ul>
                  </nav>
                  <div class="lex-auth">
@@ -58,15 +58,13 @@
                          <c:otherwise>
                              <nav class="lex-main-nav">
                                  <ul>
-                                    <li><a class="lex-head-profile" href="/user">${sessionScope.user.name}</a></li>
-                                    <li><a class="cd-quit" href="logout">Выйти</a></li>
+                                    <li><a class="lex-head-profile" href="${pageContext.request.contextPath}/user">${sessionScope.user.name}</a></li>
+                                    <li><a class="cd-quit" href="${pageContext.request.contextPath}/logout">Выйти</a></li>
                                  </ul>
                              </nav>
-                             <%--                                 <button type="button" class="btn btn-warning" onclick="window.location.href = 'logout'">Выйти</button>--%>
                          </c:otherwise>
                      </c:choose>
                  </div>
 
             </header>
         </div>
-

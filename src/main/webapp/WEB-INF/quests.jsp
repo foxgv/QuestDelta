@@ -44,7 +44,7 @@
                             <div class="lex-play-button">
                                 <c:choose>
                                     <c:when test="${not empty sessionScope.user}">
-                                        <a href="game?questId=${quest.id}" class="lex-quest-play">Играть</a>
+                                        <a href="${pageContext.request.contextPath}/game?questId=${quest.id}" class="lex-quest-play">Играть</a>
                                     </c:when>
                                     <c:otherwise>
                                         <a id="quest-not-play" class="lex-quest-play" href="#0">Играть</a>

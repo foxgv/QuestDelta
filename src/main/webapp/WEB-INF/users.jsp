@@ -37,8 +37,8 @@
                                 </td>
                                 <td>
                                     <div class="action-buttons-wrap">
-                                        <button id="save-user-${user.id}" class="save-user-btn" onclick="updateUsers(${user.id})">Изменить</button>
-                                        <button id="delete-user-${user.id}" class="delete-user-btn" onclick="deleteUsers(${user.id})">Удалить</button>
+                                        <button id="save-user-${user.id}" class="save-user-btn" onclick="updateUsers('${pageContext.request.contextPath}/users?userId=${user.id}&action=update', ${user.id})">Изменить</button>
+                                        <button id="delete-user-${user.id}" class="delete-user-btn" onclick="deleteUsers('${pageContext.request.contextPath}/users?userId=${user.id}&action=delete')">Удалить</button>
                                     </div>
                                 </td>
                             </tr>

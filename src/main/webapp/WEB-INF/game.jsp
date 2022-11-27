@@ -11,7 +11,7 @@
         <div class="question-body">
             <div class="lex-question">${requestScope.question.questionText}</div>
             <c:if test = "${not empty requestScope.question.answers}">
-                <form id="answerForm" class="answerForm" action="game?gameId=${game.id}" method="post">
+                <form id="answerForm" class="answerForm" action="${pageContext.request.contextPath}/game?gameId=${game.id}" method="post">
                     <div class="answers-wrap">
                         <c:forEach var="answer" items="${requestScope.question.answers}">
                             <div class="form-check">
@@ -29,7 +29,7 @@
             </c:if>
             <c:if test="${requestScope.question.isLast==true}">
                 <div class="submit-answer-wrap">
-                    <a href="game?questId=${requestScope.question.questID}" class="submit-answer" type="button" id="restartGame">Начать сначала</a>
+                    <a href="${pageContext.request.contextPath}/game?questId=${requestScope.question.questID}" class="submit-answer" type="button" id="restartGame">Начать сначала</a>
                 </div>
             </c:if>
         </div>

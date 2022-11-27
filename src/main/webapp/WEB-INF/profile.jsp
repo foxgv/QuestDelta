@@ -24,7 +24,7 @@
                         <button id="submit" type="submit" class="lex-image-upload-btn">Загрузить</button>
                     </div>
                 </form>
-                <form action="user?userId=${sessionScope.user.id}&action=update" method="post" class="lex-profile-form">
+                <form action="${pageContext.request.contextPath}/user?userId=${sessionScope.user.id}&action=update" method="post" class="lex-profile-form">
                     <div class="lex-details">
                         <div class="lex-details-edit-wrap">
                             <h4>Подробности</h4>
@@ -77,7 +77,7 @@
             </div>
         </div>
         <c:if test="${sessionScope.user.login != 'admin' && sessionScope.user.role!='ADMINISTRATOR'}">
-            <form class="lex-remove-account" action="user?userId=${sessionScope.user.id}&action=delete" method="post">
+            <form class="lex-remove-account" action="${pageContext.request.contextPath}/user?userId=${sessionScope.user.id}&action=delete" method="post">
                 <button class="lex-remove-account-btn" type="submit">
                     Удалить аккаунт
                 </button>

@@ -52,7 +52,11 @@ jQuery(document).ready(function($){
         $('#answer-submit').prop( "disabled", false);
     })
 
-    $('#quest-not-play').on('click', login_selected);
+    $('.lex-quest-play').on('click', ()=>{
+        if ($('.lex-quest-play').attr('href')==="#0"){
+            login_selected();
+        }
+    });
 
     //open sign-up form
     mainNav.on('click', '.cd-signup', signup_selected);
@@ -67,7 +71,7 @@ jQuery(document).ready(function($){
     });
     //close modal when clicking the esc keyboard button
     $(document).keyup(function(event){
-        if(event.which=='27'){
+        if(event.which==='27'){
             formModal.removeClass('is-visible');
         }
     });
@@ -83,8 +87,8 @@ jQuery(document).ready(function($){
         let togglePass= $(this),
             passwordField = togglePass.prev('input');
 
-        ( 'password' == passwordField.attr('type') ) ? passwordField.attr('type', 'text') : passwordField.attr('type', 'password');
-        ( 'Hide' == togglePass.text() ) ? togglePass.text('Show') : togglePass.text('Hide');
+        ( 'password' === passwordField.attr('type') ) ? passwordField.attr('type', 'text') : passwordField.attr('type', 'password');
+        ( 'Hide' === togglePass.text() ) ? togglePass.text('Show') : togglePass.text('Hide');
         //focus and move cursor to the end of input field
         passwordField.putCursorAtEnd();
     });
@@ -95,7 +99,7 @@ jQuery(document).ready(function($){
         forgot_password_selected();
     });
 
-    //back to login from the forgot-password form
+    //back to log-in from the forgot-password form
     backToLoginLink.on('click', function(event){
         event.preventDefault();
         login_selected();
@@ -197,12 +201,12 @@ $('#change-pass-btn').on('click', ()=>{
 });
 
 $('#repeat-pass').keyup(function (){
-    console.log("clock")
-    if (!($('#repeat-pass').val() === $('#new-pass').val())){
-        $('#repeat-pass').css('background', 'red');
+    let repeatPass = $('#repeat-pass');
+    if (!(repeatPass.val() === $('#new-pass').val())){
+        repeatPass.css('background', 'red');
         $('#save-edit-btn').prop( "disabled", true);
     } else {
-        $('#repeat-pass').css('background', 'white');
+        repeatPass.css('background', 'white');
         $('#save-edit-btn').prop( "disabled", false);
     }
 });
@@ -300,10 +304,10 @@ $('#loginForm').submit(function (event) {
     event.stopPropagation();
 });
 
-function updateUsers(id){
+function updateUsers(uri, id){
     $.ajax({
         type: 'POST',
-        url: `/users?userId=${id}&action=update`,
+        url: `${uri}`,
         data: {role: $(`#user-role-${id}`).val()},
         success: () => {
             window.location.href="/users"
@@ -312,9 +316,9 @@ function updateUsers(id){
     });
 }
 
-function deleteUsers(id){
+function deleteUsers(uri){
     $.ajax({
-        url: `/users?userId=${id}&action=delete`,
+        url: `${uri}`,
         type: 'POST',
         success: function() {
             window.location.href="/users"
