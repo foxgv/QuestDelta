@@ -1,7 +1,6 @@
 package ua.com.javarush.quest.gribanov.questdelta.mapper;
 
 import ua.com.javarush.quest.gribanov.questdelta.dto.AnswerDTO;
-import ua.com.javarush.quest.gribanov.questdelta.dto.ClientData;
 import ua.com.javarush.quest.gribanov.questdelta.dto.QuestionDTO;
 import ua.com.javarush.quest.gribanov.questdelta.entity.Question;
 
@@ -15,23 +14,17 @@ public class QuestionMapper implements Mapper<Question, QuestionDTO> {
         Collection<AnswerDTO> answersDTO = null;
         if (question.getAnswers() != null) {
             answersDTO = question.getAnswers().stream()
-                    .map(a -> Mapper.answer.getDTO(a).get())
+                    .map(a -> Mapper.answer.getDTO(a).orElse(null))
                     .collect(Collectors.toList());
         }
-        return question != null ? Optional.of(QuestionDTO.builder()
-                .id(question.getId())
-                .questionText(question.getQuestionText())
-                .questID(question.getQuestID())
-                .isFirst(question.isFirst())
-                .isLast(question.isLast())
-                .image(question.getImage())
-                .answers(answersDTO)
-                .build())
-                :Optional.empty();
-    }
-
-    @Override
-    public Question create(ClientData data) {
-        return null;
+        return Optional.of(QuestionDTO.builder()
+                        .id(question.getId())
+                        .questionText(question.getQuestionText())
+                        .questID(question.getQuestID())
+                        .isFirst(question.isFirst())
+                        .isLast(question.isLast())
+                        .image(question.getImage())
+                        .answers(answersDTO)
+                        .build());
     }
 }

@@ -6,22 +6,18 @@ import lombok.EqualsAndHashCode;
 import java.util.ArrayList;
 import java.util.Collection;
 
-
+@SuppressWarnings("unused")
 @Builder
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 public class Question extends AbstractEntity {
     private Long questID;
     private String questionText;
-    private boolean isFirst = false;
-    private boolean isLast = false;
-
-    private boolean isWin = false;
+    private boolean isFirst;
+    private boolean isLast;
+    private boolean isWin;
 
     Collection<Answer> answers;
     private String image;
-
-    public Question() {
-    }
 
     public Question(Long questID, String questionText, boolean isFirst, boolean isLast, boolean isWin, Collection<Answer> answers, String image) {
         this.questID = questID;
@@ -31,6 +27,9 @@ public class Question extends AbstractEntity {
         this.isWin = isWin;
         this.answers = answers;
         this.image = image;
+    }
+
+    public Question() {
     }
 
     public String getImage() {

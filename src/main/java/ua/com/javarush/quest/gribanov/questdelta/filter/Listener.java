@@ -10,11 +10,13 @@ public class Listener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        LoaderService.load();
+        LoaderService loaderService = LoaderService.get();
+        loaderService.load();
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        LoaderService.save();
+        LoaderService loaderService = LoaderService.get();
+        loaderService.save();
     }
 }

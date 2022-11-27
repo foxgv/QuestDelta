@@ -3,11 +3,11 @@ package ua.com.javarush.quest.gribanov.questdelta.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Objects;
-@EqualsAndHashCode
+
+@SuppressWarnings("unused")
+@EqualsAndHashCode(callSuper = false)
 @ToString
 public class Quest extends AbstractEntity {
     private String name;
@@ -111,11 +111,6 @@ public class Quest extends AbstractEntity {
 
     public void setFirstQuestionID(Long firstQuestionID) {
         this.firstQuestionID = firstQuestionID;
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
     }
 
     public static class QuestBuilder {

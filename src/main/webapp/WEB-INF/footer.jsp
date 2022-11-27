@@ -10,17 +10,17 @@
             <footer class="lex-footer">
                     <nav class="lex-footer-nav">
                         <ul class="lex-nav-list">
-                            <li class="nav-item-footer"><a href="/" class="nav-link px-2 text-muted">Домой</a></li>
-                            <li class="nav-item-footer"><a href="/quests" class="nav-link px-2 text-muted">Квесты</a></li>
+                            <li class="nav-item-footer"><a href="${pageContext.request.contextPath}/" class="nav-link px-2 text-muted">Домой</a></li>
+                            <li class="nav-item-footer"><a href="${pageContext.request.contextPath}/quests" class="nav-link px-2 text-muted">Квесты</a></li>
                             <c:if test="${not empty sessionScope.user}">
                                 <c:if test="${sessionScope.user.role!='GUEST'}">
-                                    <li class="nav-item-footer"><a href="/constructor" class="nav-link px-2 text-muted">Конструктор</a></li>
+                                    <li class="nav-item-footer"><a href="${pageContext.request.contextPath}/constructor" class="nav-link px-2 text-muted">Конструктор</a></li>
                                 </c:if>
                                     <c:if test="${sessionScope.user.role=='ADMINISTRATOR'}">
-                                    <li class="nav-item-footer"><a href="/users" class="nav-link px-2 text-muted">Пользователи</a></li>
+                                    <li class="nav-item-footer"><a href="${pageContext.request.contextPath}/users" class="nav-link px-2 text-muted">Пользователи</a></li>
                                 </c:if>
                             </c:if>
-                            <li class="nav-item-footer"><a href="/statistic" class="nav-link px-2 text-muted">Статистика</a></li>
+                            <li class="nav-item-footer"><a href="${pageContext.request.contextPath}/statistic" class="nav-link px-2 text-muted">Статистика</a></li>
                         </ul>
                     </nav>
                     <p class="text-center text-muted">© 2022 Lexink, Inc</p>
@@ -68,7 +68,7 @@
                 </p>
 
                 <p class="fieldset">
-                    <label class="image-replace cd-email" for="signup-login">Логин</label>
+                    <label class="image-replace cd-login-input" for="signup-login">Логин</label>
                     <input class="full-width has-padding has-border" id="signup-login" name="login" type="text" placeholder="Логин">
                     <span class="cd-error-message">Необходимо указать логин!</span>
                 </p>
@@ -82,7 +82,7 @@
 
                 <p class="fieldset">
                     <input type="checkbox" id="accept-terms">
-                    <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
+                    <label for="accept-terms">Я соглашаюсь с какими-то условиями</label>
                 </p>
 
                 <p class="fieldset">

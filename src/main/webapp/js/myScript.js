@@ -25,6 +25,16 @@ jQuery(document).ready(function($){
         QI_container.addClass('exmpl1');
     }
 
+    let UI_container = $(".lex-profile-image-wrapper");
+    let U_img = $("#lex-profile-image");
+    if ((UI_container.width() / UI_container.height()) < (U_img.width() / U_img.height())) {
+        U_img.removeClass('lex-profile-image');
+        U_img.addClass('lex-profile-image-invert');
+    } else {
+        U_img.removeClass('lex-profile-image-invert');
+        U_img.addClass('lex-profile-image');
+    }
+
     let audio=document.querySelector("audio");
     if(audio != null){
         audio.volume=0.2;
@@ -120,32 +130,37 @@ jQuery(document).ready(function($){
     //REMOVE THIS - it's just to show error messages
     formLogin.find('input[type="submit"]').on('click', function(event){
         event.preventDefault();
-        if ($("#signin-login").val()==="") {
-            $("#signin-login").toggleClass('has-error').next('span').toggleClass('is-visible');
+        let signingLogin = $("#signin-login");
+        let signingPassword = $("#signin-password");
+        if (signingLogin.val()==="") {
+            signingLogin.toggleClass('has-error').next('span').toggleClass('is-visible');
         } else {
-            $("#signin-login").toggleClass('has-error', false).next('span').toggleClass('is-visible', false);
-            if ($("#signin-password").val() === "") {
-                $("#signin-password").toggleClass('has-error').next('a').next('span').toggleClass('is-visible');
+            signingLogin.toggleClass('has-error', false).next('span').toggleClass('is-visible', false);
+            if (signingPassword.val() === "") {
+                signingPassword.toggleClass('has-error').next('a').next('span').toggleClass('is-visible');
             } else {
-                $("#signin-password").toggleClass('has-error', false).next('a').next('span').toggleClass('is-visible', false);
+                signingPassword.toggleClass('has-error', false).next('a').next('span').toggleClass('is-visible', false);
                 loginSubmit($("#login-form"));
             }
         }
     });
     formSignup.find('input[type="submit"]').on('click', function(event){
         event.preventDefault();
-        if ($("#signup-username").val() === "") {
-            $("#signup-username").toggleClass('has-error').next('span').toggleClass('is-visible');
+        let signupUsername = $("#signup-username");
+        let signupLogin = $("#signup-login");
+        let signupPassword = $("#signup-password");
+        if (signupUsername.val() === "") {
+            signupUsername.toggleClass('has-error').next('span').toggleClass('is-visible');
         } else {
-            $("#signup-username").toggleClass('has-error', false).next('span').toggleClass('is-visible', false);
-            if ($("#signup-login").val() === ""){
-                $("#signup-login").toggleClass('has-error').next('span').toggleClass('is-visible');
+            signupUsername.toggleClass('has-error', false).next('span').toggleClass('is-visible', false);
+            if (signupLogin.val() === ""){
+                signupLogin.toggleClass('has-error').next('span').toggleClass('is-visible');
             } else {
-                $("#signup-login").toggleClass('has-error', false).next('span').toggleClass('is-visible', false);
-                if ($("#signup-password").val() === "") {
-                    $("#signup-password").toggleClass('has-error').next('a').next('span').toggleClass('is-visible');
+                signupLogin.toggleClass('has-error', false).next('span').toggleClass('is-visible', false);
+                if (signupPassword.val() === "") {
+                    signupPassword.toggleClass('has-error').next('a').next('span').toggleClass('is-visible');
                 } else {
-                    $("#signup-password").toggleClass('has-error', false).next('a').next('span').toggleClass('is-visible', false);
+                    signupPassword.toggleClass('has-error', false).next('a').next('span').toggleClass('is-visible', false);
                     signUpSubmit($("#signup-form"));
                 }
             }
@@ -173,6 +188,70 @@ jQuery.fn.putCursorAtEnd = function() {
     });
 };
 
+$('#change-pass-btn').on('click', ()=>{
+    $('#change-pass-btn').toggleClass('is-hide');
+    $('#change-pass-inputs').toggleClass('is-hide');
+    $('#new-pass').prop( "disabled", false);
+    $('#repeat-pass').prop( "disabled", false);
+
+});
+
+$('#repeat-pass').keyup(function (){
+    console.log("clock")
+    if (!($('#repeat-pass').val() === $('#new-pass').val())){
+        $('#repeat-pass').css('background', 'red');
+        $('#save-edit-btn').prop( "disabled", true);
+    } else {
+        $('#repeat-pass').css('background', 'white');
+        $('#save-edit-btn').prop( "disabled", false);
+    }
+});
+
+$('#edit-user-image-btn').on('click', ()=>{
+    $('.lex-image-btn-group').toggleClass('is-hide');
+});
+
+$('#edit-user-btn').on('click', ()=>{
+    let cells = $('.lex-details-data');
+
+    cells.each((i, cell)=>{
+        if (!$(cell).children('input').length > 0) {
+            let value = $(cell).text();
+            let tdName = $(cell).attr('td-name');
+
+            cell.innerHTML = "";
+            const input = createInput(value, tdName);
+            cell.appendChild(input);
+        } else {
+            let inpValue = $(cell).children('input').val();
+            $(cell).empty();
+            cell.innerHTML = inpValue;
+            $('#new-pass').prop( "disabled", true);
+            $('#repeat-pass').prop( "disabled", true);
+        }
+    })
+
+    $('.lex-change-pass-wrap').toggleClass('is-hide');
+    let changePassBtn = $('#change-pass-btn');
+    if (changePassBtn.css('display') === 'none'){
+        changePassBtn.removeClass('is-hide');
+        $('#change-pass-inputs').addClass('is-hide');
+    }
+
+    $('.lex-confirm-btn-wrap').toggleClass('is-hide');
+});
+
+function createInput(currentValue, tdName){
+    const input = document.createElement('input');
+    input.type = "text";
+    input.value = currentValue;
+    input.name = tdName;
+    input.required = true;
+    return input;
+}
+$('#cancel-edit-btn').on('click', ()=>{
+    window.location.href="/user"
+})
 function loginSubmit(loginForm){
     $.ajax({
         type: 'POST',
@@ -220,6 +299,29 @@ $('#loginForm').submit(function (event) {
     event.preventDefault();
     event.stopPropagation();
 });
+
+function updateUsers(id){
+    $.ajax({
+        type: 'POST',
+        url: `/users?userId=${id}&action=update`,
+        data: {role: $(`#user-role-${id}`).val()},
+        success: () => {
+            window.location.href="/users"
+            console.log('success update')
+        }
+    });
+}
+
+function deleteUsers(id){
+    $.ajax({
+        url: `/users?userId=${id}&action=delete`,
+        type: 'POST',
+        success: function() {
+            window.location.href="/users"
+            console.log('success delete')
+        }
+    });
+}
 
 
 

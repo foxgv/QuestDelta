@@ -1,10 +1,7 @@
 package ua.com.javarush.quest.gribanov.questdelta.repository;
 
 import ua.com.javarush.quest.gribanov.questdelta.entity.Answer;
-
-import java.util.Collection;
 import java.util.Comparator;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class AnswerRepository extends AbstractRepository<Answer> {

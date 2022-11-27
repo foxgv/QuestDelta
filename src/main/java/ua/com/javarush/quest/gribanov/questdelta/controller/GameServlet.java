@@ -16,21 +16,26 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
 
+import static java.util.Objects.*;
 import static ua.com.javarush.quest.gribanov.questdelta.util.GameDispatcher.*;
 
 @WebServlet(value = AppURL.GAME_URL)
 public class GameServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long questID = Long.parseLong(req.getParameter("questId"));
+        long questID = Long.parseLong(req.getParameter("questId"));
         UserService userService = UserService.get();
-        Optional<UserDTO> user=userService.getUser(req.getSession());
+        Optional<UserDTO> user = userService.getUser(req.getSession());
         GameService gameService = GameService.get();
         if (user.isPresent()) {
-            GameDTO game = gameService.getGame(user.get().getId(), questID).get();
+            GameDTO game = gameService.getGame(user.get().getId(), questID).orElse(null);
             req.getSession().setAttribute("user", user.get());
             req.setAttribute("game", game);
-            req.setAttribute("question", game.getCurrentQuestion());
+
+            if (Objects.nonNull(game)) {
+                QuestionDTO questionDTO = game.getCurrentQuestion();
+                req.setAttribute("question", questionDTO);
+            }
             forwardToJSP(req, resp, GAME_JSP);
         }
     }
@@ -39,7 +44,7 @@ public class GameServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long gameID = Long.parseLong(req.getParameter("gameId"));
         String answer = req.getParameter("answer");
-        if (Objects.nonNull(answer)){
+        if (nonNull(answer)) {
             Long answerID = Long.parseLong(answer);
             GameService gameService = GameService.get();
             Optional<GameDTO> game = gameService.updateGame(gameID, answerID);

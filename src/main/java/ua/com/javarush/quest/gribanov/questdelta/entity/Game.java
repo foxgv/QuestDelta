@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 
 import java.time.ZonedDateTime;
 
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 public class Game extends AbstractEntity {
     private ZonedDateTime startingDate;
     private Long userID;

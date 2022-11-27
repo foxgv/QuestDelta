@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ua.com.javarush.quest.gribanov.questdelta.constant.AppURL;
 import ua.com.javarush.quest.gribanov.questdelta.dto.QuestDTO;
-import ua.com.javarush.quest.gribanov.questdelta.repository.QuestRepository;
 import ua.com.javarush.quest.gribanov.questdelta.service.QuestService;
 
 import java.io.IOException;
@@ -26,9 +25,7 @@ public class QuestsServlet extends HttpServlet {
         Collection<QuestDTO> quests = questService.getAll();
         req.setAttribute("quests", quests);
         Optional<Map<Long, String>> authors = questService.getAuthors(quests);
-        if (authors.isPresent()){
-            req.setAttribute("authors", authors.get());
-        }
+        authors.ifPresent(longStringMap -> req.setAttribute("authors", longStringMap));
         forwardToJSP(req, resp, QUESTS_JSP);
     }
 }

@@ -1,6 +1,5 @@
 package ua.com.javarush.quest.gribanov.questdelta.mapper;
 
-import ua.com.javarush.quest.gribanov.questdelta.dto.ClientData;
 import ua.com.javarush.quest.gribanov.questdelta.dto.QuestDTO;
 import ua.com.javarush.quest.gribanov.questdelta.entity.Quest;
 
@@ -20,10 +19,5 @@ public class QuestMapper implements Mapper<Quest, QuestDTO> {
                 .image(quest.getImage())
                 .build()
         ) : Optional.empty();
-    }
-
-    @Override
-    public Quest create(ClientData data) {
-        return null;
     }
 }

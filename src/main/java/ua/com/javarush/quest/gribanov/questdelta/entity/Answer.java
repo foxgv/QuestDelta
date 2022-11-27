@@ -2,9 +2,8 @@ package ua.com.javarush.quest.gribanov.questdelta.entity;
 
 import lombok.EqualsAndHashCode;
 
-import java.util.Objects;
-
-@EqualsAndHashCode
+@SuppressWarnings("unused")
+@EqualsAndHashCode(callSuper = false)
 public class Answer extends AbstractEntity {
     private Long questionID;
     private Long nextQuestionID;

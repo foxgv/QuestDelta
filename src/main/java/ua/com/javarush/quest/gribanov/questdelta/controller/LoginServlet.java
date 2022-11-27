@@ -1,6 +1,5 @@
 package ua.com.javarush.quest.gribanov.questdelta.controller;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -33,8 +32,8 @@ public class LoginServlet extends HttpServlet {
             }
             forwardToJSP(req, resp, HOME_JSP);
         } else {
+            resp.sendError(500, "Incorrect login or password");
             req.setAttribute("errorMessage", "hhh");
-            resp.setStatus(401, "Данного пользователя не существует");
             //forwardToJSP(req, resp, LOGIN_JSP);
         }
     }

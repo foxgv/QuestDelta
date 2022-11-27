@@ -35,9 +35,7 @@ public class QuestService {
     public Optional<Map<Long, String>> getAuthors(Collection<QuestDTO> quests){
         UserRepository userRepository = UserRepository.get();
         Map<Long, String> authors = new HashMap<>();
-        quests.forEach(q->{
-            authors.put(q.getAuthorId(), userRepository.getByID(q.getAuthorId()).getName());
-        });
+        quests.forEach(q-> authors.put(q.getAuthorId(), userRepository.getByID(q.getAuthorId()).getName()));
         return authors.isEmpty() ? Optional.empty() : Optional.of(authors);
     }
 

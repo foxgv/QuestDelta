@@ -3,7 +3,7 @@ package ua.com.javarush.quest.gribanov.questdelta.dto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import ua.com.javarush.quest.gribanov.questdelta.entity.Role;
+
 
 @Data
 @Builder

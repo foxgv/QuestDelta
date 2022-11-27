@@ -1,6 +1,5 @@
 package ua.com.javarush.quest.gribanov.questdelta.entity;
 
-import java.util.Objects;
 
 public abstract class AbstractEntity {
     private Long id;

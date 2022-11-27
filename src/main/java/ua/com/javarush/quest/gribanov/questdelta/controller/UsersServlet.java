@@ -18,6 +18,10 @@ import static ua.com.javarush.quest.gribanov.questdelta.util.GameDispatcher.*;
 @WebServlet(name = "Users", value = AppURL.USERS_URL)
 public class UsersServlet extends HttpServlet {
     @Override
+    public void init() {
+        getServletContext().setAttribute("roles", Role.values());
+    }
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserService userService = UserService.get();
         Optional<UserDTO> optUser=userService.getUser(req.getSession());
@@ -31,4 +35,23 @@ public class UsersServlet extends HttpServlet {
             }
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserService userService = UserService.get();
+        Optional<UserDTO> loggedUser=userService.getUser(req.getSession());
+        if(loggedUser.isPresent()) {
+            Long processedUserID = Long.parseLong(req.getParameter("userId"));
+            String action = req.getParameter("action");
+            if ("update".equals(action)){
+                Role role = Role.valueOf(req.getParameter("role"));
+                userService.updateUserRole(processedUserID, role);
+            } else if ("delete".equals(action)){
+                userService.deleteUser(processedUserID);
+                forwardToJSP(req, resp, USERS_JSP);
+            }
+
+        }
+    }
+
 }

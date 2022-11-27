@@ -9,12 +9,12 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">All Games</th>
-                            <th scope="col">InProgress</th>
-                            <th scope="col">Won</th>
-                            <th scope="col">Lost</th>
-                            <th scope="col">Created Quests</th>
+                            <th scope="col">Имя</th>
+                            <th scope="col">Всего игр</th>
+                            <th scope="col">В процессе</th>
+                            <th scope="col">Выиграно</th>
+                            <th scope="col">Проиграно</th>
+                            <th scope="col">Создано квестов</th>
                         </tr>
                     </thead>
                     <tbody>

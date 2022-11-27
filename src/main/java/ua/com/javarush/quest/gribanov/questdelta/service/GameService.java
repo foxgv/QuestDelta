@@ -45,7 +45,7 @@ public class GameService {
         Game existingGame = GameRepository.get().getByID(gameID);
         Answer answer = AnswerRepository.get().getByID(answerID);
         Question nextQuestion = QuestionRepository.get().getByID(answer.getNextQuestionID());
-        if (existingGame != null && answer != null){
+        if (existingGame != null){
             existingGame.setCurrentQuestionID(answer.getNextQuestionID());
             if (nextQuestion.isLast() && nextQuestion.isWin()){
                 existingGame.setState(GameState.WIN);

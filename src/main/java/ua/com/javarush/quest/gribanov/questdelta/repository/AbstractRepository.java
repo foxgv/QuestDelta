@@ -44,18 +44,15 @@ public abstract class AbstractRepository<T extends AbstractEntity> implements Re
     }
 
     @Override
-    public boolean update(T entity) {
+    public void update(T entity) {
         if (repository.containsKey(entity.getId())){
             repository.put(entity.getId(), entity);
-            return true;
-        } else {
-            return false;
         }
     }
 
     @Override
-    public boolean remove(T entity) {
-        return repository.remove(entity.getId(), entity);
+    public void remove(T entity) {
+        repository.remove(entity.getId(), entity);
     }
 
 }

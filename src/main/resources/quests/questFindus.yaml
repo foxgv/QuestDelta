@@ -1,14 +1,14 @@
 ---
 id: 1000
 name: "Именинный пирог"
-description: "История о том, как Финдус и Петсон решили испечь именинный пирог, но не так то легко собрать все ингридиенты..."
+description: "История о том, как Финдус и Петсон решили испечь именинный пирог"
 duration: 5
 authorID: 1
 firstQuestionID: 1100
 questions:
 - id: 1100
   questID: 1000
-  questionText: "Финдус, как ты уже наверное знаешь, очень любит праздновать свой день рождения, ведь у него их целых 3 в году. Вот и на этот раз он решил, что пора бы это отметить и приготовить его любимый именнинный пирог. Они собрали почти все ингридиенты: яйца, масло, сметану, но кое-что забыли - что же это?"
+  questionText: "Финдус, как ты уже наверное знаешь, очень любит праздновать свой день рождения, ведь у него их целых 3 в году. Вот и на этот раз он решил, что пора бы это отметить и приготовить его любимый именнинный пирог. Они с Петсоном собрали почти все ингридиенты: яйца, масло, сметану, но кое-что забыли - что же это?"
   answers:
   - id: 1102
     questionID: 1100
@@ -34,7 +34,7 @@ questions:
   questID: 1000
   questionText: "Финдус конечно любит колбасу, но увы это им не поможет."
   answers: null
-  image: "kaput"
+  image: "Findus_lost_1"
   last: true
   win: false
   first: false
@@ -42,7 +42,7 @@ questions:
   questID: 1000
   questionText: "Скалка очень полезная в хозяйстве вещь, но для блинов врядли сгодится."
   answers: null
-  image: "kaput"
+  image: "Findus_lost_0"
   last: true
   win: false
   first: false
@@ -72,9 +72,9 @@ questions:
   first: false
 - id: 1500
   questID: 1000
-  questionText: "Интересная получилась бы картина, добавь они клей в пирог"
+  questionText: "С клеем шутки плохи!"
   answers: null
-  image: "kaput"
+  image: "Findus_lost_3"
   last: true
   win: false
   first: false
@@ -82,7 +82,7 @@ questions:
   questID: 1000
   questionText: "Не так уж далеко находится магазин, да и до аэропорта еще дальше"
   answers: null
-  image: "kaput"
+  image: "Findus_lost_6"
   last: true
   win: false
   first: false
@@ -90,7 +90,7 @@ questions:
   questID: 1000
   questionText: "Петсон слишком стар, да и по грантовой дороге это будет сделать не легко"
   answers: null
-  image: "kaput"
+  image: "Findus_lost_4"
   last: true
   win: false
   first: false
@@ -98,7 +98,7 @@ questions:
   questID: 1000
   questionText: "Магазин мог бы находится на острове, но увы это не так"
   answers: null
-  image: "kaput"
+  image: "Findus_lost_5"
   last: true
   win: false
   first: false
@@ -130,15 +130,15 @@ questions:
   questID: 1000
   questionText: "Петсон очень не любит сердиться, и особенно, кого-нибудь ругать"
   answers: null
-  image: "kaput"
+  image: "Findus_lost_7"
   last: true
   win: false
   first: false
 - id: 11200
   questID: 1000
-  questionText: "Далеко на таком колесе точно не уедешь..."
+  questionText: "Далеко на таких колесах точно не уедешь..."
   answers: null
-  image: "kaput"
+  image: "Findus_lost_8"
   last: true
   win: false
   first: false
@@ -146,7 +146,7 @@ questions:
   questID: 1000
   questionText: "Петсон не сможет так поступить, ведь тогда Финдус очень расстроится не съев пирог в свой день рождения"
   answers: null
-  image: "kaput"
+  image: "Findus_lost_9"
   last: true
   win: false
   first: false
@@ -178,7 +178,7 @@ questions:
   questID: 1000
   questionText: "Плохая идея, ведь коты не любят воду, а Петсон попросту разобьется и утонет"
   answers: null
-  image: "kaput"
+  image: "Findus_lost_10"
   last: true
   win: false
   first: false
@@ -186,7 +186,7 @@ questions:
   questID: 1000
   questionText: "На первый взгляд идея кажется верной, но обычной палкой ключ со дна не подцепишь, увы..."
   answers: null
-  image: "kaput"
+  image: "Findus_lost_11"
   last: true
   win: false
   first: false
@@ -194,7 +194,7 @@ questions:
   questID: 1000
   questionText: "Сачок? Ну может для бабочек он и сгодится, но ни как не для ловли ключа в колодце"
   answers: null
-  image: "kaput"
+  image: "Findus_lost_12"
   last: true
   win: false
   first: false
@@ -226,13 +226,13 @@ questions:
   questID: 1000
   questionText: "Очень плохая идея, наверное ты никогда не видел разъяренного быка"
   answers: null
-  image: "kaput"
+  image: "Findus_lost_13"
   last: true
   win: false
   first: false
 - id: 12000
   questID: 1000
-  questionText: "Ура! Теперь Петсон возьмет лестницу, достанет с чердака удочку, выловит из колодца ключ, откроет сарай, возьмет заплатку и инструменты, починит шину и отправится в магазин за мукой и приготовят пирог. А вечером они с Финдусом сядут в саду и будут пить кофе с пирогом, слушая пластинку с прекрасными венскими вальсами"
+  questionText: "Ура! Теперь Петсон возьмет лестницу, достанет с чердака удочку, выловит из колодца ключ, откроет сарай, возьмет заплатку и инструменты, починит шину и отправится в магазин за мукой, а затем приготовит пирог. А вечером они с Финдусом сядут в саду и будут пить кофе с пирогом, слушая пластинку с прекрасными венскими вальсами"
   answers: null
   image: "Findus_6"
   last: true
@@ -242,7 +242,7 @@ questions:
   questID: 1000
   questionText: "Финдус конечно ловко взобрался бы на чердак, только удочка слишком тяжелая для него и он с ней не справится"
   answers: null
-  image: "kaput"
+  image: "Findus_lost_14"
   last: true
   win: false
   first: false
@@ -250,7 +250,7 @@ questions:
   questID: 1000
   questionText: "Отличная мысль, но только бык любит спать очень долго, а Финдус ужасно нетерпеливый и умрет со скуки не дождавшись своего пирога"
   answers: null
-  image: "kaput"
+  image: "Findus_lost_15"
   last: true
   win: false
   first: false

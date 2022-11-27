@@ -6,11 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ua.com.javarush.quest.gribanov.questdelta.constant.AppURL;
-import ua.com.javarush.quest.gribanov.questdelta.dto.UserDTO;
-import ua.com.javarush.quest.gribanov.questdelta.service.UserService;
-
 import java.io.IOException;
-import java.util.Optional;
+
 
 import static ua.com.javarush.quest.gribanov.questdelta.util.GameDispatcher.*;
 

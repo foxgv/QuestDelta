@@ -14,6 +14,7 @@
                         <th scope="col">Логин</th>
                         <th scope="col">Роль</th>
                         <th scope="col">Действия</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -21,110 +22,24 @@
                         <c:forEach var="user" items="${requestScope.users}">
                             <tr>
                                 <td>
-                                    <img class="lex-user-image" src="/user_images/${user.avatar}">
+                                    <img class="lex-user-image" src="/user_images/${user.avatar}" alt="no image found">
                                 </td>
                                 <td>${user.name}</td>
                                 <td>${user.login}</td>
-                                <td>${user.role}</td>
                                 <td>
-                                    <button>Изменить</button>
-                                    <button>Удалить</button>
+                                    <select id="user-role-${user.id}" name="role" class="">
+                                        <c:forEach items="${applicationScope.roles}" var="role">
+                                            <option value="${role}" ${role==user.role?"selected":""}>
+                                                    ${role}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
                                 </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    <img class="lex-user-image" src="/user_images/${user.avatar}">
-                                </td>
-                                <td>${user.name}</td>
-                                <td>${user.login}</td>
-                                <td>${user.role}</td>
-                                <td>
-                                    <button>Изменить</button>
-                                    <button>Удалить</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img class="lex-user-image" src="/user_images/${user.avatar}">
-                                </td>
-                                <td>${user.name}</td>
-                                <td>${user.login}</td>
-                                <td>${user.role}</td>
-                                <td>
-                                    <button>Изменить</button>
-                                    <button>Удалить</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img class="lex-user-image" src="/user_images/${user.avatar}">
-                                </td>
-                                <td>${user.name}</td>
-                                <td>${user.login}</td>
-                                <td>${user.role}</td>
-                                <td>
-                                    <button>Изменить</button>
-                                    <button>Удалить</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img class="lex-user-image" src="/user_images/${user.avatar}">
-                                </td>
-                                <td>${user.name}</td>
-                                <td>${user.login}</td>
-                                <td>${user.role}</td>
-                                <td>
-                                    <button>Изменить</button>
-                                    <button>Удалить</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img class="lex-user-image" src="/user_images/${user.avatar}">
-                                </td>
-                                <td>${user.name}</td>
-                                <td>${user.login}</td>
-                                <td>${user.role}</td>
-                                <td>
-                                    <button>Изменить</button>
-                                    <button>Удалить</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img class="lex-user-image" src="/user_images/${user.avatar}">
-                                </td>
-                                <td>${user.name}</td>
-                                <td>${user.login}</td>
-                                <td>${user.role}</td>
-                                <td>
-                                    <button>Изменить</button>
-                                    <button>Удалить</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img class="lex-user-image" src="/user_images/${user.avatar}">
-                                </td>
-                                <td>${user.name}</td>
-                                <td>${user.login}</td>
-                                <td>${user.role}</td>
-                                <td>
-                                    <button>Изменить</button>
-                                    <button>Удалить</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img class="lex-user-image" src="/user_images/${user.avatar}">
-                                </td>
-                                <td>${user.name}</td>
-                                <td>${user.login}</td>
-                                <td>${user.role}</td>
-                                <td>
-                                    <button>Изменить</button>
-                                    <button>Удалить</button>
+                                    <div class="action-buttons-wrap">
+                                        <button id="save-user-${user.id}" class="save-user-btn" onclick="updateUsers(${user.id})">Изменить</button>
+                                        <button id="delete-user-${user.id}" class="delete-user-btn" onclick="deleteUsers(${user.id})">Удалить</button>
+                                    </div>
                                 </td>
                             </tr>
                         </c:forEach>

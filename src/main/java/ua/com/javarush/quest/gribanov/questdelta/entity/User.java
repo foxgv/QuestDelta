@@ -4,10 +4,11 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Objects;
+
+@SuppressWarnings("unused")
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @Builder
 public class User extends AbstractEntity {
     private String name;

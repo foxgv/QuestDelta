@@ -1,6 +1,5 @@
 package ua.com.javarush.quest.gribanov.questdelta.mapper;
 
-import ua.com.javarush.quest.gribanov.questdelta.dto.ClientData;
 import ua.com.javarush.quest.gribanov.questdelta.dto.UserDTO;
 import ua.com.javarush.quest.gribanov.questdelta.entity.User;
 
@@ -17,10 +16,5 @@ public class UserMapper implements Mapper<User, UserDTO> {
                 .avatar(user.getAvatar())
                 .build())
                 : Optional.empty();
-    }
-
-    @Override
-    public User create(ClientData data) {
-        return null;
     }
 }

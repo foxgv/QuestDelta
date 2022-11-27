@@ -3,7 +3,6 @@ package ua.com.javarush.quest.gribanov.questdelta.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import lombok.experimental.UtilityClass;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import ua.com.javarush.quest.gribanov.questdelta.entity.*;
@@ -16,26 +15,41 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@UtilityClass
+
 public class LoaderService {
-    private final ObjectMapper MAPPER = new ObjectMapper(new YAMLFactory());
+    private static final LoaderService loaderService = new LoaderService();
+    private static final ObjectMapper MAPPER = new ObjectMapper(new YAMLFactory());
     private final String DEFAULT_QUESTS_FOLDER_NAME = "quests";
     private final String BACKUP_DB_FILE_NAME = "dataBaseBU.yml";
-    private final String TEMP_FOLDER_NAME = "tempDB";
-    public static final Path TEMP_FOLDER_PATH = Paths.get(FileUtils.getTempDirectory().getAbsolutePath(), TEMP_FOLDER_NAME);
-    private static final Path RESOURCE_FOLDER_PATH = Path.of(FilenameUtils.getPath(
+    private static final String TEMP_FOLDER_NAME = "tempDB";
+    private static final Path TEMP_FOLDER_PATH = Paths.get(FileUtils.getTempDirectory().getAbsolutePath(), TEMP_FOLDER_NAME);
+
+    private final Path RESOURCE_FOLDER_PATH = Path.of(FilenameUtils.getPath(
             Objects.requireNonNull(LoaderService.class.getResource("/"))
                     .getPath())
             .replace("%20", " "));
+    private final Path DEFAULT_QUESTS_PATH = RESOURCE_FOLDER_PATH.resolve(DEFAULT_QUESTS_FOLDER_NAME);
 
-    private UserRepository userRepository;
-    private QuestRepository questRepository;
-    private QuestionRepository questionRepository;
-    private AnswerRepository answerRepository;
-    private GameRepository gameRepository;
+    private static UserRepository userRepository;
+    private static QuestRepository questRepository;
+    private static QuestionRepository questionRepository;
+    private static AnswerRepository answerRepository;
+    private static GameRepository gameRepository;
 
     static {
         MAPPER.enable(SerializationFeature.INDENT_OUTPUT);
+    }
+
+    private LoaderService(){
+
+    }
+
+    public static LoaderService get() {
+        return loaderService;
+    }
+
+    public static Path getTempFolder(){
+        return TEMP_FOLDER_PATH;
     }
     public void load(){
 
@@ -59,6 +73,8 @@ public class LoaderService {
         } else {
             loadDefaultAdmin();
         }
+        ImageService imageService = ImageService.get();
+        imageService.fillFoldersIfEmpty();
     }
 
     private void loadFromBackUp(Path bdYamlBU) {
@@ -87,13 +103,13 @@ public class LoaderService {
         }
     }
 
+    @SuppressWarnings("resource")
     private Collection<Quest> loadDefaultQuests(Long authorID){
         Collection<Quest> restoredQuests = new ArrayList<>();
-        Path defaultQuestsPath = RESOURCE_FOLDER_PATH.resolve(DEFAULT_QUESTS_FOLDER_NAME);
         QuestService questService = QuestService.get();
-        if(Files.exists(defaultQuestsPath)){
+        if(Files.exists(DEFAULT_QUESTS_PATH)){
             try{
-                restoredQuests = Files.list(defaultQuestsPath)
+                restoredQuests = Files.list(DEFAULT_QUESTS_PATH)
                         .filter(p->!Files.isDirectory(p))
                         .map(p->{
                             try {
@@ -190,15 +206,13 @@ public class LoaderService {
         userRepository.add(defaultAdmin);
 
         Collection<Quest> defaultQuests = loadDefaultQuests(defaultAdmin.getId());
-        if (Objects.nonNull(defaultQuests)) {
-            for (Quest defaultQuest : defaultQuests) {
-                questRepository.add(defaultQuest);
-                defaultAdmin.setCreatedQuest(defaultQuest);
-            }
+        for (Quest defaultQuest : defaultQuests) {
+            questRepository.add(defaultQuest);
+            defaultAdmin.setCreatedQuest(defaultQuest);
         }
         fillRepositories(defaultAdmin);
     }
-    private void fillRepositories(User user){
+    private static void fillRepositories(User user){
         Collection<Quest> quests = user.getCreatedQuests();
         Collection<Game> games = user.getPlayingGames();
         if (!Objects.isNull(games )){

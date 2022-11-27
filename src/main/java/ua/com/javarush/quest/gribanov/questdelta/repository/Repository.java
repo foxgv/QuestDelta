@@ -9,6 +9,6 @@ public interface Repository<T> {
     Stream<T> find(T template);
     T getByID(long id);
     boolean add(T entity);
-    boolean update(T entity);
-    boolean remove(T entity);
+    void update(T entity);
+    void remove(T entity);
 }
