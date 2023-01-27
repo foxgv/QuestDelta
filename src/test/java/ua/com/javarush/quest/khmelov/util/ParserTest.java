@@ -52,7 +52,7 @@ class ParserTest {
 
     @Test
     void getUser() {
-        UserDto userDto = UserDto.with().login("test").build();
+        UserDto userDto = UserDto.builder().login("test").build();
         Mockito.when(session.getAttribute("user")).thenReturn(userDto);
         UserDto actual = Parser.getUser(session).orElseThrow();
         Assertions.assertEquals(userDto.getLogin(), actual.getLogin());

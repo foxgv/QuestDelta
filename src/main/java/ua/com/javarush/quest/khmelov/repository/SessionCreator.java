@@ -2,7 +2,6 @@ package ua.com.javarush.quest.khmelov.repository;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import ua.com.javarush.quest.khmelov.entity.*;
 
@@ -13,7 +12,7 @@ public class SessionCreator implements AutoCloseable {
     private final SessionFactory sessionFactory;
     private final AtomicInteger level = new AtomicInteger();
 
-    {
+    static {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
@@ -58,7 +57,7 @@ public class SessionCreator implements AutoCloseable {
         sessionFactory.close();
     }
 
-    public void startTransactional() {
+    public void beginTransactional() {
         Session session = get();
         if (level.getAndIncrement() == 0) {
             session.beginTransaction();

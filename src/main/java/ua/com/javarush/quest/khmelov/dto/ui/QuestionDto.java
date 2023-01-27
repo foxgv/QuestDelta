@@ -7,12 +7,12 @@ import ua.com.javarush.quest.khmelov.entity.GameState;
 import java.util.Collection;
 
 @Data
-@Builder(builderMethodName = "with")
+@Builder
 public class QuestionDto {
     Long id;
     Long questId;
     String image;
     String text;
+    //GameState gameState;
     Collection<AnswerDto> answers;
-    GameState state;
 }

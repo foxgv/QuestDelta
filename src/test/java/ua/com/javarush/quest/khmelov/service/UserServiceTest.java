@@ -45,13 +45,13 @@ class UserServiceTest {
     @BeforeEach
     void createService() {
         userService = new UserService(userRepositoryMock, gameRepository);
-        user = User.with()
+        user = User.builder()
                 .id(ID)
                 .login("Test")
                 .password("Test")
                 .role(Role.USER)
                 .build();
-        userIdOnly = User.with()
+        userIdOnly = User.builder()
                 .id(ID)
                 .build();
         Mockito.when(requestStub.getParameterMap()).thenReturn(MAP);

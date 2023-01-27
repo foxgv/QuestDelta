@@ -34,7 +34,7 @@ public class LoginServletIT {
     private final String login = "login" + System.currentTimeMillis();
 
 
-    public final User user = User.with()
+    public final User user = User.builder()
             .login(login)
             .password("password")
             .role(Role.USER)

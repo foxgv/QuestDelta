@@ -14,7 +14,7 @@ class AnswerMapper implements Mapper<Answer, AnswerDto> {
     @Override
     public Optional<AnswerDto> get(Answer answer) {
         return answer != null
-                ? Optional.of(AnswerDto.with()
+                ? Optional.of(AnswerDto.builder()
                 .id(answer.getId())
                 .text(answer.getText())
                 .nextQuestionId(answer.getNextQuestionId())
@@ -25,7 +25,7 @@ class AnswerMapper implements Mapper<Answer, AnswerDto> {
 
     @Override
     public Answer parse(FormData formData) {
-        Answer quest = Answer.with().build();
+        Answer quest = Answer.builder().build();
         return fill(quest, formData);
     }
 }

@@ -28,9 +28,9 @@ class AnswerRepositoryTest {
 
     public static Stream<Arguments> getSamplePatternForSearch() {
         return Stream.of(
-                Arguments.of(Answer.with().id(0L).build(), 1),
-                Arguments.of(Answer.with().id(1234567890L).build(), 0),
-                Arguments.of(Answer.with().text("test_text").build(), 1)
+                Arguments.of(Answer.builder().id(0L).build(), 1),
+                Arguments.of(Answer.builder().id(1234567890L).build(), 0),
+                Arguments.of(Answer.builder().text("test_text").build(), 1)
         );
     }
 
@@ -58,7 +58,7 @@ class AnswerRepositoryTest {
     @Test
     @DisplayName("When create+update+delete tempQuest then no Exception")
     void createUpdateDelete() {
-        Answer answer = Answer.with().text("test_text_cud")
+        Answer answer = Answer.builder().text("test_text_cud")
                 .questionId(0L).build();
         answerRepository.create(answer);
 

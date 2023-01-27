@@ -9,4 +9,6 @@ public class QuestRepository extends BaseRepository<Quest> {
     public QuestRepository(SessionCreator sessionCreator) {
         super(sessionCreator, Quest.class);
     }
+
+
 }

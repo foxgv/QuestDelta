@@ -67,7 +67,7 @@ public class GameService {
             Quest quest = questRepository.get(questId);
             Long startQuestionId = quest.getStartQuestionId();
             Question firstQuestion = questionRepository.get(startQuestionId);
-            Game newGame = Game.with()
+            Game newGame = Game.builder()
                     .questId(questId)
                     .currentQuestionId(startQuestionId)
                     .gameState(firstQuestion.getGameState())

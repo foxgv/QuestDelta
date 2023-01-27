@@ -14,10 +14,10 @@ class QuestMapper implements Mapper<Quest, QuestDto> {
     @Override
     public Optional<QuestDto> get(Quest quest) {
         return quest != null
-                ? Optional.of(QuestDto.with()
+                ? Optional.of(QuestDto.builder()
                 .id(quest.getId())
                 .name(quest.getName())
-                .userId(quest.getUser().getId())
+                //.userId(quest.getUser().getId())
                 .questions(quest.getQuestions().stream()
                         .map(Mapper.question::get)
                         .map(Optional::orElseThrow)
@@ -28,7 +28,7 @@ class QuestMapper implements Mapper<Quest, QuestDto> {
 
     @Override
     public Quest parse(FormData formData) {
-        Quest quest = Quest.with().build();
+        Quest quest = Quest.builder().build();
         return fill(quest, formData);
     }
 }

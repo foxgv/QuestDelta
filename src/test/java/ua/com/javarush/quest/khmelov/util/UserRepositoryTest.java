@@ -22,9 +22,9 @@ class UserRepositoryTest {
     public static Stream<Arguments> getSamplePatternForSearch() {
         //several users with different nullable fields (need skipped)
         return Stream.of(
-                Arguments.of(User.with().id(0L).build(), 1),
-                Arguments.of(User.with().id(1234567890L).build(), 0),
-                Arguments.of(User.with().login("test_user").build(), 1)
+                Arguments.of(User.builder().id(0L).build(), 1),
+                Arguments.of(User.builder().id(1234567890L).build(), 0),
+                Arguments.of(User.builder().login("test_user").build(), 1)
         );
     }
 

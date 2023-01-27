@@ -14,7 +14,7 @@ class GameMapper implements Mapper<Game, GameDto> {
     @Override
     public Optional<GameDto> get(Game game) {
         return game != null
-                ? Optional.of(GameDto.with()
+                ? Optional.of(GameDto.builder()
                 .id(game.getId())
                 .questId(game.getQuestId())
                 .gameState(game.getGameState())
@@ -25,7 +25,7 @@ class GameMapper implements Mapper<Game, GameDto> {
 
     @Override
     public Game parse(FormData formData) {
-        Game quest = Game.with().build();
+        Game quest = Game.builder().build();
         return fill(quest, formData);
     }
 }

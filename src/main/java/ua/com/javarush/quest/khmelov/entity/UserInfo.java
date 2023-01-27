@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(builderMethodName = "with")
+@Builder
 
 @Getter
 @Setter

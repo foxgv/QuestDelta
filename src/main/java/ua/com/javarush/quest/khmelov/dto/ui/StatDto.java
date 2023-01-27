@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder(builderMethodName = "with")
+@Builder
 public class StatDto {
     String login;
     long win;

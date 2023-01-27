@@ -9,7 +9,7 @@ import java.util.Collection;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(builderMethodName = "with")
+@Builder
 
 @Getter
 @Setter
@@ -21,6 +21,14 @@ public class Question implements AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude

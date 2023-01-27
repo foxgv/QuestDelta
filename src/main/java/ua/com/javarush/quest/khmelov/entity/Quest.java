@@ -12,7 +12,7 @@ import java.util.Collection;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(builderMethodName = "with")
+@Builder
 
 @Getter
 @Setter
@@ -57,4 +57,12 @@ public class Quest implements AbstractEntity {
     @ToString.Exclude
     @LazyCollection(value = LazyCollectionOption.EXTRA)
     private final Collection<Question> questions = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

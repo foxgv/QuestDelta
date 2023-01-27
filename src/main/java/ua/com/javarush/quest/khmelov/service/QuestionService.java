@@ -9,6 +9,7 @@ import ua.com.javarush.quest.khmelov.entity.Question;
 import ua.com.javarush.quest.khmelov.mapping.Mapper;
 import ua.com.javarush.quest.khmelov.repository.impl.QuestionRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,7 @@ public class QuestionService {
     }
 
     @SneakyThrows
+    @Transactional
     public Optional<QuestionDto> update(FormData formData) {
         questionRepository.beginTransactional();
         try {

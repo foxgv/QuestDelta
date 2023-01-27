@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Collection;
 
 @Data
-@Builder(builderMethodName = "with")
+@Builder
 public class QuestDto {
     Long id;
     Long userId;

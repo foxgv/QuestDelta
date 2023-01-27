@@ -71,7 +71,7 @@ public class QuestService {
             if (map.size() < 1) {
                 return Optional.empty();
             }
-            Quest quest = Quest.with()
+            Quest quest = Quest.builder()
                     .user(userRepository.get(userId))
                     .name(name)
                     .text(text)
@@ -132,11 +132,11 @@ public class QuestService {
 
     private Optional<Question> fillQuestion(Question currentQuestion, long key, String type, String partText) {
         currentQuestion = switch (type) {
-            case QUEST_SYMBOL -> Question.with().text(partText).gameState(GameState.PLAY).build();
-            case WIN_SYMBOL -> Question.with().text(partText).gameState(GameState.WIN).build();
-            case LOST_SYMBOL -> Question.with().text(partText).gameState(GameState.LOST).build();
+            case QUEST_SYMBOL -> Question.builder().text(partText).gameState(GameState.PLAY).build();
+            case WIN_SYMBOL -> Question.builder().text(partText).gameState(GameState.WIN).build();
+            case LOST_SYMBOL -> Question.builder().text(partText).gameState(GameState.LOST).build();
             case LINK_SYMBOL -> {
-                Answer build = Answer.with()
+                Answer build = Answer.builder()
                         .nextQuestionId(key)
                         .questionId(0L)
                         .text(partText)

@@ -14,14 +14,14 @@ import java.util.Objects;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(builderMethodName = "with")
+@Builder
 
 @Getter
 @Setter
 @ToString
 @Entity
 @Table(name = "t_user")
-public final class User implements AbstractEntity {
+public class User implements AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -59,6 +59,13 @@ public final class User implements AbstractEntity {
         return "user-" + id;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
 
 

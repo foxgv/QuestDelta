@@ -5,7 +5,7 @@ import lombok.Data;
 import ua.com.javarush.quest.khmelov.entity.GameState;
 
 @Data
-@Builder(builderMethodName = "with")
+@Builder
 public class GameDto {
     Long id;
     Long questId;

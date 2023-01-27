@@ -14,7 +14,7 @@ class UserMapper implements Mapper<User, UserDto> {
     @Override
     public Optional<UserDto> get(User user) {
         return user != null
-                ? Optional.of(UserDto.with()
+                ? Optional.of(UserDto.builder()
                 .id(user.getId())
                 .login(user.getLogin())
                 .image(user.getImage())
@@ -25,7 +25,7 @@ class UserMapper implements Mapper<User, UserDto> {
 
     @Override
     public User parse(FormData formData) {
-        User user = User.with().build();
+        User user = User.builder().build();
         return fill(user, formData);
     }
 }

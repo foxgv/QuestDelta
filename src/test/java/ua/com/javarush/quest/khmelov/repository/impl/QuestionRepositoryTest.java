@@ -29,9 +29,9 @@ class QuestionRepositoryTest {
 
     public static Stream<Arguments> getSamplePatternForSearch() {
         return Stream.of(
-                Arguments.of(Question.with().id(0L).build(), 1),
-                Arguments.of(Question.with().id(1234567890L).build(), 0),
-                Arguments.of(Question.with().text("test_text").build(), 1)
+                Arguments.of(Question.builder().id(0L).build(), 1),
+                Arguments.of(Question.builder().id(1234567890L).build(), 0),
+                Arguments.of(Question.builder().text("test_text").build(), 1)
         );
     }
 
@@ -60,7 +60,7 @@ class QuestionRepositoryTest {
     @DisplayName("When create+update+delete tempQuest then no Exception")
     void createUpdateDelete() {
         Quest quest = questRepository.get(0L);
-        Question question = Question.with().text("test_text_cud").quest(quest).gameState(GameState.PLAY).build();
+        Question question = Question.builder().text("test_text_cud").quest(quest).gameState(GameState.PLAY).build();
         questionRepository.create(question);
 
         question.setText("test_text_cud_update");

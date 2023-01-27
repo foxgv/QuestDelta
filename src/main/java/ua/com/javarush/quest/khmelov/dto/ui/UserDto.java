@@ -5,7 +5,7 @@ import lombok.Data;
 import ua.com.javarush.quest.khmelov.entity.Role;
 
 @Data
-@Builder(builderMethodName = "with")
+@Builder
 public class UserDto {
 
     Long id;

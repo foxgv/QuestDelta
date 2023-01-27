@@ -9,7 +9,6 @@ import java.util.Map;
 
 @UtilityClass
 public class Winter {
-    //need annotation @Component or other for scan package and auto build context
     private final Map<Class<?>, Object> container = new HashMap<>();
 
     public <T> void setBean(Class<T> type, Object instance){

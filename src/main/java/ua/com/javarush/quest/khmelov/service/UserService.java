@@ -84,12 +84,12 @@ public class UserService {
     }
 
     private StatDto getStatDto(User user) {
-        Game pattern = Game.with().userId(user.getId()).build();
+        Game pattern = Game.builder().userId(user.getId()).build();
         List<Game> games = gameRepository.find(pattern).toList();
         long win = games.stream().filter(game -> game.getGameState().equals(GameState.WIN)).count();
         long lost = games.stream().filter(game -> game.getGameState().equals(GameState.LOST)).count();
         long play = games.stream().filter(game -> game.getGameState().equals(GameState.PLAY)).count();
-        return StatDto.with()
+        return StatDto.builder()
                 .login(user.getLogin())
                 .win(win)
                 .lost(lost)

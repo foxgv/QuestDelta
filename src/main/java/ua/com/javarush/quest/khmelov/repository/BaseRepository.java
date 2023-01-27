@@ -1,7 +1,6 @@
 package ua.com.javarush.quest.khmelov.repository;
 
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import ua.com.javarush.quest.khmelov.entity.AbstractEntity;
 
@@ -124,7 +123,7 @@ public abstract class BaseRepository<T extends AbstractEntity> implements Reposi
     }
 
     public void beginTransactional() {
-        sessionCreator.startTransactional();
+        sessionCreator.beginTransactional();
     }
 
     public void endTransactional() {

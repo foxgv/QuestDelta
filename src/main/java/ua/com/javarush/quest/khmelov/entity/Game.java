@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(builderMethodName = "with")
+@Builder
 
 @Getter
 @Setter
@@ -18,6 +18,14 @@ public class Game implements AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Column(name = "quest_id")
     private Long questId;

@@ -14,9 +14,9 @@ class QuestionMapper implements Mapper<Question, QuestionDto> {
     @Override
     public Optional<QuestionDto> get(Question question) {
         return question != null
-                ? Optional.of(QuestionDto.with()
+                ? Optional.of(QuestionDto.builder()
                 .id(question.getId())
-                .questId(question.getQuest().getId())
+                //.quest(question.getQuest().getId())
                 .image(question.getImage())
                 .text(question.getText())
                 .answers(question.getAnswers().stream()
@@ -30,7 +30,7 @@ class QuestionMapper implements Mapper<Question, QuestionDto> {
 
     @Override
     public Question parse(FormData formData) {
-        Question quest = Question.with().build();
+        Question quest = Question.builder().build();
         return fill(quest, formData);
     }
 }

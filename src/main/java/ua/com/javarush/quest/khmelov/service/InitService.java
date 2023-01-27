@@ -20,10 +20,6 @@ public class InitService {
     private final UserRepository userRepository;
     private final QuestService questService;
 
-    public static void main(String[] args) {
-        Winter.getBean(InitService.class).load();
-    }
-
     @SneakyThrows
     public void load() {
         Path jsonPath = getJsonPath();
@@ -137,6 +133,7 @@ public class InitService {
                         """,
                 adminId
         );
+
         questService.create(
                 "Проверим твои знания арифметики",
                 """
