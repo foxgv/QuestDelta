@@ -25,6 +25,8 @@ import static ua.com.javarush.quest.khmelov.util.Jsp.Key.ROLES;
 @WebServlet(value = Go.SIGNUP,name = "SignupServlet")
 public class SignupServlet extends HttpServlet {
 
+
+
     private final UserService userService = Winter.getBean(UserService.class);
     private final ImageService imageService = Winter.getBean(ImageService.class);
 

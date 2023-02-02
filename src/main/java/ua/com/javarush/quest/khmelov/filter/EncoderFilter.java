@@ -7,7 +7,11 @@ import jakarta.servlet.annotation.WebInitParam;
 import lombok.SneakyThrows;
 import ua.com.javarush.quest.khmelov.util.Go;
 
-@WebFilter(value = Go.ALL, initParams = @WebInitParam(name = "code", value = "UTF-8"), filterName = "EncoderFilter")
+@WebFilter(
+        value = Go.ALL,
+        initParams = @WebInitParam(name = "code", value = "UTF-8"),
+        filterName = "EncoderFilter"
+)
 public class EncoderFilter implements Filter {
 
     private String code;

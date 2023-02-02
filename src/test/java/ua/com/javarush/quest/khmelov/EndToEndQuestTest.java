@@ -25,8 +25,13 @@ public class EndToEndQuestTest {
         driver = new ChromeDriver();
     }
 
+    @AfterAll
+    static void tearDown() {
+        driver.quit();
+    }
+
     @Test
-    void loginAndSeeTitle() {
+    void whenClickLoginAndFill_ThenViewProfilePage() {
         driver.get("http://localhost:8085");
         WebElement loginLink = driver.findElement(By.xpath(LOGIN_LINK_LOCATOR));
         assertEquals("Login", loginLink.getText());
@@ -44,11 +49,6 @@ public class EndToEndQuestTest {
         submitButton.click();
 
         WebElement loginMessage = driver.findElement(By.xpath(PROFILE_LOGIN_MESSAGE_LOCATOR));
-        assertEquals("User login:Elena", loginMessage.getText());
-    }
-
-    @AfterAll
-    static void tearDown() {
-        driver.quit();
+        assertEquals("User login: Elena", loginMessage.getText());
     }
 }

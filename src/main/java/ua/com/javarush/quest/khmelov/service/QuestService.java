@@ -39,6 +39,7 @@ public class QuestService {
             return questRepository.getAll()
                     .map(Mapper.quest::get)
                     .filter(Optional::isPresent)
+                    .filter(q -> q.get().getId() > 0)
                     .map(Optional::get)
                     .toList();
         } finally {

@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import ua.com.javarush.quest.khmelov.config.Winter;
 import ua.com.javarush.quest.khmelov.entity.Game;
 import ua.com.javarush.quest.khmelov.entity.GameState;
-import ua.com.javarush.quest.khmelov.entity.Question;
 import ua.com.javarush.quest.khmelov.repository.Container;
 import ua.com.javarush.quest.khmelov.repository.Repository;
 
