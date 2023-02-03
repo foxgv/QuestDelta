@@ -1,5 +1,6 @@
 package ua.com.javarush.quest.khmelov.util;
 
+import com.javarush.khmelov.util.Parser;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.junit.jupiter.api.Assertions;
@@ -11,7 +12,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ua.com.javarush.quest.khmelov.dto.ui.UserDto;
+import com.javarush.khmelov.dto.ui.UserDto;
 
 
 @ExtendWith(MockitoExtension.class)

@@ -1,5 +1,6 @@
 package ua.com.javarush.quest.khmelov.entity;
 
+import com.javarush.khmelov.entity.Question;
 import org.hibernate.Transaction;
 import org.junit.jupiter.api.Test;
 

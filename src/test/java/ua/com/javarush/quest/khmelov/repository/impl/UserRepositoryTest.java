@@ -1,5 +1,6 @@
 package ua.com.javarush.quest.khmelov.repository.impl;
 
+import com.javarush.khmelov.repository.impl.UserRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
@@ -7,11 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import ua.com.javarush.quest.khmelov.config.Winter;
-import ua.com.javarush.quest.khmelov.entity.Quest;
-import ua.com.javarush.quest.khmelov.entity.Role;
-import ua.com.javarush.quest.khmelov.entity.User;
-import ua.com.javarush.quest.khmelov.repository.Repository;
+import com.javarush.khmelov.config.Winter;
+import com.javarush.khmelov.entity.Role;
+import com.javarush.khmelov.entity.User;
+import com.javarush.khmelov.repository.Repository;
 import ua.com.javarush.quest.khmelov.repository.Container;
 
 import java.util.stream.Stream;

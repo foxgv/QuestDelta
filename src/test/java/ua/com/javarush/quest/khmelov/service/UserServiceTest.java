@@ -1,5 +1,6 @@
 package ua.com.javarush.quest.khmelov.service;
 
+import com.javarush.khmelov.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,16 +10,15 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ua.com.javarush.quest.khmelov.dto.FormData;
-import ua.com.javarush.quest.khmelov.dto.ui.UserDto;
-import ua.com.javarush.quest.khmelov.entity.Role;
-import ua.com.javarush.quest.khmelov.entity.User;
-import ua.com.javarush.quest.khmelov.repository.impl.GameRepository;
-import ua.com.javarush.quest.khmelov.repository.impl.UserRepository;
+import com.javarush.khmelov.dto.FormData;
+import com.javarush.khmelov.dto.ui.UserDto;
+import com.javarush.khmelov.entity.Role;
+import com.javarush.khmelov.entity.User;
+import com.javarush.khmelov.repository.impl.GameRepository;
+import com.javarush.khmelov.repository.impl.UserRepository;
 
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {

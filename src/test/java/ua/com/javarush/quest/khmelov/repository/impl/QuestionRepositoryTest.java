@@ -1,18 +1,19 @@
 package ua.com.javarush.quest.khmelov.repository.impl;
 
+import com.javarush.khmelov.repository.impl.QuestRepository;
+import com.javarush.khmelov.repository.impl.QuestionRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import ua.com.javarush.quest.khmelov.config.Winter;
-import ua.com.javarush.quest.khmelov.entity.GameState;
-import ua.com.javarush.quest.khmelov.entity.Quest;
-import ua.com.javarush.quest.khmelov.entity.Question;
-import ua.com.javarush.quest.khmelov.entity.User;
+import com.javarush.khmelov.config.Winter;
+import com.javarush.khmelov.entity.GameState;
+import com.javarush.khmelov.entity.Quest;
+import com.javarush.khmelov.entity.Question;
 import ua.com.javarush.quest.khmelov.repository.Container;
-import ua.com.javarush.quest.khmelov.repository.Repository;
+import com.javarush.khmelov.repository.Repository;
 
 import java.util.stream.Stream;
 

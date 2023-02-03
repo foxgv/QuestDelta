@@ -3,9 +3,9 @@
 <c:import url="parts/header.jsp"/>
 <div class="container">
 
-    <jsp:useBean id="user" scope="session" type="ua.com.javarush.quest.khmelov.dto.ui.UserDto"/>
-    <jsp:useBean id="question" scope="request" type="ua.com.javarush.quest.khmelov.dto.ui.QuestionDto"/>
-    <jsp:useBean id="game" scope="request" type="ua.com.javarush.quest.khmelov.dto.ui.GameDto"/>
+    <jsp:useBean id="user" scope="session" type="com.javarush.khmelov.dto.ui.UserDto"/>
+    <jsp:useBean id="question" scope="request" type="com.javarush.khmelov.dto.ui.QuestionDto"/>
+    <jsp:useBean id="game" scope="request" type="com.javarush.khmelov.dto.ui.GameDto"/>
 
     <div class="px-3 py-3 my-3 text-left">
 

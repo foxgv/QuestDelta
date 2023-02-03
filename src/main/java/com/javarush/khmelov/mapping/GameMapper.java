@@ -1,0 +1,31 @@
+package com.javarush.khmelov.mapping;
+
+import com.javarush.khmelov.dto.FormData;
+import com.javarush.khmelov.dto.ui.GameDto;
+import com.javarush.khmelov.entity.Game;
+
+import java.util.Optional;
+
+/**
+ * Class package-private. Use only <code>interface Mapper</code>
+ */
+class GameMapper implements Mapper<Game, GameDto> {
+
+    @Override
+    public Optional<GameDto> get(Game game) {
+        return game != null
+                ? Optional.of(GameDto.builder()
+                .id(game.getId())
+                .questId(game.getQuestId())
+                .gameState(game.getGameState())
+                .userId(game.getUserId())
+                .build()
+        ) : Optional.empty();
+    }
+
+    @Override
+    public Game parse(FormData formData) {
+        Game quest = Game.builder().build();
+        return fill(quest, formData);
+    }
+}

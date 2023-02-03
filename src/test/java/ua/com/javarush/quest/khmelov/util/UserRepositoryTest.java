@@ -4,10 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import ua.com.javarush.quest.khmelov.config.Winter;
-import ua.com.javarush.quest.khmelov.entity.User;
-import ua.com.javarush.quest.khmelov.repository.impl.UserRepository;
-import ua.com.javarush.quest.khmelov.service.InitService;
+import com.javarush.khmelov.config.Winter;
+import com.javarush.khmelov.entity.User;
+import com.javarush.khmelov.repository.impl.UserRepository;
+import com.javarush.khmelov.service.InitService;
 
 import java.util.stream.Stream;
 

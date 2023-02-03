@@ -1,5 +1,6 @@
 package ua.com.javarush.quest.khmelov.controller.user;
 
+import com.javarush.khmelov.controller.user.LoginServlet;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -8,15 +9,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-import ua.com.javarush.quest.khmelov.config.Winter;
-import ua.com.javarush.quest.khmelov.dto.ui.UserDto;
-import ua.com.javarush.quest.khmelov.entity.Role;
-import ua.com.javarush.quest.khmelov.entity.User;
-import ua.com.javarush.quest.khmelov.mapping.Mapper;
+import com.javarush.khmelov.config.Winter;
+import com.javarush.khmelov.dto.ui.UserDto;
+import com.javarush.khmelov.entity.Role;
+import com.javarush.khmelov.entity.User;
+import com.javarush.khmelov.mapping.Mapper;
 import ua.com.javarush.quest.khmelov.repository.Container;
-import ua.com.javarush.quest.khmelov.repository.impl.UserRepository;
-import ua.com.javarush.quest.khmelov.util.Go;
-import ua.com.javarush.quest.khmelov.util.Jsp;
+import com.javarush.khmelov.repository.impl.UserRepository;
+import com.javarush.khmelov.util.Go;
+import com.javarush.khmelov.util.Jsp;
 
 import java.io.IOException;
 import java.util.Map;

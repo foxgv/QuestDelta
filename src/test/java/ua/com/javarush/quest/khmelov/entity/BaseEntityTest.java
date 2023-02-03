@@ -1,11 +1,10 @@
 package ua.com.javarush.quest.khmelov.entity;
 
 import org.hibernate.Session;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import ua.com.javarush.quest.khmelov.config.Winter;
+import com.javarush.khmelov.config.Winter;
 import ua.com.javarush.quest.khmelov.repository.Container;
-import ua.com.javarush.quest.khmelov.repository.SessionCreator;
+import com.javarush.khmelov.repository.SessionCreator;
 
 public class BaseEntityTest {
     protected static Session session;

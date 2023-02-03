@@ -1,11 +1,12 @@
 package ua.com.javarush.quest.khmelov.repository;
 
+import com.javarush.khmelov.repository.SessionCreator;
 import lombok.experimental.UtilityClass;
 import org.hibernate.cfg.Configuration;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.JdbcDatabaseContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
-import ua.com.javarush.quest.khmelov.config.Winter;
+import com.javarush.khmelov.config.Winter;
 
 @UtilityClass
 public class Container {

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                             http://www.springframework.org/schema/beans/spring-beans.xsd
+                             http://www.springframework.org/schema/context
+                             http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+<!--    <context:component-scan base-package="com.javarush.khmelov"/>-->
+<!--    <bean id="sessionCreator"-->
+<!--          class="com.javarush.khmelov.repository.SessionCreator"/>-->
+<!--    <bean id="gameRepository"-->
+<!--          class="com.javarush.khmelov.repository.impl.GameRepository">-->
+<!--        <constructor-arg ref="sessionCreator"/>-->
+<!--    </bean>-->
+<!--    <bean id="userRepository"-->
+<!--          class="com.javarush.khmelov.repository.impl.UserRepository">-->
+<!--        <constructor-arg ref="sessionCreator"/>-->
+<!--    </bean>-->
+<!--    <bean id="userService" class="com.javarush.khmelov.service.UserService">-->
+<!--        <constructor-arg index="0" ref="userRepository"/>-->
+<!--        <constructor-arg index="1" ref="gameRepository"/>-->
+<!--    </bean>-->
+
+</beans>
