@@ -1,11 +1,16 @@
 package com.javarush.spring03.service;
 
 import com.javarush.spring03.entity.Customer;
+import com.javarush.spring03.processor.Benchmark;
 import com.javarush.spring03.repository.Repo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Service
+@Benchmark
 public class CustomerService {
 
     private Repo<Customer> customerRepo;
@@ -21,6 +26,16 @@ public class CustomerService {
 
     public void update(Customer customer) {
         customerRepo.update(customer);
+    }
+
+    @PostConstruct
+    void init(){
+        System.out.println("init CustomerService");
+    }
+
+    @PreDestroy
+    void destroy(){
+        System.out.println("destroy CustomerService");
     }
 
 }

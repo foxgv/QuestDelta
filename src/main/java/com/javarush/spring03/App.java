@@ -11,15 +11,17 @@ public class App {
 
     public static void main(String[] args) {
         var context = new AnnotationConfigApplicationContext(AppConfig.class);
-        long id = 1L;
-        CustomerService customerService = context.getBean(CustomerService.class);
-        Customer customer = customerService.get(id);
-        System.out.println(customer);
-        customer.setPassword("test12345");
-        customerService.update(customer);
-        System.out.println(customer);
-        customer.setPassword("456");
-        customerService.update(customer);
-        System.out.println(customer);
+        try (context){
+            long id = 1L;
+            CustomerService customerService = context.getBean(CustomerService.class);
+            Customer customer = customerService.get(id);
+            System.out.println(customerService.get(id));
+            customer.setPassword("test12345");
+            customerService.update(customer);
+            System.out.println(customerService.get(id));
+            customer.setPassword("456");
+            customerService.update(customer);
+            System.out.println(customerService.get(id));
+        }
     }
 }
