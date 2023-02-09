@@ -2,6 +2,7 @@ package com.javarush.spring03.repository;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -12,11 +13,14 @@ public class ConnectionPool {
 
     private final HikariDataSource ds;
 
-    ConnectionPool() {
+    public ConnectionPool(
+            @Value("${db.url}") String dbUrl,
+            @Value("${db.user}") String dbUser,
+            @Value("${db.password}") String dbPassword) {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:postgresql://localhost:5432/game");
-        config.setUsername("postgres");
-        config.setPassword("postgres");
+        config.setJdbcUrl(dbUrl);
+        config.setUsername(dbUser);
+        config.setPassword(dbPassword);
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
