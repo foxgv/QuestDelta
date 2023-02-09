@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
+import java.util.concurrent.CompletableFuture;
 
 public class AppRunnerXmlConfig {
 
@@ -18,5 +19,7 @@ public class AppRunnerXmlConfig {
         //one bean
         UserService userService = applicationContext.getBean(UserService.class);
         System.out.println("bean userService=" + userService);
+
+        CompletableFuture<Integer> res = CompletableFuture.supplyAsync(() -> 123);
     }
 }

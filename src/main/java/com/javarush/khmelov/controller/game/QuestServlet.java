@@ -47,7 +47,7 @@ public class QuestServlet extends HttpServlet {
             Long idQuest = Parser.getId(req, "idQuest");
             Optional<QuestionDto> questionDto = questionService.update(formData);
             if (questionDto.isPresent()) {
-                imageService.uploadImage(req, questionDto.get().getImage());
+                Jsp.im(req, questionDto.get().getImage(), imageService);
             }
             String uri = "%s?id=%d#q%d".formatted(Go.QUEST, idQuest, id);
             Jsp.redirect(req, resp, uri);

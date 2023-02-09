@@ -20,9 +20,8 @@ import java.io.IOException;
 import java.util.Optional;
 
 @MultipartConfig(fileSizeThreshold = 1 << 20)
-@WebServlet(value = Go.SIGNUP,name = "SignupServlet")
+@WebServlet(value = Go.SIGNUP, name = "SignupServlet")
 public class SignupServlet extends HttpServlet {
-
 
 
     private final UserService userService = Winter.getBean(UserService.class);
@@ -45,7 +44,7 @@ public class SignupServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         Optional<UserDto> userDto = userService.create(FormData.of(req));
         if (userDto.isPresent()) {
-            imageService.uploadImage(req, userDto.get().getImage());
+            Jsp.im(req, userDto.get().getImage(), imageService);
         }
         Jsp.redirect(req, resp, Go.USERS);
     }

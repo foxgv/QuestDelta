@@ -4,6 +4,8 @@ import lombok.experimental.UtilityClass;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +24,9 @@ public class Winter {
                 return (T) container.get(type);
             } else {
                 Constructor<?>[] constructors = type.getConstructors();
-                Constructor<?> constructor = constructors[0];
+                Constructor<?> constructor = Arrays.stream(constructors)
+                        .min(Comparator.comparingInt(Constructor::getParameterCount))
+                        .orElseThrow();
                 Class<?>[] parameterTypes = constructor.getParameterTypes();
                 Object[] parameters = new Object[parameterTypes.length];
                 for (int i = 0; i < parameters.length; i++) {

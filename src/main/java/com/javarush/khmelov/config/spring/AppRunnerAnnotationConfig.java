@@ -7,7 +7,6 @@ import java.util.Arrays;
 
 public class AppRunnerAnnotationConfig {
 
-
     public static final String BASE = "com.javarush.khmelov";
 
     public static void main(String[] args) {

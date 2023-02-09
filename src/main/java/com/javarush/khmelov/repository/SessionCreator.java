@@ -4,15 +4,11 @@ import com.javarush.khmelov.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class SessionCreator implements AutoCloseable {
 
-    private final SessionFactory sessionFactory;
-    private final AtomicInteger level = new AtomicInteger();
+public class SessionCreator implements AutoCloseable {
 
     static {
         try {
@@ -22,16 +18,10 @@ public class SessionCreator implements AutoCloseable {
         }
     }
 
-    /**
-     * default constructor
-     */
-    public SessionCreator() {
-        Configuration configuration = new Configuration();
-        configuration.configure();
-        sessionFactory = getSessionFactory(configuration);
-    }
+    private final SessionFactory sessionFactory;
+    private final AtomicInteger level = new AtomicInteger();
 
-    public SessionCreator(@Value("${db.user") String user) {
+    public SessionCreator() {
         Configuration configuration = new Configuration();
         configuration.configure();
         sessionFactory = getSessionFactory(configuration);
@@ -39,6 +29,7 @@ public class SessionCreator implements AutoCloseable {
 
     /**
      * Constructor for testcontainers
+     *
      * @param configuration - set special mode (for tests)
      */
     protected SessionCreator(Configuration configuration) {
@@ -61,7 +52,7 @@ public class SessionCreator implements AutoCloseable {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close() {
         sessionFactory.close();
     }
 

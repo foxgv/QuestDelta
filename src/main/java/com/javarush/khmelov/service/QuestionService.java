@@ -6,8 +6,8 @@ import com.javarush.khmelov.dto.ui.QuestionDto;
 import com.javarush.khmelov.entity.Question;
 import com.javarush.khmelov.mapping.Mapper;
 import com.javarush.khmelov.repository.impl.QuestionRepository;
-import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -15,10 +15,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public class QuestionService {
 
     private final QuestionRepository questionRepository;
+
+    @Autowired
+    public QuestionService(QuestionRepository questionRepository) {
+        this.questionRepository = questionRepository;
+    }
+
 
     public Optional<QuestionDto> get(long id) {
         questionRepository.beginTransactional();

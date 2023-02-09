@@ -26,6 +26,19 @@ public class EditUserServlet extends HttpServlet {
     private final UserService userService = Winter.getBean(UserService.class);
     private final ImageService imageService = Winter.getBean(ImageService.class);
 
+    private static boolean checkEditorInSession(HttpServletRequest req) {
+        long id = Parser.getId(req);
+        Optional<UserDto> editor = Parser.getUser(req.getSession());
+        return editor.isPresent() &&
+                (editor.get().getId() == id || editor.get().getRole() == Role.ADMIN);
+    }
+
+    static boolean checkProfileEditor(HttpServletRequest req) {
+        long id = Parser.getId(req);
+        Optional<UserDto> editor = Parser.getUser(req.getSession());
+        return editor.isPresent() && (editor.get().getId() == id);
+    }
+
     @Override
     public void init() {
         getServletContext().setAttribute(Jsp.Key.ROLES, Role.values());
@@ -52,7 +65,7 @@ public class EditUserServlet extends HttpServlet {
             if (req.getParameter("update") != null) {
                 Optional<UserDto> userDto = userService.update(formData);
                 if (userDto.isPresent()) {
-                    imageService.uploadImage(req, userDto.get().getImage());
+                    Jsp.im(req, userDto.get().getImage(), imageService);
                 }
             } else if (req.getParameter("delete") != null) {
                 userService.delete(formData);
@@ -61,18 +74,5 @@ public class EditUserServlet extends HttpServlet {
         } else {
             Jsp.forward(req, resp, DEST, "Недостаточно прав для редактирования");
         }
-    }
-
-    private static boolean checkEditorInSession(HttpServletRequest req) {
-        long id = Parser.getId(req);
-        Optional<UserDto> editor = Parser.getUser(req.getSession());
-        return editor.isPresent() &&
-                (editor.get().getId() == id || editor.get().getRole() == Role.ADMIN);
-    }
-
-    static boolean checkProfileEditor(HttpServletRequest req) {
-        long id = Parser.getId(req);
-        Optional<UserDto> editor = Parser.getUser(req.getSession());
-        return editor.isPresent() && (editor.get().getId() == id);
     }
 }

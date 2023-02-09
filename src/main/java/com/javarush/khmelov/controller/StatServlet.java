@@ -20,11 +20,13 @@ public class StatServlet extends HttpServlet {
     UserService userService = Winter.getBean(UserService.class);
     InitService initService = Winter.getBean(InitService.class);
 
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("statistics", userService.getStat());
         Jsp.forward(request,response,Go.STAT);
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
