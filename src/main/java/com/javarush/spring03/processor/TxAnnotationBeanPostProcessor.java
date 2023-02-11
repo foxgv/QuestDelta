@@ -44,9 +44,7 @@ public class TxAnnotationBeanPostProcessor implements BeanPostProcessor {
     private Object proxy(Object beanOrProxy, Class<?> beanRealClass) {
         MethodInterceptor handler = (obj, method, args, proxy) -> {
             Object result;
-            if (beanOrProxy.getClass().isAnnotationPresent(Tx.class)
-                    || method.isAnnotationPresent(Tx.class)
-            ) {
+            if (method.isAnnotationPresent(Tx.class)) {
                 System.out.printf("==  Tx %s started ==%n", method.getName());
                 result = proxy.invoke(beanOrProxy, args);
                 System.out.printf("==  Tx %s complete ==%n", method.getName());

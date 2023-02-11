@@ -44,7 +44,7 @@ public class BenchmarkAnnotationBeanPostProcessor implements BeanPostProcessor {
     private Object proxy(Object beanOrProxy, Class<?> beanRealClass) {
         MethodInterceptor handler = (obj, method, args, proxy) -> {
             Object result;
-            if (beanOrProxy.getClass().isAnnotationPresent(Benchmark.class)
+            if (beanRealClass.isAnnotationPresent(Benchmark.class)
                     || method.isAnnotationPresent(Benchmark.class)
             ) {
                 System.out.printf("====  Method %s started ====%n", method.getName());
@@ -52,10 +52,10 @@ public class BenchmarkAnnotationBeanPostProcessor implements BeanPostProcessor {
                 result = proxy.invoke(beanOrProxy, args);
                 time = System.nanoTime() - time;
                 System.out.printf("====  Method %s complete. time = %.3f ms  ====%n", method.getName(), time / 1e6);
+                return result;
             } else {
-                result = proxy.invoke(beanOrProxy, args);
+                return proxy.invoke(beanOrProxy, args);
             }
-            return result;
         };
         return Enhancer.create(beanRealClass, handler);
     }
