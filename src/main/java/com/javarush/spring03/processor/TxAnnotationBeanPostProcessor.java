@@ -12,14 +12,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class BenchmarkAnnotationBeanPostProcessor implements BeanPostProcessor {
+public class TxAnnotationBeanPostProcessor implements BeanPostProcessor {
 
     private final Map<String, Class<?>> map = new HashMap<>();
 
     @Override
     public Object postProcessBeforeInitialization(@NonNull Object bean, @NonNull String beanName) throws BeansException {
         Class<?> aClass = bean.getClass();
-        if (aClass.isAnnotationPresent(Benchmark.class) || methodIsAnnotationPresent(aClass)) {
+        if (aClass.isAnnotationPresent(Tx.class) || methodIsAnnotationPresent(aClass)) {
             map.putIfAbsent(beanName, aClass);
             System.out.printf(">>> before init %s%n", beanName);
         }
@@ -28,7 +28,7 @@ public class BenchmarkAnnotationBeanPostProcessor implements BeanPostProcessor {
 
     private boolean methodIsAnnotationPresent(Class<?> aClass) {
         return Arrays.stream(aClass.getMethods())
-                .anyMatch(m -> m.isAnnotationPresent(Benchmark.class));
+                .anyMatch(m -> m.isAnnotationPresent(Tx.class));
     }
 
     @Override
@@ -44,14 +44,12 @@ public class BenchmarkAnnotationBeanPostProcessor implements BeanPostProcessor {
     private Object proxy(Object beanOrProxy, Class<?> beanRealClass) {
         MethodInterceptor handler = (obj, method, args, proxy) -> {
             Object result;
-            if (beanOrProxy.getClass().isAnnotationPresent(Benchmark.class)
-                    || method.isAnnotationPresent(Benchmark.class)
+            if (beanOrProxy.getClass().isAnnotationPresent(Tx.class)
+                    || method.isAnnotationPresent(Tx.class)
             ) {
-                System.out.printf("====  Method %s started ====%n", method.getName());
-                long time = System.nanoTime();
+                System.out.printf("==  Tx %s started ==%n", method.getName());
                 result = proxy.invoke(beanOrProxy, args);
-                time = System.nanoTime() - time;
-                System.out.printf("====  Method %s complete. time = %.3f ms  ====%n", method.getName(), time / 1e6);
+                System.out.printf("==  Tx %s complete ==%n", method.getName());
             } else {
                 result = proxy.invoke(beanOrProxy, args);
             }

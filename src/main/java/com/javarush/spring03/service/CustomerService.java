@@ -2,6 +2,7 @@ package com.javarush.spring03.service;
 
 import com.javarush.spring03.entity.Customer;
 import com.javarush.spring03.processor.Benchmark;
+import com.javarush.spring03.processor.Tx;
 import com.javarush.spring03.repository.Repo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class CustomerService {
         this.customerRepo = customerRepo;
     }
 
+    @Tx
     public Customer get(Long id) {
         return customerRepo.getById(id);
     }
